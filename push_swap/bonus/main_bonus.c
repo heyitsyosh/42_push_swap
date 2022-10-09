@@ -6,13 +6,13 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 17:25:39 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/10 06:59:28 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/10 07:07:37 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/checker_bonus.h"
 
-void	free_and_exit(char **to_free)
+static void	free_and_exit(char **to_free)
 {
 	size_t	i;
 
