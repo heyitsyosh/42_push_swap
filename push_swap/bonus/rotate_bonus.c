@@ -5,25 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/10 06:23:47 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/10 06:56:42 by myoshika         ###   ########.fr       */
+/*   Created: 2022/10/10 06:23:42 by myoshika          #+#    #+#             */
+/*   Updated: 2022/10/10 07:10:00 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/checker_bonus.h"
 
-void	rra(int *a, t_sizes *s)
+void	ra(int *a, t_sizes *s)
 {
 	
 }
 
-void	rrb(int *b, t_sizes *s)
+void	rb(int *b, t_sizes *s)
 {
 	
 }
 
-void	rrr(int *a, int *b, t_sizes *s)
+void	rr(int *a, int *b, t_sizes *s)
 {
-	rra(a, s);
-	rrb(b, s);
+	ra(a, s);
+	rb(b, s);
 }
