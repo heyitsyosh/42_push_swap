@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_inputs.c                                       :+:      :+:    :+:   */
+/*   get_inputs_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 05:46:16 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/10 05:47:57 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/10 21:07:42 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,16 @@ bool	make_stack_a_and_b(int *a, int *b, int argc, char **argv)
 {
 	size_t	i;
 	bool	overflow;
+	int		a_top;
 
 	if (!malloc_a_and_b(a, b, argc, argv))
 		return (false);
 	i = 0;
+	a_top = argc - 2;
 	overflow = false;
-	while (argv[i + 1])
+	while (a_top - i >= 0)
 	{
-		a[i] = atoi_with_overflow_check(argv[i + 1], &overflow);
+		a[a_top - i] = atoi_with_overflow_check(argv[i + 1], &overflow);
 		if (overflow || !str_is_num(argv[i + 1]))
 		{
 			free(a);

@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 17:17:30 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/10 07:10:46 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/10 22:29:21 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,16 @@
 # include "./ft_printf.h"
 
 typedef struct s_sizes{
-	int	size_a;
-	int	size_b;
+	int		a_top;
+	int		b_top;
 }	t_sizes;
 
 bool	make_stack_a_and_b(int *a, int *b, int argc, char **argv);
 char	**get_instructions(void);
 int		atoi_with_overflow_check(const char *str, bool *overflow);
+
+void	free_double_ptr(char **to_free);
+void	free_and_exit(char **to_free);
 
 void	sa(int *a, t_sizes *s);
 void	sb(int *b, t_sizes *s);
