@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 06:23:28 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/10 06:56:24 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/10 22:37:21 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,24 @@
 
 void	sa(int *a, t_sizes *s)
 {
-	
+	int	tmp;
+
+	if (s->a_top < 1)
+		return ;
+	tmp = a[s->a_top];
+	a[s->a_top] = a[s->a_top - 1];
+	a[s->a_top - 1] = tmp;
 }
 
 void	sb(int *b, t_sizes *s)
 {
-	
+	int	tmp;
+
+	if (s->b_top < 2)
+		return ;
+	tmp = b[s->b_top];
+	b[s->b_top] = b[s->b_top - 1];
+	b[s->b_top - 1] = tmp;
 }
 
 void	ss(int *a, int *b, t_sizes *s)
@@ -30,10 +42,18 @@ void	ss(int *a, int *b, t_sizes *s)
 
 void	pa(int *a, int *b, t_sizes *s)
 {
-	
+	if (s->b_top == -1)
+		return ;
+	s->a_top++;
+	a[s->a_top] = b[s->b_top];
+	s->b_top--;
 }
 
 void	pb(int *a, int *b, t_sizes *s)
 {
-	
+	if (s->a_top == -1)
+		return ;
+	s->b_top++;
+	b[s->b_top] = a[s->a_top];
+	s->a_top--;
 }

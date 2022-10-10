@@ -6,24 +6,11 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 17:25:39 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/10 07:07:37 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/10 22:28:21 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/checker_bonus.h"
-
-static void	free_and_exit(char **to_free)
-{
-	size_t	i;
-
-	i = 0;
-	if (to_free)
-		while (to_free[i])
-			free(to_free[i++]);
-	free(to_free);
-	ft_printf("Error\n");
-	exit(0);
-}
 
 static bool	do_action(char instruction, int *a, int *b, t_sizes *s)
 {
@@ -61,21 +48,24 @@ static bool	check_if_a_sorted(int *a, t_sizes *s)
 
 	i = 0;
 	prev = a[0];
-	while (++i < s->size_a)
+	while (++i <= s->a_top)
 	{
-		if (prev > a[i])
+		if (prev < a[i])
 			return (false);
 		prev = a[i];
 	}
 	return (true);
 }
 
-static int	check_if_sorted(int *a, int *b, t_sizes *s)
+int	check_if_sorted(int *a, int *b, char **instructions, t_sizes *s)
 {
-	if (s->size_b != 0 || !check_if_a_sorted(a, s))
+	if (s->b_top == -1 || !check_if_a_sorted(a, s))
 		ft_printf("KO\n");
 	else
 		ft_printf("OK\n");
+	free(a);
+	free(b);
+	free_double_ptr(instructions);
 	return (0);
 }
 
@@ -93,11 +83,11 @@ int	main(int argc, char **argv)
 	if (!instructions)
 		free_and_exit(NULL);
 	i = 0;
-	sizes.size_a = argc - 1;
-	sizes.size_b = 0;
+	sizes.a_top = argc - 2;
+	sizes.b_top = -1;
 	while (instructions[i])
 	{
-		if (do_action(instructions[i], a, b, &sizes))
+		if (!do_action(instructions[i], a, b, &sizes))
 		{
 			free(a);
 			free(b);
@@ -105,5 +95,5 @@ int	main(int argc, char **argv)
 		}
 		i++;
 	}
-	return (check_if_sorted(a, b, &sizes));
+	return (check_if_sorted(a, b, instructions, &sizes));
 }

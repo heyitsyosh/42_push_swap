@@ -1,43 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate_bonus.c                                     :+:      :+:    :+:   */
+/*   exit_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/10 06:23:42 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/10 22:52:07 by myoshika         ###   ########.fr       */
+/*   Created: 2022/10/10 22:25:39 by myoshika          #+#    #+#             */
+/*   Updated: 2022/10/10 22:29:25 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/checker_bonus.h"
 
-void	rotate(int *stack, int direction, t_sizes *s)
+void	free_double_ptr(char **to_free)
 {
-	
+	size_t	i;
+
+	i = 0;
+	if (to_free)
+		while (to_free[i])
+			free(to_free[i++]);
+	free(to_free);
 }
 
-void	ra(int *a, t_sizes *s)
+void	free_and_exit(char **to_free)
 {
-	int	i;
-	int	tmp;
-	int	prev;
-
-	if (s->a_top < 1)
-		return ;
-	tmp = a[s->a_top];
-	
-}
-
-void	rb(int *b, t_sizes *s)
-{
-	
-	if (s->b_top < 1)
-		return ;
-}
-
-void	rr(int *a, int *b, t_sizes *s)
-{
-	ra(a, s);
-	rb(b, s);
+	free_double_ptr(to_free);
+	ft_printf("Error\n");
+	exit(0);
 }
