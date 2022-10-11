@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:12:15 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/10 03:10:45 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/11 02:28:01 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@
 typedef struct s_list
 {
 	struct s_list	*prev;
-	void			*content;
+	int				num;
 	struct s_list	*next;
 }	t_list;
 
 typedef struct s_save
 {
-	struct s_list	*start;
-	struct s_list	*end;
+	struct s_list	*top;
+	struct s_list	*bottom;
 }	t_list;
 
 #endif

@@ -6,36 +6,29 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 17:25:39 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/10 22:28:21 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/11 09:22:31 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/checker_bonus.h"
 
-static bool	do_action(char instruction, int *a, int *b, t_sizes *s)
+static bool	do_action(char *instruction, int *a, int *b, t_sizes *s)
 {
-	if (ft_strcmp(instruction, "sa"))
+	if (!ft_strcmp(instruction, "sa"))
 		sa(a, s);
-	else if (ft_strcmp(instruction, "sb"))
+	else if (!ft_strcmp(instruction, "sb"))
 		sb(b, s);
-	else if (ft_strcmp(instruction, "ss"))
+	else if (!ft_strcmp(instruction, "ss"))
 		ss(a, b, s);
-	else if (ft_strcmp(instruction, "pa"))
+	else if (!ft_strcmp(instruction, "pa"))
 		pa(a, b, s);
-	else if (ft_strcmp(instruction, "pb"))
+	else if (!ft_strcmp(instruction, "pb"))
 		pb(a, b, s);
-	else if (ft_strcmp(instruction, "ra"))
-		ra(a, s);
-	else if (ft_strcmp(instruction, "rb"))
-		rb(b, s);
-	else if (ft_strcmp(instruction, "rr"))
-		rr(a, b, s);
-	else if (ft_strcmp(instruction, "rra"))
-		rra(a, s);
-	else if (ft_strcmp(instruction, "rrb"))
-		rrb(b, s);
-	else if (ft_strcmp(instruction, "rrr"))
-		rrr(a, b, s);
+	else if (*instruction == 'r')
+	{
+		if (!redirect_to_rotator(instruction, a, b, s))
+			return (false);
+	}
 	else
 		return (false);
 	return (true);
@@ -59,7 +52,7 @@ static bool	check_if_a_sorted(int *a, t_sizes *s)
 
 int	check_if_sorted(int *a, int *b, char **instructions, t_sizes *s)
 {
-	if (s->b_top == -1 || !check_if_a_sorted(a, s))
+	if (s->b_top != -1 || !check_if_a_sorted(a, s))
 		ft_printf("KO\n");
 	else
 		ft_printf("OK\n");
@@ -77,11 +70,11 @@ int	main(int argc, char **argv)
 	char	**instructions;
 	t_sizes	sizes;
 
-	if (argc <= 1 || !make_stack_a_and_b(a, b, argc, argv))
+	a = NULL;
+	b = NULL;
+	if (argc <= 1 || !make_stack_a_and_b(&a, &b, argc, argv))
 		free_and_exit(NULL);
 	instructions = get_instructions();
-	if (!instructions)
-		free_and_exit(NULL);
 	i = 0;
 	sizes.a_top = argc - 2;
 	sizes.b_top = -1;

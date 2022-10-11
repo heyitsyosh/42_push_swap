@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 06:23:28 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/10 22:37:21 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/11 07:10:40 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	sb(int *b, t_sizes *s)
 {
 	int	tmp;
 
-	if (s->b_top < 2)
+	if (s->b_top < 1)
 		return ;
 	tmp = b[s->b_top];
 	b[s->b_top] = b[s->b_top - 1];
