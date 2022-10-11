@@ -15,8 +15,8 @@ BONUS_FILES = main\
 			get_inputs\
 			atoi\
 			push_swap\
-			rotate\
-			rev_rotate
+			rotations\
+			exit
 
 SRCS = $(addsuffix .c, $(FILES))
 OBJS = $(SRCS:.c=.o)
@@ -25,7 +25,7 @@ BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
 CFLAGS = -Wall -Wextra -Werror -I ./includes
 
-/* -------------------------------------------------------------------------- */
+#--------------------------------------------------------------------------#
 
 all: $(NAME)
 
@@ -33,7 +33,12 @@ $(NAME): $(OBJS)
 	make -C $(PRINTFDIR)
 	make -C $(GNLDIR)
 
-bonus: all
+bonus: $(BONUS_NAME)
+
+$(BONUS_NAME): $(BONUS_OBJS)
+	make -C $(PRINTFDIR)
+	make -C $(GNLDIR)
+	$(CC) $(CFLAGS) -o $@ $(BONUS_OBJS) $(FT_PRINTF) $(GNL)
 
 clean:
 	make clean -C $(PRINTFDIR)

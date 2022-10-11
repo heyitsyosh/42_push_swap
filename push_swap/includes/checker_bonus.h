@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 17:17:30 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/10 22:29:21 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/11 09:24:43 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ typedef struct s_sizes{
 	int		b_top;
 }	t_sizes;
 
-bool	make_stack_a_and_b(int *a, int *b, int argc, char **argv);
+bool	make_stack_a_and_b(int **a, int **b, int argc, char **argv);
 char	**get_instructions(void);
 int		atoi_with_overflow_check(const char *str, bool *overflow);
 
@@ -35,12 +35,6 @@ void	ss(int *a, int *b, t_sizes *s);
 void	pa(int *a, int *b, t_sizes *s);
 void	pb(int *a, int *b, t_sizes *s);
 
-void	ra(int *a, t_sizes *s);
-void	rb(int *b, t_sizes *s);
-void	rr(int *a, int *b, t_sizes *s);
-
-void	rra(int *a, t_sizes *s);
-void	rrb(int *b, t_sizes *s);
-void	rrr(int *a, int *b, t_sizes *s);
+bool	redirect_to_rotator(char *instruction, int *a, int *b, t_sizes *s);
 
 #endif

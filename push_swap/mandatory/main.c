@@ -6,15 +6,17 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:09:58 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/10 03:13:12 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/11 01:33:44 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-// int	main(int argc, char **argv)
-// {
-// 	if (argc <= 1)
-// 		return (0);
-// 	make_
-// }
+int	main(int argc, char **argv)
+{
+	t_
+
+	if (argc <= 1)
+		return (0);
+	make_stack_a_and_b();
+}
