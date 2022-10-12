@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 17:50:25 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/12 18:29:27 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/12 18:36:51 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static bool	malloc_head(t_save *s, int argc, char **argv)
 {
-	if (!ft_strcmp(argv[0], "push_swap"))
+	if (ft_strcmp(argv[0], "push_swap"))
 		return (false);
 	s->a_head = make_node(argv[1], s);
 	s->b_head = (t_stack *)malloc(sizeof(t_stack));
@@ -91,6 +91,5 @@ bool	make_stack_a_and_b(t_save *s, int argc, char **argv)
 		s->last = s->a_head->next;
 		i++;
 	}
-	determine_lmis(s->a_head);
 	return (true);
 }
