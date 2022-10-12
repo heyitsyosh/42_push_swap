@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:12:15 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/11 02:28:01 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/12 17:36:02 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,29 @@
 # include "./get_next_line.h"
 # include "./ft_printf.h"
 
-typedef struct s_list
+struct push_swap
 {
-	struct s_list	*prev;
-	int				num;
-	struct s_list	*next;
-}	t_list;
+	/* data */
+};
+
+typedef struct s_stack
+{
+	struct s_stack	*prev;
+	int				input;
+	int				i;
+	struct s_stack	*next;
+}	t_stack;
 
 typedef struct s_save
 {
-	struct s_list	*top;
-	struct s_list	*bottom;
-}	t_list;
+	t_stack	*a_head;
+	t_stack	*b_head;
+	// int				a_top;
+	// int				b_top;
+	t_stack	*lmis_i;
+	t_stack	*lmis_ii;
+	t_stack	*lmis_iii;
+	t_stack	*lmis_iv;
+}	t_save;
 
 #endif
