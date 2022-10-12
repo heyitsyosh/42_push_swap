@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 15:43:53 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/12 15:44:58 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/12 18:49:44 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,22 +32,22 @@ static void	rotate(int *stack, int direction, int start, int end)
 bool	redirect_to_rotator(char *instruction, int *a, int *b, t_save *s)
 {
 	if (!ft_strcmp(instruction, "ra"))
-		rotate(a, -1, s->a_top, 0);
+		rotate(a, -1, s->a_top, NO_PRINTF);
 	else if (!ft_strcmp(instruction, "rb"))
-		rotate(b, -1, s->b_top, 0);
+		rotate(b, -1, s->b_top, NO_PRINTF);
 	else if (!ft_strcmp(instruction, "rr"))
 	{
-		rotate(a, -1, s->a_top, 0);
-		rotate(b, -1, s->b_top, 0);
+		rotate(a, -1, s->a_top, NO_PRINTF);
+		rotate(b, -1, s->b_top, NO_PRINTF);
 	}
 	else if (!ft_strcmp(instruction, "rra"))
-		rotate(a, 1, 0, s->a_top);
+		rotate(a, 1, s->a_top, PRINTF);
 	else if (!ft_strcmp(instruction, "rrb"))
-		rotate(a, 1, 0, s->b_top);
+		rotate(a, 1, s->b_top, PRINTF);
 	else if (!ft_strcmp(instruction, "rrr"))
 	{
-		rotate(a, 1, 0, s->a_top);
-		rotate(a, 1, 0, s->b_top);
+		rotate(a, 1, s->a_top, NO_PRINTF);
+		rotate(a, 1, s->b_top, NO_PRINTF);
 	}
 	else
 		return (false);

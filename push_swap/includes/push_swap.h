@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:12:15 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/12 18:15:55 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/12 18:49:30 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 # include "./get_next_line.h"
 # include "./ft_printf.h"
+
+# define NO_PRINTF 0
+# define PRINTF 1
 
 typedef struct s_stack
 {
