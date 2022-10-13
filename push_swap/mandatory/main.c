@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:09:58 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/13 19:47:51 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/13 20:24:04 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,7 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	get_lmis_and_compressed_coordinates(&s);
-
-	t_stack *tmp = s.a_head;
-	while (tmp)
-	{
-		printf("[%d, %d]", tmp->input, tmp->lmis);
-		tmp = tmp->next;
-	}
-
-	if (!s.has_duplicates)
+	if (s.has_duplicates)
 	{
 		free_a_and_b(&s);
 		ft_printf("Error\n");

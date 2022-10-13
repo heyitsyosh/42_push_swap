@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 14:20:51 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/13 19:43:33 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/13 20:25:32 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,21 @@ static int	count_subsequence(t_stack *start, t_save *s)
 	return (lmis);
 }
 
-// static void	find_compressed_coordinates(t_stack	*node, t_save *s)
-// {
-// 	if (node->input < s->a_head->input)
-// 	{
-// 		node->cc = 0;
-// 		stack_map();
-// 	}
-	
-// }
+static int	coordinate_compression(t_stack	*node, t_save *s)
+{
+	t_stack	*tmp;
+	int		smaller_inputs;
+
+	tmp = s->a_head;
+	smaller_inputs = 0;
+	while (tmp)
+	{
+		if (tmp->input < node->input)
+			smaller_inputs++;
+		tmp = tmp->next;
+	}
+	return (smaller_inputs);
+}
 
 void	get_lmis_and_compressed_coordinates(t_save *s)
 {
@@ -52,7 +58,7 @@ void	get_lmis_and_compressed_coordinates(t_save *s)
 		tmp->lmis = count_subsequence(tmp, s);
 		if (s->has_duplicates)
 			break ;
-		//find_compressed_coordinates(tmp, s);
+		tmp->cc = coordinate_compression(tmp, s);
 		tmp = tmp->next;
 	}
 }
