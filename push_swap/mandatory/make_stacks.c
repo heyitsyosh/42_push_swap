@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 17:50:25 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/12 18:36:51 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/13 14:16:59 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static bool	malloc_head(t_save *s, int argc, char **argv)
 {
 	if (ft_strcmp(argv[0], "push_swap"))
 		return (false);
-	s->a_head = make_node(argv[1], s);
+	s->a_head = make_node(argv[1], 0, s);
 	s->b_head = (t_stack *)malloc(sizeof(t_stack));
 	if (!s->a_head || !s->b_head)
 	{
@@ -43,20 +43,31 @@ static bool	str_is_num(char *str)
 	return (true);
 }
 
-t_stack	*make_node(char *arg, t_save *s)
+static int	compress_coordinates(int input, int which_node, t_save *s)
+{
+	if (which_node == 0)
+	{
+		s->min = 0;
+		return (0);
+	}
+	if (-(input) < s->min)
+		s->min = -(input);
+	return (s->a_head->input - input);
+}
+
+static t_stack	*make_node(char *arg, int which_node, t_save *s)
 {
 	t_stack	*ret;
 	bool	overflow;
-	bool	is_duplicate;
 
 	overflow = false;
-	is_duplicate = false;
 	ret = (t_stack *)malloc(sizeof(t_stack));
 	if (ret)
 	{
 		ret->input = atoi_with_overflow_check(arg, &overflow);
+		ret->i = compress_coordinates(ret->input, which_node, s);
 		ret->next = NULL;
-		if (overflow || !str_is_num(arg))
+		if (overflow || str_is_num(arg))
 		{
 			free(ret);
 			return (NULL);
@@ -65,30 +76,26 @@ t_stack	*make_node(char *arg, t_save *s)
 	return (ret);
 }
 
-void	add_node_to_back()
-{
-	
-}
-
 bool	make_stack_a_and_b(t_save *s, int argc, char **argv)
 {
 	int		i;
+	t_stack	*tmp;
 	t_stack	*new;
 
 	if (!malloc_head(s, argc, argv))
 		return (false);
 	i = 1;
-	s->last = s->a_head;
+	tmp = s->a_head;
 	while (i < argc)
 	{
-		new = make_node(argv[1 + i], s);
+		new = make_node(argv[1 + i], i, s);
 		if (!new)
 		{
-			clear_a_and_b(s);
+			free_a_and_b(s);
 			return (false);
 		}
-		add_node_to_back(new, s->last, s);
-		s->last = s->a_head->next;
+		add_node_to_back(new, tmp, s);
+		tmp = s->a_head->next;
 		i++;
 	}
 	return (true);

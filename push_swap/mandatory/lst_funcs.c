@@ -1,42 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   lst_funcs.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/02 23:09:58 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/13 14:31:33 by myoshika         ###   ########.fr       */
+/*   Created: 2022/10/13 13:34:42 by myoshika          #+#    #+#             */
+/*   Updated: 2022/10/13 14:31:41 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static void	adjust_compressed_coordinates(t_save *s)
+void	add_node_to_back()
 {
-	t_stack	*tmp;
-
-	tmp = s->a_head;
-	while (tmp)
-	{
-		tmp->i += s->min;
-		tmp = tmp->next;
-	}
+	
 }
 
-int	main(int argc, char **argv)
+void	free_a_and_b(t_save *s)
 {
-	t_save	s;
-
-	if (argc <= 1 || !make_stack_a_and_b(&s, argc, argv))
-		return (0);
-	if (!has_duplicates(&s))
+	while (s->a_head)
 	{
-		free_a_and_b(&s);
-		return (0);
+		free(s->a_head);
+		s->a_head = s->a_head->next;
 	}
-	adjust_compressed_coordinates(&s);
-	get_lmis();
-	algorithm();
-	return (0);
+	while (s->b_head)
+	{
+		free(s->b_head);
+		s->b_head = s->b_head->next;
+	}
 }

@@ -10,7 +10,10 @@ BONUS_DIR = ./bonus
 FT_PRINTF = ./lib/printf/libftprintf.a -L$(PRINTFDIR) -lftprintf
 GNL = ./lib/gnl/get_next_line.a 
 
-FILES = 
+FILES = main\
+		make_stacks\
+		lmis\
+		
 BONUS_FILES = main\
 			get_inputs\
 			atoi\
