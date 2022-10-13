@@ -12,8 +12,9 @@ GNL = ./lib/gnl/get_next_line.a
 
 FILES = main\
 		make_stacks\
-		lmis\
-		
+		make_stacks_ii\
+		atoi\
+		lst_funcs
 BONUS_FILES = main\
 			get_inputs\
 			atoi\
@@ -21,20 +22,21 @@ BONUS_FILES = main\
 			rotations\
 			exit
 
-SRCS = $(addsuffix .c, $(FILES))
+SRCS = $(foreach src,$(FILES),./mandatory/$(src).c)
 OBJS = $(SRCS:.c=.o)
 BONUS_SRCS = $(foreach bonus_src,$(BONUS_FILES),./bonus/$(bonus_src)_bonus.c)
 BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
 CFLAGS = -Wall -Wextra -Werror -I ./includes
 
-#--------------------------------------------------------------------------#
+#--------------------------------------------------------------------------
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	make -C $(PRINTFDIR)
 	make -C $(GNLDIR)
+	$(CC) $(CFLAGS) -o $@ $(OBJS) $(FT_PRINTF) $(GNL)
 
 bonus: $(BONUS_NAME)
 

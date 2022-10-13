@@ -6,29 +6,11 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 17:50:25 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/13 14:16:59 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/13 16:21:03 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-static bool	malloc_head(t_save *s, int argc, char **argv)
-{
-	if (ft_strcmp(argv[0], "push_swap"))
-		return (false);
-	s->a_head = make_node(argv[1], 0, s);
-	s->b_head = (t_stack *)malloc(sizeof(t_stack));
-	if (!s->a_head || !s->b_head)
-	{
-		free(s->a_head);
-		free(s->b_head);
-		return (false);
-	}
-	s->b_head->prev = NULL;
-	s->a_head->prev = NULL;
-	s->b_head->next = NULL;
-	return (true);
-}
 
 static bool	str_is_num(char *str)
 {
@@ -76,13 +58,31 @@ static t_stack	*make_node(char *arg, int which_node, t_save *s)
 	return (ret);
 }
 
+static bool	malloc_head(t_save *s, char **argv)
+{
+	if (ft_strcmp(argv[0], "./push_swap"))
+		return (false);
+	s->a_head = make_node(argv[1], 0, s);
+	s->b_head = (t_stack *)malloc(sizeof(t_stack));
+	if (!s->a_head || !s->b_head)
+	{
+		free(s->a_head);
+		free(s->b_head);
+		return (false);
+	}
+	s->b_head->prev = NULL;
+	s->a_head->prev = NULL;
+	s->b_head->next = NULL;
+	return (true);
+}
+
 bool	make_stack_a_and_b(t_save *s, int argc, char **argv)
 {
 	int		i;
 	t_stack	*tmp;
 	t_stack	*new;
 
-	if (!malloc_head(s, argc, argv))
+	if (!malloc_head(s, argv))
 		return (false);
 	i = 1;
 	tmp = s->a_head;
@@ -94,7 +94,7 @@ bool	make_stack_a_and_b(t_save *s, int argc, char **argv)
 			free_a_and_b(s);
 			return (false);
 		}
-		add_node_to_back(new, tmp, s);
+		stack_add_back(new, tmp);
 		tmp = s->a_head->next;
 		i++;
 	}
