@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 17:50:25 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/13 16:29:25 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/13 17:57:10 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,7 @@ static bool	str_is_num(char *str)
 	return (true);
 }
 
-static int	compress_coordinates(int input, int which_node, t_save *s)
-{
-	if (which_node == 0)
-	{
-		s->min = 0;
-		return (0);
-	}
-	if (-(input) < s->min)
-		s->min = -(input);
-	return (s->a_head->input - input);
-}
-
-static t_stack	*make_node(char *arg, int which_node, t_save *s)
+static t_stack	*make_node(char *arg, int argv_index, t_save *s)
 {
 	t_stack	*ret;
 	bool	overflow;
@@ -47,7 +35,6 @@ static t_stack	*make_node(char *arg, int which_node, t_save *s)
 	if (ret)
 	{
 		ret->input = atoi_with_overflow_check(arg, &overflow);
-		ret->i = compress_coordinates(ret->input, which_node, s);
 		ret->next = NULL;
 		if (overflow || !str_is_num(arg))
 		{
@@ -62,7 +49,7 @@ static bool	malloc_head(t_save *s, char **argv)
 {
 	if (ft_strcmp(argv[0], "./push_swap"))
 		return (false);
-	s->a_head = make_node(argv[1], 0, s);
+	s->a_head = make_node(argv[1], 1, s);
 	s->b_head = (t_stack *)malloc(sizeof(t_stack));
 	if (!s->a_head || !s->b_head)
 	{
@@ -84,9 +71,9 @@ bool	make_stack_a_and_b(t_save *s, int argc, char **argv)
 
 	if (!malloc_head(s, argv))
 		return (false);
-	i = 1;
+	i = 2;
 	tmp = s->a_head;
-	while (i + 1 < argc)
+	while (i < argc)
 	{
 		new = make_node(argv[i], i, s);
 		if (!new)
