@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 17:50:25 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/13 16:21:03 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/13 16:29:25 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static t_stack	*make_node(char *arg, int which_node, t_save *s)
 		ret->input = atoi_with_overflow_check(arg, &overflow);
 		ret->i = compress_coordinates(ret->input, which_node, s);
 		ret->next = NULL;
-		if (overflow || str_is_num(arg))
+		if (overflow || !str_is_num(arg))
 		{
 			free(ret);
 			return (NULL);
@@ -86,9 +86,9 @@ bool	make_stack_a_and_b(t_save *s, int argc, char **argv)
 		return (false);
 	i = 1;
 	tmp = s->a_head;
-	while (i < argc)
+	while (i + 1 < argc)
 	{
-		new = make_node(argv[1 + i], i, s);
+		new = make_node(argv[i], i, s);
 		if (!new)
 		{
 			free_a_and_b(s);
