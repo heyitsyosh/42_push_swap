@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 17:50:25 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/13 17:57:10 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/13 19:48:45 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ static bool	str_is_num(char *str)
 {
 	if (!*str)
 		return (false);
+	if (*str == '+' || *str == '-')
+		str++;
 	while (*str)
 	{
 		if ('0' > *str || *str > '9')
@@ -25,7 +27,7 @@ static bool	str_is_num(char *str)
 	return (true);
 }
 
-static t_stack	*make_node(char *arg, int argv_index, t_save *s)
+static t_stack	*make_node(char *arg)
 {
 	t_stack	*ret;
 	bool	overflow;
@@ -49,7 +51,7 @@ static bool	malloc_head(t_save *s, char **argv)
 {
 	if (ft_strcmp(argv[0], "./push_swap"))
 		return (false);
-	s->a_head = make_node(argv[1], 1, s);
+	s->a_head = make_node(argv[1]);
 	s->b_head = (t_stack *)malloc(sizeof(t_stack));
 	if (!s->a_head || !s->b_head)
 	{
@@ -75,7 +77,7 @@ bool	make_stack_a_and_b(t_save *s, int argc, char **argv)
 	tmp = s->a_head;
 	while (i < argc)
 	{
-		new = make_node(argv[i], i, s);
+		new = make_node(argv[i]);
 		if (!new)
 		{
 			free_a_and_b(s);
