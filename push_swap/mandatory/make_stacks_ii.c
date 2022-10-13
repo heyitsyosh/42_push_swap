@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 14:20:51 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/13 18:12:39 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/13 19:43:33 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,15 @@ static int	count_subsequence(t_stack *start, t_save *s)
 	return (lmis);
 }
 
-static void	find_compressed_coordinates(t_stack	*node, t_save *s)
-{
+// static void	find_compressed_coordinates(t_stack	*node, t_save *s)
+// {
+// 	if (node->input < s->a_head->input)
+// 	{
+// 		node->cc = 0;
+// 		stack_map();
+// 	}
 	
-}
+// }
 
 void	get_lmis_and_compressed_coordinates(t_save *s)
 {
@@ -47,7 +52,7 @@ void	get_lmis_and_compressed_coordinates(t_save *s)
 		tmp->lmis = count_subsequence(tmp, s);
 		if (s->has_duplicates)
 			break ;
-		find_compressed_coordinates(tmp, s);
+		//find_compressed_coordinates(tmp, s);
 		tmp = tmp->next;
 	}
 }
