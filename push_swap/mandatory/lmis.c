@@ -5,11 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/12 18:34:15 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/12 18:34:30 by myoshika         ###   ########.fr       */
+/*   Created: 2022/10/13 14:20:51 by myoshika          #+#    #+#             */
+/*   Updated: 2022/10/13 14:20:52 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "../includes/push_swap.h"
-
 

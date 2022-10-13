@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:12:15 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/12 18:49:30 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/13 13:54:50 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,12 @@ typedef struct s_save
 {
 	t_stack	*a_head;
 	t_stack	*b_head;
-	t_stack	*last;
-	// int				a_top;
-	// int				b_top;
 	t_stack	*lmis_i;
 	t_stack	*lmis_ii;
 	t_stack	*lmis_iii;
-	t_stack	*lmis_iv;
+	int		min;
 }	t_save;
+
+bool	make_stack_a_and_b(t_save *s, int argc, char **argv);
 
 #endif
