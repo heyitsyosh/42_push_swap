@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/02 23:09:58 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/15 00:31:21 by myoshika         ###   ########.fr       */
+/*   Created: 2022/10/14 23:46:18 by myoshika          #+#    #+#             */
+/*   Updated: 2022/10/15 02:00:33 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	main(int argc, char **argv)
+void	sort(t_save *s)
 {
-	t_save	s;
-
-	if (argc <= 1 || !make_stack_a_and_b(&s, argc, argv))
+	t_stack *tmp = *(s->a_head);
+	//pa(s);
+	while (tmp)
 	{
-		ft_printf("Error\n");
-		return (0);
+		printf("[%d, %d, %d]\n", tmp->input, tmp->cc, tmp->lmis);
+		tmp = tmp->next;
 	}
-	get_lmis_and_compressed_coordinates(&s);
-	if (s.has_duplicate)
+	pb(s);
+	tmp = *(s->a_head);
+	while (tmp)
 	{
-		ft_printf("Error\n");
-		free_a_and_b(&s);
-		return (0);
+		printf("1");
+		printf("[%d, %d, %d]", tmp->input, tmp->cc, tmp->lmis);
+		tmp = tmp->next;
 	}
-	sort(&s);
-	free_a_and_b(&s);
-	return (0);
 }

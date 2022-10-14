@@ -1,56 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 15:43:55 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/13 14:27:40 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/15 02:01:22 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	sa(int *a, t_save *s, bool need_to_print)
-{
-	if (s->a_top < 1)
-		return ;
-	if (need_to_print)
-		ft_printf("sa\n");
-}
-
-void	sb(int *b, t_save *s, bool need_to_print)
-{
-	if (s->b_top < 1)
-		return ;
-	if (need_to_print)
-		ft_printf("sb\n");
-}
-
-void	ss(int *a, int *b, t_save *s)
-{
-	sa(a, s, NO_PRINTF);
-	sb(b, s, NO_PRINTF);
-	ft_printf("pb\n");
-}
-
 void	pa(t_save *s)
 {
-	if (s->b_top == -1)
+	if (!s->b_head)
 		return ;
-	if ((s->a_head->prev)->next)
-		(s->a_head->prev)->next = NULL;
-	s->b_top--;
-	
-	s->a_top++;
+	stack_add_front(*(s->b_head), s->a_head);
+	*(s->b_head) = (*(s->b_head))->next;
 	ft_printf("pa\n");
 }
 
-void	pb(int *a, int *b, t_save *s)
+void	pb(t_save *s)
 {
-	if (s->a_top == -1)
+	if (!s->a_head)
 		return ;
-	s->a_top++;
+	stack_add_front(*(s->a_head), s->b_head);
+	*(s->a_head) = (*(s->a_head))->next;
 	ft_printf("pb\n");
 }
