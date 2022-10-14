@@ -14,7 +14,9 @@ FILES = main\
 		make_stacks\
 		make_stacks_ii\
 		atoi\
-		lst_funcs
+		push\
+		lst_funcs\
+		sort
 BONUS_FILES = main\
 			get_inputs\
 			atoi\

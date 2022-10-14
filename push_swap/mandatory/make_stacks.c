@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 17:50:25 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/13 19:48:45 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/15 03:31:40 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,42 +49,42 @@ static t_stack	*make_node(char *arg)
 
 static bool	malloc_head(t_save *s, char **argv)
 {
+	t_stack	*a;
+	t_stack	*b;
+
 	if (ft_strcmp(argv[0], "./push_swap"))
 		return (false);
-	s->a_head = make_node(argv[1]);
-	s->b_head = (t_stack *)malloc(sizeof(t_stack));
-	if (!s->a_head || !s->b_head)
+	a = make_node(argv[1]);
+	if (!a)
 	{
-		free(s->a_head);
-		free(s->b_head);
+		free(a);
 		return (false);
 	}
-	s->b_head->prev = NULL;
-	s->a_head->prev = NULL;
-	s->b_head->next = NULL;
+	b = NULL;
+	s->a_head = &a;
+	s->b_head = &b;
 	return (true);
 }
 
 bool	make_stack_a_and_b(t_save *s, int argc, char **argv)
 {
 	int		i;
-	t_stack	*tmp;
 	t_stack	*new;
 
 	if (!malloc_head(s, argv))
 		return (false);
 	i = 2;
-	tmp = s->a_head;
+	printf("a[{%p}]\n", *(s->a_head));
 	while (i < argc)
 	{
 		new = make_node(argv[i]);
+		printf("[%p, i:%d]", new, i);
 		if (!new)
 		{
 			free_a_and_b(s);
 			return (false);
 		}
-		stack_add_back(new, tmp);
-		tmp = s->a_head->next;
+		stack_add_back(new, s->a_head);
 		i++;
 	}
 	return (true);
