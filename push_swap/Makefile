@@ -8,13 +8,14 @@ DIR = ./mandatory
 BONUS_DIR = ./bonus
 
 FT_PRINTF = ./lib/printf/libftprintf.a -L$(PRINTFDIR) -lftprintf
-GNL = ./lib/gnl/get_next_line.a 
+GNL = ./lib/gnl/get_next_line.a
 
 FILES = main\
 		make_stacks\
 		make_stacks_ii\
 		atoi\
 		push\
+		swap\
 		lst_funcs\
 		sort
 BONUS_FILES = main\
@@ -29,7 +30,7 @@ OBJS = $(SRCS:.c=.o)
 BONUS_SRCS = $(foreach bonus_src,$(BONUS_FILES),./bonus/$(bonus_src)_bonus.c)
 BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
-CFLAGS = -Wall -Wextra -Werror -I ./includes
+CFLAGS = -Wall -Wextra -Werror -g3 -I ./includes
 
 #--------------------------------------------------------------------------
 

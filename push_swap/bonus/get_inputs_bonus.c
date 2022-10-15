@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 05:46:16 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/12 18:37:58 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/15 05:11:48 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ static bool	str_is_num(char *str)
 
 static bool	malloc_a_and_b(int **a, int **b, int argc, char **argv)
 {
-	if (ft_strcmp(argv[0], "push_swap"))
-		return (false);
 	*a = (int *)malloc(sizeof(int) * (argc - 1));
 	*b = (int *)malloc(sizeof(int) * (argc - 1));
 	if (!*a || !b)

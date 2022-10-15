@@ -1,37 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   rev_rotate.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/04 15:43:55 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/15 21:05:16 by myoshika         ###   ########.fr       */
+/*   Created: 2022/10/15 20:48:02 by myoshika          #+#    #+#             */
+/*   Updated: 2022/10/15 23:20:28 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	pa(t_save *s)
+void	rra(t_save *s, char *to_print)
 {
-	t_stack	*new_b_head;
-
-	if (!s->b_head)
-		return ;
-	new_b_head = (s->b_head)->next;
-	stack_add_front(s->b_head, &(s->a_head));
-	s->b_head = new_b_head;
-	ft_printf("pa\n");
+	if (!s->a_head)
+	{
+		
+	}
 }
 
-void	pb(t_save *s)
+void	rrb(t_save *s, char *to_print)
 {
-	t_stack	*new_a_head;
+	
+}
 
-	if (!s->a_head)
-		return ;
-	new_a_head = (s->a_head)->next;
-	stack_add_front(s->a_head, &(s->b_head));
-	s->a_head = new_a_head;
-	ft_printf("pb\n");
+void	rrr(t_save *s)
+{
+	rra(s, NULL);
+	rrb(s, NULL);
+	ft_printf("rrr");
 }
