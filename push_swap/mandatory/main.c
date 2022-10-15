@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:09:58 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/15 00:31:21 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/15 22:20:26 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(int argc, char **argv)
 {
 	t_save	s;
 
-	if (argc <= 1 || !make_stack_a_and_b(&s, argc, argv))
+	if (argc < 1 || !make_stack_a_and_b(&s, argc, argv))
 	{
 		ft_printf("Error\n");
 		return (0);

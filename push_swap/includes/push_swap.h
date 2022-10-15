@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:12:15 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/15 01:37:11 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/15 23:20:48 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,17 @@
 #include <stdio.h>
 # include "./get_next_line.h"
 # include "./ft_printf.h"
+
+# define PA "pa"
+# define PB "pb"
+# define SA "sa"
+# define SB "sb"
+# define RA "ra"
+# define RB "rb"
+# define RR "rr"
+# define RRA "rra"
+# define RRB "rrb"
+# define RRR "rrr"
 
 typedef struct s_stack
 {
@@ -28,8 +39,8 @@ typedef struct s_stack
 
 typedef struct s_save
 {
-	t_stack	**a_head;
-	t_stack	**b_head;
+	t_stack	*a_head;
+	t_stack	*b_head;
 	t_stack	*lmis_i;
 	t_stack	*lmis_ii;
 	t_stack	*lmis_iii;
@@ -50,5 +61,8 @@ void	sort(t_save *s);
 
 void	pa(t_save *s);
 void	pb(t_save *s);
+
+void	sa(t_save *s, char *to_print);
+void	sb(t_save *s, char *to_print);
 
 #endif
