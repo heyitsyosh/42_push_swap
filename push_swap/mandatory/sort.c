@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 23:46:18 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/16 00:45:57 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/16 01:01:03 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	sort(t_save *s)
 	printf("[%d, %d, %d]\n", tmp->input, tmp->cc, tmp->lmis);
 	// sa(s, SA);
 	// pb(s);
-	// pa(s);
+	ra(s, RA);
 	rra(s, RRA);
 	tmp = s->a_head;
 	while (tmp)

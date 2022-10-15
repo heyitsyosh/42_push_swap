@@ -16,6 +16,7 @@ FILES = main\
 		atoi\
 		push\
 		swap\
+		rotate\
 		rev_rotate\
 		lst_funcs\
 		sort

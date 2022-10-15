@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:12:15 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/16 00:41:33 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/16 01:01:44 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int		atoi_with_overflow_check(const char *str, bool *overflow);
 void	get_lmis_and_compressed_coordinates(t_save *s);
 
 t_stack	*stack_last(t_stack *head);
-void	stack_add_back(t_stack *node, t_stack **head, t_stack **tail);
+void	stack_add_back(t_stack *node, t_stack **tail);
 void	stack_add_front(t_stack *node, t_stack **head, t_stack **tail);
 void	free_a_and_b(t_save *s);
 
@@ -67,6 +67,10 @@ void	pb(t_save *s);
 void	sa(t_save *s, char *to_print);
 void	sb(t_save *s, char *to_print);
 void	ss(t_save *s);
+
+void	ra(t_save *s, char *to_print);
+void	rb(t_save *s, char *to_print);
+void	rr(t_save *s);
 
 void	rra(t_save *s, char *to_print);
 void	rrb(t_save *s, char *to_print);
