@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lst_funcs.c                                        :+:      :+:    :+:   */
+/*   lst_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 13:34:42 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/16 01:04:53 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/16 03:47:21 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,3 @@ void	free_a_and_b(t_save *s)
 		s->b_head = next;
 	}
 }
-
-//do i really need the inner parentheses around (*(s->a_head)) for example?

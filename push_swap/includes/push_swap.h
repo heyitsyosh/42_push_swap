@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:12:15 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/16 01:01:44 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/16 06:51:55 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,17 @@ typedef struct s_stack
 
 typedef struct s_save
 {
+	int		argc;
 	t_stack	*a_head;
 	t_stack	*b_head;
 	t_stack	*a_tail;
 	t_stack	*b_tail;
-	t_stack	*lmis_i;
-	t_stack	*lmis_ii;
-	t_stack	*lmis_iii;
-	int		min;
+	int		a_size;
+	int		b_size;
+	t_stack	*pivot_i;
+	t_stack	*pivot_ii;
+	int		prev_cc;
+	bool	sorted;
 	bool	has_duplicate;
 }	t_save;
 
@@ -59,10 +62,15 @@ void	stack_add_back(t_stack *node, t_stack **tail);
 void	stack_add_front(t_stack *node, t_stack **head, t_stack **tail);
 void	free_a_and_b(t_save *s);
 
-void	sort(t_save *s);
+void	sort_few(int argc, t_save *s);
+void	sort_five_or_four(t_save *s);
+void	sort_three(int first, int second, int third, t_save *s);
+int		find_distance_to_cc(int cc, t_save *s);
 
-void	pa(t_save *s);
-void	pb(t_save *s);
+void	sort_many(t_save *s);
+
+void	pa(t_save *s, char *to_print);
+void	pb(t_save *s, char *to_print);
 
 void	sa(t_save *s, char *to_print);
 void	sb(t_save *s, char *to_print);
@@ -70,10 +78,10 @@ void	ss(t_save *s);
 
 void	ra(t_save *s, char *to_print);
 void	rb(t_save *s, char *to_print);
-void	rr(t_save *s);
+void	rr(t_save *s, char *to_print);
 
 void	rra(t_save *s, char *to_print);
 void	rrb(t_save *s, char *to_print);
-void	rrr(t_save *s);
+void	rrr(t_save *s, char *to_print);
 
 #endif
