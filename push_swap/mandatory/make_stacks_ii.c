@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 14:20:51 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/15 23:17:13 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/15 23:23:00 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	get_lmis_and_compressed_coordinates(t_save *s)
 	tmp = s->a_head;
 	s->min = s->a_head->input;
 	s->has_duplicate = false;
-	while (tmp != s->tail)
+	while (tmp)
 	{
 		tmp->lmis = count_subsequence(tmp, s);
 		if (s->has_duplicate)

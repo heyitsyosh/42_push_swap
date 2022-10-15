@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 13:34:42 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/15 23:10:32 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/15 23:34:38 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,35 +22,35 @@ t_stack	*stack_last(t_stack *head)
 	return (tmp);
 }
 
-void	stack_add_back(t_stack *node, t_stack **head)
+void	stack_add_back(t_stack *node, t_stack **head, t_stack **tail)
 {
 	t_stack	*last;
 
-	if (!head || !node)
+	if (!node | !head | !tail)
 		return ;
 	last = stack_last(*head);
 	last->next = node;
 	node->prev = last;
 	node->next = NULL;
+	*tail = last;
 }
 
-void	stack_add_front(t_stack *node, t_stack **head)
+void	stack_add_front(t_stack *node, t_stack **head, t_stack **tail)
 {
-	if (!head || !node)
+	if (!node | !head | !tail)
 		return ;
 	else if (!*head)
 	{
-		*head = node;
-		node->next = node;
-		node->prev = node;
+		node->next = NULL;
+		*tail = node;
 	}
 	else
 	{
 		node->next = *head;
-		node->prev = (*head)->prev;
-		((*head)->prev)->next = node;
 		(*head)->prev = node;
 	}
+	node->prev = NULL;
+	*head = node;
 }
 
 void	free_a_and_b(t_save *s)
