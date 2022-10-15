@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 23:46:18 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/16 01:01:03 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/16 01:24:47 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,36 @@ void	sort(t_save *s)
 		printf("[%d, %d, %d]\n", tmp->input, tmp->cc, tmp->lmis);
 		tmp = tmp->next;
 	}
-	tmp = s->a_tail;
-	printf("[%d, %d, %d]\n", tmp->input, tmp->cc, tmp->lmis);
+	printf("\n");
 	// sa(s, SA);
 	// pb(s);
-	ra(s, RA);
-	rra(s, RRA);
+	//pb(s);
+	pb(s);
+	tmp = s->a_head;
+	while (tmp)
+	{
+		printf("[%p]", tmp);
+		fflush(stdout);
+		printf("[%d, %d, %d]\n", tmp->input, tmp->cc, tmp->lmis);
+		fflush(stdout);
+		tmp = tmp->next;
+	}
+	printf("\n");
+	pb(s);
+	tmp = s->a_head;
+	while (tmp)
+	{
+		printf("[%p]", tmp);
+		fflush(stdout);
+		printf("[%d, %d, %d]\n", tmp->input, tmp->cc, tmp->lmis);
+		fflush(stdout);
+		tmp = tmp->next;
+	}
+	printf("\n");
+	// pb(s);
+	pb(s);
+	//rb(s, RA);
+	//sa(s);
 	tmp = s->a_head;
 	while (tmp)
 	{

@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 21:09:42 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/15 23:54:20 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/16 01:19:43 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	sa(t_save *s, char *to_print)
 	(s->a_head->next)->next = third;
 	if (third)
 		third->prev = (s->a_head->next)->next;
+	else
+		s->a_tail = s->a_head->next;
 	if (to_print)
 		ft_printf("%s\n", to_print);
 }
@@ -38,6 +40,8 @@ void	sb(t_save *s, char *to_print)
 	(s->b_head->next)->next = third;
 	if (third)
 		third->prev = (s->b_head->next)->next;
+	else
+		s->b_tail = s->b_head->next;
 	if (to_print)
 		ft_printf("%s\n", to_print);
 }
