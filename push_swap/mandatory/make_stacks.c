@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 17:50:25 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/15 23:20:57 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/15 23:21:22 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ static t_stack	*make_node(char *arg)
 	if (ret)
 	{
 		ret->input = atoi_with_overflow_check(arg, &overflow);
-		ret->tail = false;
 		ret->next = NULL;
 		if (overflow || !str_is_num(arg))
 		{
@@ -57,26 +56,6 @@ static bool	malloc_head(t_save *s, int argc, char **argv)
 			return (false);
 	}
 	return (true);
-}
-
-void	make_circular(t_save *s, int argc)
-{
-	t_stack	*last;
-
-	if (!s->a_head)
-		return ;
-	if (argc == 2)
-	{
-		s->a_head->next = s->a_head;
-		s->a_head->prev = s->a_head;
-	}
-	else
-	{
-		last = stack_last(s->a_head);
-		last->next = s->a_head;
-		s->a_head->prev = last;
-		last->tail = true;
-	}
 }
 
 bool	make_stack_a_and_b(t_save *s, int argc, char **argv)
