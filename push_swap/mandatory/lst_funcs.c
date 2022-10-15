@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 13:34:42 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/15 23:34:38 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/16 00:45:20 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	stack_add_back(t_stack *node, t_stack **head, t_stack **tail)
 	last->next = node;
 	node->prev = last;
 	node->next = NULL;
-	*tail = last;
+	*tail = node;
 }
 
 void	stack_add_front(t_stack *node, t_stack **head, t_stack **tail)

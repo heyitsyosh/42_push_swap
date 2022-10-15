@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:12:15 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/15 23:35:48 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/16 00:41:33 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,10 @@ void	pb(t_save *s);
 
 void	sa(t_save *s, char *to_print);
 void	sb(t_save *s, char *to_print);
+void	ss(t_save *s);
+
+void	rra(t_save *s, char *to_print);
+void	rrb(t_save *s, char *to_print);
+void	rrr(t_save *s);
 
 #endif

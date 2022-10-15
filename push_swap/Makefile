@@ -16,6 +16,7 @@ FILES = main\
 		atoi\
 		push\
 		swap\
+		rev_rotate\
 		lst_funcs\
 		sort
 BONUS_FILES = main\
@@ -30,7 +31,7 @@ OBJS = $(SRCS:.c=.o)
 BONUS_SRCS = $(foreach bonus_src,$(BONUS_FILES),./bonus/$(bonus_src)_bonus.c)
 BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
-CFLAGS = -Wall -Wextra -Werror -g3 -I ./includes
+CFLAGS = -Wall -Wextra -Werror -I ./includes
 
 #--------------------------------------------------------------------------
 

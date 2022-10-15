@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 23:46:18 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/15 21:38:24 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/16 00:45:57 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,21 @@
 void	sort(t_save *s)
 {
 	t_stack *tmp = s->a_head;
-	//pa(s);
 
+	// if (!s->a_head)
+	// 	return ;
 	while (tmp)
 	{
 		printf("[%p]", tmp);
 		printf("[%d, %d, %d]\n", tmp->input, tmp->cc, tmp->lmis);
 		tmp = tmp->next;
 	}
-	printf("%p\n", s->a_head);
-	pb(s);
-	//sa(s, SA);
+	tmp = s->a_tail;
+	printf("[%d, %d, %d]\n", tmp->input, tmp->cc, tmp->lmis);
+	// sa(s, SA);
+	// pb(s);
+	// pa(s);
+	rra(s, RRA);
 	tmp = s->a_head;
 	while (tmp)
 	{

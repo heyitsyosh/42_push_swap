@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 15:43:53 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/15 23:01:46 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/16 00:34:39 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,15 @@
 
 void	ra(t_save *s, char *to_print)
 {
+	if (!s->a_head || !s->a_head->next)
+		return ;
 	
 }
 
 void	rb(t_save *s, char *to_print)
 {
-	
+	if (!s->b_head || !s->b_head->next)
+		return ;
 }
 
 void	rr(t_save *s)
