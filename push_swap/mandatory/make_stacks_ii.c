@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 14:20:51 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/16 00:08:44 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/16 06:23:21 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	count_subsequence(t_stack *start, t_save *s)
 	return (lmis);
 }
 
-static int	coordinate_compression(t_stack	*node, t_save *s)
+static int	coordinate_compression(t_stack *node, t_save *s)
 {
 	t_stack	*tmp;
 	int		smaller_inputs;
@@ -43,6 +43,10 @@ static int	coordinate_compression(t_stack	*node, t_save *s)
 			smaller_inputs++;
 		tmp = tmp->next;
 	}
+	if (s->prev_cc < smaller_inputs)
+		s->prev_cc++;
+	else
+		s->sorted = false;
 	return (smaller_inputs);
 }
 
@@ -50,11 +54,12 @@ void	get_lmis_and_compressed_coordinates(t_save *s)
 {
 	t_stack	*next;
 
+	s->prev_cc = -1;
+	s->sorted = true;
 	s->has_duplicate = false;
 	if (!s->a_head)
 		return ;
 	next = s->a_head;
-	s->min = s->a_head->input;
 	while (next)
 	{
 		next->lmis = count_subsequence(next, s);

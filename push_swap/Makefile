@@ -18,8 +18,8 @@ FILES = main\
 		swap\
 		rotate\
 		rev_rotate\
-		lst_funcs\
-		sort
+		lst_utils\
+		sort_few
 BONUS_FILES = main\
 			get_inputs\
 			atoi\
