@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 03:19:04 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/16 06:52:15 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/16 07:50:40 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,18 @@
 
 void	sort_three(int first, int second, int third, t_save *s)
 {
-	if (first == 1 && second == 0 && third == 2)
+	if (first < second && second < third && first < third)
+		return ;
+	else if (first > second && second < third && first < third)
 		sa(s, SA);
-	else if (first == 2 && second == 0 && third == 1)
+	else if (first > second && second < third && first > third)
 		ra(s, RA);
-	else if (first == 1 && second == 2 && third == 0)
+	else if (first < second && second > third && first > third)
 		rra(s, RRA);
 	else
 	{
 		sa(s, SA);
-		if (first == 2)
+		if (first > second && first > third)
 			rra(s, RRA);
 		else
 			ra(s, RA);
@@ -47,24 +49,23 @@ int	find_distance_to_cc(int cc, t_save *s)
 	return (distance);
 }
 
-void	sort_five_or_four(t_save *s)
+void	sort_five_or_four(int cc, t_save *s)
 {
 	int	distance;
 
-	distance = find_distance_to_cc(0, s);
+	distance = find_distance_to_cc(cc, s);
 	if (distance < 2)
-	{
 		while (distance-- > 0)
 			ra(s, RA);
-	}
 	else
-	{
-		while (distance-- > 0)
-			rra(s, RA);
-	}
+		while (s->a_size - (distance--) > 0)
+			rra(s, RRA);
 	pb(s, PB);
 	if (s->a_size > 3)
-		sort_five_or_four(s);
+	{
+		sort_five_or_four(1, s);
+		return ;
+	}
 	sort_three((s->a_head)->cc, (s->a_head->next)->cc, (s->a_tail)->cc, s);
 	pa(s, PA);
 	pa(s, PA);
@@ -73,7 +74,7 @@ void	sort_five_or_four(t_save *s)
 void	sort_few(int argc, t_save *s)
 {
 	if (argc - 1 >= 4)
-		sort_five_or_four(s);
+		sort_five_or_four(0, s);
 	else if (argc - 1 == 3)
 		sort_three((s->a_head)->cc, (s->a_head->next)->cc, (s->a_tail)->cc, s);
 	else if (argc - 1 == 2)

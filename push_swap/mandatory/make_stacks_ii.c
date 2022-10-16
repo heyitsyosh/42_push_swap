@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 14:20:51 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/16 06:23:21 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/16 23:53:14 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,16 +53,23 @@ static int	coordinate_compression(t_stack *node, t_save *s)
 void	get_lmis_and_compressed_coordinates(t_save *s)
 {
 	t_stack	*next;
+	int		biggest_lmis;
 
 	s->prev_cc = -1;
 	s->sorted = true;
 	s->has_duplicate = false;
 	if (!s->a_head)
 		return ;
+	biggest_lmis = 0;
 	next = s->a_head;
 	while (next)
 	{
 		next->lmis = count_subsequence(next, s);
+		if (next->lmis > biggest_lmis)
+		{
+			s->pivot_i = next;
+			biggest_lmis = next->lmis;
+		}
 		if (s->has_duplicate)
 			break ;
 		next->cc = coordinate_compression(next, s);

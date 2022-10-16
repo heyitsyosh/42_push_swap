@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:12:15 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/16 06:51:55 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/17 03:43:13 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct s_save
 	int		b_size;
 	t_stack	*pivot_i;
 	t_stack	*pivot_ii;
+	
 	int		prev_cc;
 	bool	sorted;
 	bool	has_duplicate;
@@ -63,11 +64,11 @@ void	stack_add_front(t_stack *node, t_stack **head, t_stack **tail);
 void	free_a_and_b(t_save *s);
 
 void	sort_few(int argc, t_save *s);
-void	sort_five_or_four(t_save *s);
+void	sort_five_or_four(int cc, t_save *s);
 void	sort_three(int first, int second, int third, t_save *s);
 int		find_distance_to_cc(int cc, t_save *s);
 
-void	sort_many(t_save *s);
+void	sort_many(int pivot_value, t_save *s)
 
 void	pa(t_save *s, char *to_print);
 void	pb(t_save *s, char *to_print);

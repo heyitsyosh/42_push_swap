@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 05:46:16 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/15 05:11:48 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/16 07:53:21 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static bool	str_is_num(char *str)
 	return (true);
 }
 
-static bool	malloc_a_and_b(int **a, int **b, int argc, char **argv)
+static bool	malloc_a_and_b(int **a, int **b, int argc)
 {
 	*a = (int *)malloc(sizeof(int) * (argc - 1));
 	*b = (int *)malloc(sizeof(int) * (argc - 1));
@@ -44,7 +44,7 @@ bool	make_stack_a_and_b(int **a, int **b, int argc, char **argv)
 	bool	overflow;
 	int		a_top;
 
-	if (!malloc_a_and_b(a, b, argc, argv))
+	if (!malloc_a_and_b(a, b, argc))
 		return (false);
 	i = 0;
 	a_top = argc - 2;
