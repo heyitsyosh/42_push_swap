@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 17:50:25 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/16 06:15:24 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/16 07:18:42 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ static bool	malloc_head(t_save *s, int argc, char **argv)
 	{
 		s->a_head = make_node(argv[1]);
 		s->a_tail = s->a_head;
+		s->a_size++;
 		if (!s->a_head)
 			return (false);
 	}

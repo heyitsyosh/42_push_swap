@@ -19,7 +19,8 @@ FILES = main\
 		rotate\
 		rev_rotate\
 		lst_utils\
-		sort_few
+		sort_few\
+		sort_many
 BONUS_FILES = main\
 			get_inputs\
 			atoi\
