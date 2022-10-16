@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 23:46:18 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/17 05:43:42 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/17 05:53:29 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,22 +32,23 @@ void	exit_if_sorted(t_save *s)
 
 bool	should_rr(int pivot_value, t_save *s)
 {
-	if (!s->b_head || !s->b_head->next)
+	if (s->b_size <= 1)
 		return (false);
 	if (s->b_head->cc > pivot_value / 2)
 		return (false);
-	if (pivot_value == (s->argc - 1) / 2)
-		return (true);
+	if (pivot_value != (s->argc - 1) / 2)
+		return (false);
+	return (true);
 }
 
-void	devide(int pivot_value, t_save *s)
+void	divide(int pivot_value, t_save *s)
 {
 	t_stack	*next;
 
 	next = s->a_head;
 	while (next)
 	{
-		if (next->cc > pivot_value)
+		if (next->cc < pivot_value)
 			pa(s, PA);
 		else
 		{
@@ -73,5 +74,6 @@ void	combine()
 void	sort_many(t_save *s)
 {
 	divide((s->argc - 1) / 2, s);
+	sort_five_or_four(stack_min(), s)
 	combine();
 }
