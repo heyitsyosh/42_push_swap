@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:12:15 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/17 17:52:23 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/17 17:56:01 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	sort_five_or_four(int cc, t_save *s);
 void	sort_three(int first, int second, int third, t_save *s);
 int		find_distance_to_cc(int cc, t_save *s);
 
-void	sort_many(int pivot_value, t_save *s);
+void	sort_many(t_save *s);
 
 void	pa(t_save *s, char *to_print);
 void	pb(t_save *s, char *to_print);
