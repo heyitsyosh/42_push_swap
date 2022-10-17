@@ -6,11 +6,25 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 13:34:42 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/16 03:47:21 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/17 17:50:39 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+t_stack	*stack_min(t_stack *head)
+{
+	t_stack	*min;
+
+	min = head;
+	while (head)
+	{
+		if (head->cc < min->cc)
+			min = head;
+		head = head->next;
+	}
+	return (min);
+}
 
 void	stack_add_back(t_stack *node, t_stack **tail)
 {
