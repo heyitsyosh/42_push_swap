@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 23:46:18 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/17 17:53:05 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/17 20:40:14 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	exit_if_sorted(t_save *s)
 	exit(EXIT_SUCCESS);
 }
 
-bool	should_rr(int pivot_value, t_save *s)
+static bool	should_rr(int pivot_value, t_save *s)
 {
 	if (s->b_size <= 1)
 		return (false);
@@ -41,14 +41,15 @@ bool	should_rr(int pivot_value, t_save *s)
 	return (true);
 }
 
-void	divide(int pivot_value, t_save *s)
+static int	divide(int pivot_value, t_save *s)
 {
 	t_stack	*next;
+	int		ret;
 
 	next = s->a_head;
 	while (next)
 	{
-		if (next->cc < pivot_value)
+		if (next->cc <= pivot_value)
 			pa(s, PA);
 		else
 		{
@@ -60,20 +61,25 @@ void	divide(int pivot_value, t_save *s)
 		}
 		next = next->next;
 	}
-	if (s->a_size < 6)
-		return ;
+	if (s->a_size > 5)
+		ret = divide(pivot_value / 2, s);
 	else
-		divide(pivot_value / 2, s);
+		s->smallest_pivot = pivot_value;
 }
 
-void	combine()
+void	analyze_top_four_of_b(t_stack *s)
 {
 	
+}
+
+void	combine(t_stack *s)
+{
+	analyze_top_four_of_b(s);
 }
 
 void	sort_many(t_save *s)
 {
 	divide((s->argc - 1) / 2, s);
 	sort_few(s->a_size, s);
-	combine();
+	combine(s);
 }

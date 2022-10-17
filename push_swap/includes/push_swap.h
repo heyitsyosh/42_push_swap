@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:12:15 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/17 17:56:01 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/17 20:40:43 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,9 @@ typedef struct s_save
 	t_stack	*b_tail;
 	int		a_size;
 	int		b_size;
-	t_stack	*pivot_i;
-	t_stack	*pivot_ii;
-	
-	int		prev_cc;
+	t_stack	*pivot;
+	int		prev_cc; //?
+	int		smallest_pivot;
 	bool	sorted;
 	bool	has_duplicate;
 }	t_save;
