@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:12:15 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/17 03:43:13 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/17 17:52:23 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,17 +58,17 @@ bool	make_stack_a_and_b(t_save *s, int argc, char **argv);
 int		atoi_with_overflow_check(const char *str, bool *overflow);
 void	get_lmis_and_compressed_coordinates(t_save *s);
 
-t_stack	*stack_last(t_stack *head);
+t_stack	*stack_min(t_stack *head);
 void	stack_add_back(t_stack *node, t_stack **tail);
 void	stack_add_front(t_stack *node, t_stack **head, t_stack **tail);
 void	free_a_and_b(t_save *s);
 
-void	sort_few(int argc, t_save *s);
+void	sort_few(int stack_size, t_save *s);
 void	sort_five_or_four(int cc, t_save *s);
 void	sort_three(int first, int second, int third, t_save *s);
 int		find_distance_to_cc(int cc, t_save *s);
 
-void	sort_many(int pivot_value, t_save *s)
+void	sort_many(int pivot_value, t_save *s);
 
 void	pa(t_save *s, char *to_print);
 void	pb(t_save *s, char *to_print);

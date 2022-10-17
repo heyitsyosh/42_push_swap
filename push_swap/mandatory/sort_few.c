@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 03:19:04 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/16 07:50:40 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/17 17:52:06 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	sort_five_or_four(int cc, t_save *s)
 	pb(s, PB);
 	if (s->a_size > 3)
 	{
-		sort_five_or_four(1, s);
+		sort_five_or_four(stack_min(s->a_head)->cc, s);
 		return ;
 	}
 	sort_three((s->a_head)->cc, (s->a_head->next)->cc, (s->a_tail)->cc, s);
@@ -71,13 +71,13 @@ void	sort_five_or_four(int cc, t_save *s)
 	pa(s, PA);
 }
 
-void	sort_few(int argc, t_save *s)
+void	sort_few(int stack_size, t_save *s)
 {
-	if (argc - 1 >= 4)
-		sort_five_or_four(0, s);
-	else if (argc - 1 == 3)
+	if (stack_size >= 4)
+		sort_five_or_four(stack_min(s->a_head)->cc, s);
+	else if (stack_size == 3)
 		sort_three((s->a_head)->cc, (s->a_head->next)->cc, (s->a_tail)->cc, s);
-	else if (argc - 1 == 2)
+	else if (stack_size == 2)
 		if (s->a_head > s->a_head->next)
 			sa(s, SA);
 }

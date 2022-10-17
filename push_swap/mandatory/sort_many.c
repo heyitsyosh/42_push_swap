@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 23:46:18 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/17 05:53:29 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/17 17:53:05 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	divide(int pivot_value, t_save *s)
 	if (s->a_size < 6)
 		return ;
 	else
-		sort_many(pivot_value / 2, s);
+		divide(pivot_value / 2, s);
 }
 
 void	combine()
@@ -74,6 +74,6 @@ void	combine()
 void	sort_many(t_save *s)
 {
 	divide((s->argc - 1) / 2, s);
-	sort_five_or_four(stack_min(), s)
+	sort_few(s->a_size, s);
 	combine();
 }

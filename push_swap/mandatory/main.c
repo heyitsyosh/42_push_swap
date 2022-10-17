@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:09:58 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/17 03:40:15 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/17 17:47:19 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(int argc, char **argv)
 	else if (!s.sorted)
 	{
 		if (argc - 1 < 6)
-			sort_few(argc, &s);
+			sort_few(argc, 0, &s);
 		else
 			sort_many((argc - 1) / 2, &s);
 	}
