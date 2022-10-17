@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 14:20:51 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/17 20:40:58 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/17 20:57:31 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	count_subsequence(t_stack *start, t_save *s)
 	return (lmis);
 }
 
-static int	coordinate_compression(t_stack *node, t_save *s)
+static int	coordinate_compression(int *prev_smaller_inputs, t_stack *node, t_save *s)
 {
 	t_stack	*tmp;
 	int		smaller_inputs;
@@ -43,8 +43,8 @@ static int	coordinate_compression(t_stack *node, t_save *s)
 			smaller_inputs++;
 		tmp = tmp->next;
 	}
-	if (s->prev_cc < smaller_inputs)
-		s->prev_cc++;
+	if (*prev_smaller_inputs < smaller_inputs)
+		*prev_smaller_inputs++;
 	else
 		s->sorted = false;
 	return (smaller_inputs);
@@ -54,8 +54,9 @@ void	get_lmis_and_compressed_coordinates(t_save *s)
 {
 	t_stack	*next;
 	int		biggest_lmis;
+	int		prev_cc;
 
-	s->prev_cc = -1;
+	prev_cc = -1;
 	s->sorted = true;
 	s->has_duplicate = false;
 	if (!s->a_head)
@@ -65,14 +66,9 @@ void	get_lmis_and_compressed_coordinates(t_save *s)
 	while (next)
 	{
 		next->lmis = count_subsequence(next, s);
-		if (next->lmis > biggest_lmis)
-		{
-			s->pivot = next;
-			biggest_lmis = next->lmis;
-		}
 		if (s->has_duplicate)
 			break ;
-		next->cc = coordinate_compression(next, s);
+		next->cc = coordinate_compression(&prev_cc, next, s);
 		next = next->next;
 	}
 }
