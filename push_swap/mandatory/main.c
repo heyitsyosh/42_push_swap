@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:09:58 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/23 06:21:58 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/23 07:14:43 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void tmp_print(t_save *s)
 	printf("a:");
 	while (next)
 	{
-		printf("[%d]", next->cc);
+		printf("[%d]", next->input);
 		fflush(stdout);
 		next = next->next;
 	}
@@ -28,7 +28,7 @@ void tmp_print(t_save *s)
 	printf("b:");
 	while (next)
 	{
-		printf("[%d]", next->cc);
+		printf("[%d]", next->input);
 		fflush(stdout);
 		next = next->next;
 	}
