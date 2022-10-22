@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 23:46:18 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/23 06:46:21 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/23 06:55:30 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,11 +88,11 @@ void	combine(t_save *s)
 
 void	sort_many(t_save *s)
 {
-	tmp_print(s);
+	//tmp_print(s);
 	divide(s->argc / 2, 0, s);
-	tmp_print(s);
+	//tmp_print(s);
 	sort_few(s->a_size, s);
-	tmp_print(s);
+	//tmp_print(s);
 	combine(s);
-	tmp_print(s);
+	//tmp_print(s);
 }
