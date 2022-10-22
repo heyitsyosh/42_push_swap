@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 17:17:30 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/11 09:24:43 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/23 07:09:46 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "./get_next_line.h"
 # include "./ft_printf.h"
+#include <stdio.h>
 
 typedef struct s_sizes{
 	int		a_top;

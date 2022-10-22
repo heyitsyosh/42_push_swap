@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 23:46:18 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/23 06:55:30 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/23 07:05:50 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,5 @@ void	sort_many(t_save *s)
 	sort_few(s->a_size, s);
 	//tmp_print(s);
 	combine(s);
-	//tmp_print(s);
+	tmp_print(s);
 }
