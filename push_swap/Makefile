@@ -14,10 +14,10 @@ FILES = main\
 		make_stacks\
 		make_stacks_ii\
 		atoi\
-		push\
-		swap\
-		rotate\
-		rev_rotate\
+		actions/push\
+		actions/swap\
+		actions/rotate\
+		actions/rev_rotate\
 		lst_utils\
 		sort_few\
 		sort_many

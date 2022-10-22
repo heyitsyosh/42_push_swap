@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 23:46:18 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/21 17:24:50 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/23 02:27:06 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,45 +41,65 @@ static bool	should_rr(int pivot_value, t_save *s)
 	return (true);
 }
 
-static int	divide(int pivot_value, t_save *s)
+static void	divide(int pivot, int pushed, t_save *s)
 {
-	t_stack	*next;
-	int		ret;
+	t_stack	*head;
 
-	next = s->a_head;
-	while (next && s->a_size > 5)
+	head = s->a_head;
+	while (head && pushed < pivot)
 	{
-		if (next->cc <= pivot_value)
-			pa(s, PA);
+		head = s->a_head;
+		if (head->cc < pivot)
+		{
+			pb(s, PB);
+			pushed++;
+		}
 		else
 		{
-			if (should_rr(pivot_value, s))
+			if (should_rr(pivot, s))
 				rr(s, RR);
 			else
 				ra(s, RA);
 			exit_if_sorted(s);
 		}
-		next = next->next;
 	}
 	if (s->a_size > 5)
-		ret = divide(pivot_value / 2, s);
+		divide(pivot / 2, 0, s);
 	else
-		s->smallest_pivot = pivot_value;
+		s->smallest_pivot = pivot;
 }
 
-void	analyze_top_of_b(t_stack *s)
+void	combine(int pivot, t_save *s)
 {
-	
-}
+	int	cycle;
 
-void	combine(t_stack *s)
-{
-	analyze_top_of_b(s);
+	cycle = 0;
+	while (s->b_size != 0)
+	{
+		
+	}
 }
 
 void	sort_many(t_save *s)
 {
-	divide((s->argc - 1) / 2, s);
+	divide((s->argc - 1) / 2, 0, s);
 	sort_few(s->a_size, s);
-	combine(s);
+	//s->sorted_count = 5;
+	combine(s->smallest_pivot, s);
+	t_stack *next;
+	next = s->a_head;
+	while (next)
+	{
+		printf("[%d]", next->input);
+		fflush(stdout);
+		next = next->next;
+	}
+	printf("\n");
+	next = s->b_head;
+	while (next)
+	{
+		printf("[%d]", next->input);
+		fflush(stdout);
+		next = next->next;
+	}
 }
