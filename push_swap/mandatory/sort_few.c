@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 03:19:04 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/23 02:40:57 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/23 05:04:30 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	sort_five_or_four(int cc, t_save *s)
 			ra(s, RA);
 	else
 		while (s->a_size - (distance++) > 0)
-			rra(s, NULL);
+			rra(s, RRA);
 	pb(s, PB);
 	if (s->a_size > 3)
 	{
@@ -78,4 +78,10 @@ void	sort_few(int stack_size, t_save *s)
 	else if (stack_size == 2)
 		if (s->a_head > s->a_head->next)
 			sa(s, SA);
+	if (stack_size >= 4)
+	{
+		pa(s, PA);
+		if (stack_size == 5)
+			pa(s, PA);
+	}
 }

@@ -6,22 +6,41 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:09:58 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/23 02:49:15 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/23 05:05:13 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+void tmp_print(t_save *s)
+{
+	t_stack *next;
+	next = s->a_head;
+	printf("a:");
+	while (next)
+	{
+		printf("[%d]", next->input);
+		fflush(stdout);
+		next = next->next;
+	}
+	printf("\n");
+	next = s->b_head;
+	printf("b:");
+	while (next)
+	{
+		printf("[%d]", next->input);
+		fflush(stdout);
+		next = next->next;
+	}
+	printf("\n");
+}
 
 static void	start_sort(t_save *s)
 {
 	if (s->sorted)
 		return ;
 	if (s->argc - 1 < 6)
-	{
 		sort_few(s->a_size, s);
-		pa(s, PA);
-		pa(s, PA);
-	}
 	else
 		sort_many(s);
 }

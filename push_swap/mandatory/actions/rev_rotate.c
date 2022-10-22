@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 20:48:02 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/23 01:30:34 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/23 05:12:34 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,14 @@ void	rra(t_save *s, char *to_print)
 {
 	t_stack	*new_a_tail;
 
+	//printf("a_tail:%d\n", s->a_tail->input);
 	if (!s->a_head || !s->a_head->next)
 		return ;
 	new_a_tail = (s->a_tail)->prev;
+	//printf("RRA!");
+	//fflush(stdout);
 	stack_add_front(s->a_tail, &(s->a_head), &(s->a_tail));
+	//printf("%d\n", (s->a_tail)->input);
 	new_a_tail->next = NULL;
 	s->a_tail = new_a_tail;
 	if (to_print)
