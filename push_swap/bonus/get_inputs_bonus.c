@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 05:46:16 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/16 07:53:21 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/23 07:11:11 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ static bool	str_is_num(char *str)
 {
 	if (!*str)
 		return (false);
+	if (*str == '-')
+		str++;
 	while (*str)
 	{
 		if ('0' > *str || *str > '9')
