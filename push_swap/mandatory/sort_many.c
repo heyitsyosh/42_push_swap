@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 23:46:18 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/23 06:27:40 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/23 06:46:21 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void	divide(int pivot, int pushed, t_save *s)
 		{
 			pb(s, PB);
 			pushed++;
-			printf("!%d, %d!\n", pushed, pivot);
+			//printf("!%d, %d!\n", pushed, pivot);
 		}
 		else
 		{
@@ -64,7 +64,7 @@ static void	divide(int pivot, int pushed, t_save *s)
 				ra(s, RA);
 			exit_if_sorted(s);
 		}
-		tmp_print(s);
+		//tmp_print(s);
 	}
 	if (s->a_size > 5)
 		divide(pivot / 2, 0, s);
@@ -72,23 +72,27 @@ static void	divide(int pivot, int pushed, t_save *s)
 		s->smallest_pivot = pivot;
 }
 
-// void	combine(int pivot, t_save *s)
-// {
-// 	// int	cycle;
+void	combine(t_save *s)
+{
+	// int	cycle;
 
-// 	// cycle = 0;
-// 	while (s->b_size != 0)
-// 	{
-// 		if (s->a_head = )
-// 	}
-// }
+	// cycle = 0;
+	while (s->b_size != 0)
+	{
+		if (s->b_head->cc + 1 == s->a_head->cc)
+			pa(s, PA);
+		else
+			rb(s, RA);
+	}
+}
 
 void	sort_many(t_save *s)
 {
 	tmp_print(s);
 	divide(s->argc / 2, 0, s);
 	tmp_print(s);
-	//sort_few(s->a_size, s);
-	//combine(s->smallest_pivot, s);
-	//tmp_print(s);
+	sort_few(s->a_size, s);
+	tmp_print(s);
+	combine(s);
+	tmp_print(s);
 }
