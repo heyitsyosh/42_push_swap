@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 03:19:04 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/23 01:54:18 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/23 02:40:57 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,6 @@ void	sort_five_or_four(int cc, t_save *s)
 		return ;
 	}
 	sort_three((s->a_head)->cc, (s->a_head->next)->cc, (s->a_tail)->cc, s);
-	pa(s, PA);
-	pa(s, PA);
 }
 
 void	sort_few(int stack_size, t_save *s)
