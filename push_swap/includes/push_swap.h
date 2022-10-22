@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:12:15 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/22 23:34:08 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/23 04:58:48 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ typedef struct s_save
 	bool	sorted;
 	bool	has_duplicate;
 }	t_save;
+
+void tmp_print(t_save *s);
 
 bool	make_stack_a_and_b(t_save *s, int argc, char **argv);
 int		atoi_with_overflow_check(const char *str, bool *overflow);
