@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 23:46:18 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/23 04:44:51 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/23 05:48:30 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@ void	exit_if_sorted(t_save *s)
 {
 	t_stack	*next;
 
-	if (s->a_size != (s->argc - 1))
+	if (s->a_size != (s->argc - 1) && s->b_size > 0)
 		return ;
+	next = NULL;
 	if (s->a_head)
 		next = s->a_head->next;
 	while (next)
