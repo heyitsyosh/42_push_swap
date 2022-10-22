@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:09:58 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/23 06:09:30 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/23 06:21:58 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void tmp_print(t_save *s)
 		fflush(stdout);
 		next = next->next;
 	}
-	printf("\n");
+	printf("\n------------------------------\n");
 }
 
 static void	start_sort(t_save *s)
