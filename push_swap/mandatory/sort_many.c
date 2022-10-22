@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 23:46:18 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/17 20:40:14 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/21 17:24:50 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static int	divide(int pivot_value, t_save *s)
 	int		ret;
 
 	next = s->a_head;
-	while (next)
+	while (next && s->a_size > 5)
 	{
 		if (next->cc <= pivot_value)
 			pa(s, PA);
@@ -67,14 +67,14 @@ static int	divide(int pivot_value, t_save *s)
 		s->smallest_pivot = pivot_value;
 }
 
-void	analyze_top_four_of_b(t_stack *s)
+void	analyze_top_of_b(t_stack *s)
 {
 	
 }
 
 void	combine(t_stack *s)
 {
-	analyze_top_four_of_b(s);
+	analyze_top_of_b(s);
 }
 
 void	sort_many(t_save *s)
