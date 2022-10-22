@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 23:46:18 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/23 02:27:06 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/23 02:49:36 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,23 +69,23 @@ static void	divide(int pivot, int pushed, t_save *s)
 		s->smallest_pivot = pivot;
 }
 
-void	combine(int pivot, t_save *s)
-{
-	int	cycle;
+// void	combine(int pivot, t_save *s)
+// {
+// 	int	cycle;
 
-	cycle = 0;
-	while (s->b_size != 0)
-	{
+// 	cycle = 0;
+// 	while (s->b_size != 0)
+// 	{
 		
-	}
-}
+// 	}
+// }
 
 void	sort_many(t_save *s)
 {
 	divide((s->argc - 1) / 2, 0, s);
-	sort_few(s->a_size, s);
+	//sort_few(s->a_size, s);
 	//s->sorted_count = 5;
-	combine(s->smallest_pivot, s);
+	//combine(s->smallest_pivot, s);
 	t_stack *next;
 	next = s->a_head;
 	while (next)
