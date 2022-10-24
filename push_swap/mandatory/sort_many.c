@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 23:46:18 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/23 07:23:37 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/10/24 15:20:38 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ static void	divide(int pivot, int pushed, t_save *s)
 		{
 			pb(s, PB);
 			pushed++;
-			//printf("!%d, %d!\n", pushed, pivot);
 		}
 		else
 		{
@@ -62,7 +61,6 @@ static void	divide(int pivot, int pushed, t_save *s)
 				ra(s, RA);
 			exit_if_sorted(s);
 		}
-		//tmp_print(s);
 	}
 	if (s->a_size > 5)
 		divide(pivot / 2, 0, s);
@@ -72,15 +70,18 @@ static void	divide(int pivot, int pushed, t_save *s)
 
 void	combine(t_save *s)
 {
-	// int	cycle;
-
-	// cycle = 0;
 	while (s->b_size != 0)
 	{
 		if (s->b_head->cc + 1 == s->a_head->cc)
+		{
 			pa(s, PA);
+		//	tmp_print(s);
+		}
 		else
-			rb(s, RA);
+		{
+			rb(s, RB);
+			//tmp_print(s);
+		}
 	}
 }
 
@@ -90,7 +91,9 @@ void	sort_many(t_save *s)
 	divide(s->argc / 2, 0, s);
 	//tmp_print(s);
 	sort_few(s->a_size, s);
-	//tmp_print(s);
+//	tmp_print(s);
+	// printf("asdf\n");
+	// fflush(stdout);
 	combine(s);
 	//tmp_print(s);
 }
