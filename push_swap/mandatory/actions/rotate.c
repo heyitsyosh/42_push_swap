@@ -6,13 +6,13 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 15:43:53 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/23 07:34:25 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/12 13:12:50 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void	ra(t_save *s, char *to_print)
+void	ra(t_save *s, int command)
 {
 	t_stack	*new_a_head;
 
@@ -22,11 +22,14 @@ void	ra(t_save *s, char *to_print)
 	stack_add_back(s->a_head, &(s->a_tail));
 	s->a_head = new_a_head;
 	(s->a_head)->prev = NULL;
-	if (to_print)
-		ft_printf("%s\n", to_print);
+	if (command)
+	{
+		append_command(s, command);
+		//tmp_print(s);
+	}
 }
 
-void	rb(t_save *s, char *to_print)
+void	rb(t_save *s, int command)
 {
 	t_stack	*new_b_head;
 
@@ -36,13 +39,17 @@ void	rb(t_save *s, char *to_print)
 	stack_add_back(s->b_head, &(s->b_tail));
 	s->b_head = new_b_head;
 	(s->b_head)->prev = NULL;
-	if (to_print)
-		ft_printf("%s\n", to_print);
+	if (command)
+	{
+		append_command(s, command);
+		//tmp_print(s);
+	}
 }
 
-void	rr(t_save *s, char *to_print)
+void	rr(t_save *s, int command)
 {
-	ra(s, NULL);
-	rb(s, NULL);
-	ft_printf("%s\n", to_print);
+	ra(s, NO_COMMAND);
+	rb(s, NO_COMMAND);
+	append_command(s, command);
+	//tmp_print(s);
 }

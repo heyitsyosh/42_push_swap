@@ -19,6 +19,8 @@ FILES = main\
 		actions/rotate\
 		actions/rev_rotate\
 		lst_utils\
+		commands\
+		reduce_commands\
 		sort_few\
 		sort_many
 BONUS_FILES = main\

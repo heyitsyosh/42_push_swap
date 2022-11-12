@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 17:50:25 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/16 07:18:42 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/11 10:27:31 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,6 @@ static t_stack	*make_node(char *arg)
 
 static bool	malloc_head(t_save *s, int argc, char **argv)
 {
-	s->a_head = NULL;
-	s->b_head = NULL;
-	s->a_size = 0;
-	s->b_size = 0;
 	if (argc > 1)
 	{
 		s->a_head = make_node(argv[1]);
@@ -62,11 +58,24 @@ static bool	malloc_head(t_save *s, int argc, char **argv)
 	return (true);
 }
 
+static void	init_struct(t_save	*s)
+{
+	s->a_head = NULL;
+	s->b_head = NULL;
+	s->a_size = 0;
+	s->b_size = 0;
+	s->commands = NULL;
+	s->last_command = NULL;
+	s->sorted = true;
+	s->has_duplicate = false;
+}
+
 bool	make_stack_a_and_b(t_save *s, int argc, char **argv)
 {
 	int		i;
 	t_stack	*new;
 
+	init_struct(s);
 	if (!malloc_head(s, argc, argv))
 		return (false);
 	s->argc = argc;
@@ -76,7 +85,7 @@ bool	make_stack_a_and_b(t_save *s, int argc, char **argv)
 		new = make_node(argv[i]);
 		if (!new)
 		{
-			free_a_and_b(s);
+			free_nodes(s);
 			return (false);
 		}
 		stack_add_back(new, &(s->a_tail));

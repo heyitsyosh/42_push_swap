@@ -6,13 +6,13 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 15:43:55 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/23 01:30:29 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/12 13:02:14 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void	pa(t_save *s, char *to_print)
+void	pa(t_save *s, int command)
 {
 	t_stack	*new_b_head;
 
@@ -23,10 +23,11 @@ void	pa(t_save *s, char *to_print)
 	s->b_head = new_b_head;
 	s->a_size++;
 	s->b_size--;
-	ft_printf("%s\n", to_print);
+	append_command(s, command);
+	//tmp_print(s);
 }
 
-void	pb(t_save *s, char *to_print)
+void	pb(t_save *s, int command)
 {
 	t_stack	*new_a_head;
 
@@ -37,5 +38,6 @@ void	pb(t_save *s, char *to_print)
 	s->a_head = new_a_head;
 	s->b_size++;
 	s->a_size--;
-	ft_printf("%s\n", to_print);
+	append_command(s, command);
+	//tmp_print(s);
 }
