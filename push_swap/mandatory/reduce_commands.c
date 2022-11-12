@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 06:51:43 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/12 13:18:36 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/12 14:29:34 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,13 @@ static void	delete_next_node(t_command	*prev)
 static bool	delete_unecessary(t_command	*prev, t_command *a, t_command *b)
 {
 	if ((a->command == PA && b->command == PB)
-		|| (a->command == PB && b->command == PA))
-		/*
-		|| a->command == SA && b->command == SA
-		|| a->command == SS && b->command == SS
-		|| a->command == SB && b->command == SB
-		|| a->command == RA && b->command == RRA
-		|| a->command == RRA && b->command == RA
-		|| a->command == RB && b->command == RRB
-		|| a->command == RRB && b->command == RB
-		|| a->command == RRR && b->command == RRR)
-		*/
+		|| (a->command == PB && b->command == PA)
+		|| (a->command == SA && b->command == SA)
+		|| (a->command == RA && b->command == RRA)
+		|| (a->command == RRA && b->command == RA)
+		|| (a->command == RB && b->command == RRB)
+		|| (a->command == RRB && b->command == RB)
+		|| (a->command == RRR && b->command == RRR))
 	{
 		delete_next_node(prev);
 		delete_next_node(a);

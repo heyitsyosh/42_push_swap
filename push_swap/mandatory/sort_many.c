@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 23:46:18 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/12 03:09:29 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/12 18:26:32 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,6 @@ static void	divide(int pivot, int pushed, t_save *s)
 	t_stack	*head;
 
 	head = s->a_head;
-	// printf("[pushed:%d]\n[pivot:%d]\n", pushed, pivot);
-	// tmp_print(s);
-	// fflush(stdout);
 	while (head && pushed < pivot)
 	{
 		head = s->a_head;
@@ -75,14 +72,13 @@ void	combine(t_save *s)
 {
 	while (s->b_size != 0)
 	{
-		if (s->b_head->cc + 1 == s->a_head->cc)
+		if (s->biggest_of_sorted + 1 == s->b_head->cc)
 		{
 			pa(s, PA);
+			s->biggest_of_sorted++;
 		}
 		else
-		{
-			rb(s, RB);
-		}
+			find_combo();
 	}
 }
 

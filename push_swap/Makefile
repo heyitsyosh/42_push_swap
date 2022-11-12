@@ -11,9 +11,9 @@ FT_PRINTF = ./lib/printf/libftprintf.a -L$(PRINTFDIR) -lftprintf
 GNL = ./lib/gnl/get_next_line.a
 
 FILES = main\
-		make_stacks\
-		make_stacks_ii\
 		atoi\
+		make_stacks\
+		coordinate_compression\
 		actions/push\
 		actions/swap\
 		actions/rotate\
@@ -22,7 +22,8 @@ FILES = main\
 		commands\
 		reduce_commands\
 		sort_few\
-		sort_many
+		sort_many\
+		find_combo
 BONUS_FILES = main\
 			get_inputs\
 			atoi\

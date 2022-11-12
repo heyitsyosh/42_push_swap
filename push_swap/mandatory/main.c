@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:09:58 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/12 13:17:08 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/12 20:29:13 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,12 @@ int	main(int argc, char **argv)
 		ft_printf("Error\n");
 		return (0);
 	}
-	get_lmis_and_compressed_coordinates(&s);
+	get_compressed_coordinates(&s);
 	if (s.has_duplicate)
 		ft_printf("Error\n");
 	else
 	{
 		start_sort(&s);
-		//optimize(&s);
 		print_commands(&s);
 	}
 	free_nodes(&s);
