@@ -6,20 +6,20 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:09:58 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/23 07:14:43 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/12 13:17:08 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void tmp_print(t_save *s)
+void	tmp_print(t_save *s)
 {
 	t_stack *next;
 	next = s->a_head;
 	printf("a:");
 	while (next)
 	{
-		printf("[%d]", next->input);
+		printf("[%d]", next->cc);
 		fflush(stdout);
 		next = next->next;
 	}
@@ -28,7 +28,7 @@ void tmp_print(t_save *s)
 	printf("b:");
 	while (next)
 	{
-		printf("[%d]", next->input);
+		printf("[%d]", next->cc);
 		fflush(stdout);
 		next = next->next;
 	}
@@ -57,7 +57,12 @@ int	main(int argc, char **argv)
 	get_lmis_and_compressed_coordinates(&s);
 	if (s.has_duplicate)
 		ft_printf("Error\n");
-	start_sort(&s);
-	free_a_and_b(&s);
+	else
+	{
+		start_sort(&s);
+		//optimize(&s);
+		print_commands(&s);
+	}
+	free_nodes(&s);
 	return (0);
 }

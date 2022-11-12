@@ -6,13 +6,13 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 21:09:42 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/23 05:40:13 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/12 13:04:58 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void	sa(t_save *s, char *to_print)
+void	sa(t_save *s, int command)
 {
 	t_stack	*second;
 	t_stack	*third;
@@ -30,11 +30,14 @@ void	sa(t_save *s, char *to_print)
 	(s->a_head)->prev = second;
 	(s->a_head)->next = third;
 	s->a_head = second;
-	if (to_print)
-		ft_printf("%s\n", to_print);
+	if (command)
+	{
+		append_command(s, command);
+		//tmp_print(s);
+	}
 }
 
-void	sb(t_save *s, char *to_print)
+void	sb(t_save *s, int command)
 {
 	t_stack	*second;
 	t_stack	*third;
@@ -52,13 +55,17 @@ void	sb(t_save *s, char *to_print)
 	(s->b_head)->prev = second;
 	(s->b_head)->next = third;
 	s->b_head = second;
-	if (to_print)
-		ft_printf("%s\n", to_print);
+	if (command)
+	{
+		append_command(s, command);
+		//tmp_print(s);
+	}
 }
 
-void	ss(t_save *s)
+void	ss(t_save *s, int command)
 {
-	sa(s, NULL);
-	sb(s, NULL);
-	ft_printf("ss");
+	sa(s, NO_COMMAND);
+	sb(s, NO_COMMAND);
+	append_command(s, command);
+	//tmp_print(s);
 }
