@@ -6,13 +6,13 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 03:19:04 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/12 13:01:17 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/12 21:09:23 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	sort_three(int first, int second, int third, t_save *s)
+static void	sort_three(int first, int second, int third, t_save *s)
 {
 	if (first < second && second < third && first < third)
 		return ;
@@ -32,13 +32,11 @@ void	sort_three(int first, int second, int third, t_save *s)
 	}
 }
 
-int	find_distance_to_cc(int cc, t_save *s)
+int	find_distance_to_cc(int cc, t_stack *next, t_save *s)
 {
 	int		distance;
-	t_stack	*next;
 
 	distance = 0;
-	next = s->a_head;
 	while (next)
 	{
 		if (next->cc == cc)
@@ -49,11 +47,11 @@ int	find_distance_to_cc(int cc, t_save *s)
 	return (distance);
 }
 
-void	sort_five_or_four(int cc, t_save *s)
+static void	sort_five_or_four(int cc, t_save *s)
 {
 	int	distance;
 
-	distance = find_distance_to_cc(cc, s);
+	distance = find_distance_to_cc(cc, s->a_head, s);
 	if (distance < 2)
 		while (distance-- > 0)
 			ra(s, RA);
@@ -84,4 +82,5 @@ void	sort_few(int stack_size, t_save *s)
 		if (stack_size == 5)
 			pa(s, PA);
 	}
+	s->biggest_of_sorted = stack_size;
 }
