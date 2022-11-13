@@ -6,12 +6,13 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:09:58 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/13 12:16:22 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/13 15:25:24 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
+/*
 void	tmp_print(t_save *s)
 {
 	t_stack *next;
@@ -33,7 +34,15 @@ void	tmp_print(t_save *s)
 		next = next->next;
 	}
 	printf("\n------------------------------\n");
+	fflush(stdout);
 }
+*/
+
+void	tmp_print(t_save *s)
+{
+	(void)s;
+}
+
 
 static void	start_sort(t_save *s)
 {
