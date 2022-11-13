@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 23:46:18 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/13 14:19:12 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/13 15:24:51 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,7 @@ void	sort_many(t_save *s)
 {
 	divide(s->argc / 2, 0, s);
 	sort_few(s->a_size, s);
+	// printf("!!!\n");
+	// fflush(stdout);
 	combine(s);
 }

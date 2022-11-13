@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 21:09:42 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/12 13:04:58 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/13 15:24:20 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	sa(t_save *s, int command)
 	if (command)
 	{
 		append_command(s, command);
-		//tmp_print(s);
+		tmp_print(s);
 	}
 }
 
@@ -58,7 +58,7 @@ void	sb(t_save *s, int command)
 	if (command)
 	{
 		append_command(s, command);
-		//tmp_print(s);
+		tmp_print(s);
 	}
 }
 
@@ -67,5 +67,5 @@ void	ss(t_save *s, int command)
 	sa(s, NO_COMMAND);
 	sb(s, NO_COMMAND);
 	append_command(s, command);
-	//tmp_print(s);
+	tmp_print(s);
 }
