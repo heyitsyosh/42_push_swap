@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 06:23:42 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/11 01:41:30 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/13 16:23:02 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,11 @@ bool	redirect_to_rotator(char *instruction, int *a, int *b, t_sizes *s)
 	else if (!ft_strcmp(instruction, "rra"))
 		rotate(a, 1, 0, s->a_top);
 	else if (!ft_strcmp(instruction, "rrb"))
-		rotate(a, 1, 0, s->b_top);
+		rotate(b, 1, 0, s->b_top);
 	else if (!ft_strcmp(instruction, "rrr"))
 	{
 		rotate(a, 1, 0, s->a_top);
-		rotate(a, 1, 0, s->b_top);
+		rotate(b, 1, 0, s->b_top);
 	}
 	else
 		return (false);
