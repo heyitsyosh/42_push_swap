@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 06:51:43 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/12 14:29:34 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/13 14:17:55 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,9 @@ bool	reduce_commands(t_save *s)
 	bool		reduced;
 
 	reduced = false;
-	if (s->commands)
-		next = s->commands;
+	if (!s->commands)
+		return ;
+	next = s->commands;
 	while (next && next->next && (next->next)->next)
 	{
 		if (delete_unecessary(next, next->next, (next->next)->next))
