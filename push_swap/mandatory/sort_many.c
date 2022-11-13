@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 23:46:18 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/12 18:26:32 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/13 12:49:42 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,10 @@ static bool	should_rr(t_save *s)
 
 static void	divide(int pivot, int pushed, t_save *s)
 {
-	t_stack	*head;
-
-	head = s->a_head;
-	while (head && pushed < pivot)
+	while (s->a_head && pushed < pivot)
 	{
-		head = s->a_head;
-		if (head->cc < pivot)
+		//ss_if_optimal(s);
+		if (s->a_head->cc < pivot)
 		{
 			pb(s, PB);
 			pushed++;
@@ -72,13 +69,13 @@ void	combine(t_save *s)
 {
 	while (s->b_size != 0)
 	{
-		if (s->biggest_of_sorted + 1 == s->b_head->cc)
+		if (s->smallest_of_sorted - 1 == s->b_head->cc)
 		{
 			pa(s, PA);
-			s->biggest_of_sorted++;
+			s->smallest_of_sorted--;
 		}
 		else
-			find_combo();
+			find_combo(s);
 	}
 }
 
