@@ -61,6 +61,7 @@ OBJS += $(BONUS_OBJS)
 endif
 
 CFLAGS = -Wall -Wextra -Werror
+CC = gcc
 
 # **************************************************************************** #
 
@@ -72,10 +73,10 @@ $(NAME): $(OBJS)
 bonus: all
 	
 clean:
-	rm -f $(OBJS) $(BONUS_OBJS)
+	$(RM) -f $(OBJS) $(BONUS_OBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	$(RM) -f $(NAME)
 
 re: fclean all
 

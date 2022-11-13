@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 06:51:43 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/13 14:18:26 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/13 14:59:27 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static bool	delete_unecessary(t_command	*prev, t_command *a, t_command *b)
 		|| (a->command == RRR && b->command == RRR))
 	{
 		delete_next_node(prev);
-		delete_next_node(a);
+		delete_next_node(prev);
 		return (true);
 	}
 	return (false);
