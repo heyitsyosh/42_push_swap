@@ -13,6 +13,7 @@ OBJS = $(SRCS:.c=.o)
 
 CFLAGS = -Wall -Wextra -Werror
 INCLUDES = -I ../../includes/libft.h
+CC = gcc
 
 # **************************************************************************** #
 
@@ -27,11 +28,11 @@ bonus: all
 
 clean:
 	make clean -C $(LIBFTDIR)
-	${RM} $(OBJS)
+	$(RM) $(OBJS)
 
 fclean: clean
 	make fclean -C $(LIBFTDIR)
-	${RM} $(NAME)
+	$(RM) $(NAME)
 
 re: fclean all
 
