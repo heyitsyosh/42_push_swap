@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 17:25:39 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/11 01:49:00 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/13 16:19:50 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ static bool	do_action(char *instruction, int *a, int *b, t_sizes *s)
 	}
 	else
 		return (false);
-	// printf("\na:");
-	// for (int i = 0; i <= s->a_top; i++)
-	// 	printf("[%d]", a[i]);
-	// printf("\nb:");
-	// for (int i = 0; i <= s->b_top; i++)
-	// 	printf("[%d]", b[i]);
+	printf("\n%s\na:", instruction);
+	for (int i = 0; i <= s->a_top; i++)
+		printf("[%d]", a[i]);
+	printf("\nb:");
+	for (int i = 0; i <= s->b_top; i++)
+		printf("[%d]", b[i]);
 	return (true);
 }
 
