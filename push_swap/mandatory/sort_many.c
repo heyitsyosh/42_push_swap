@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 23:46:18 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/13 13:05:52 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/13 14:19:12 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	divide(int pivot, int pushed, t_save *s)
 {
 	while (s->a_head && pushed < pivot)
 	{
-		ss_if_optimal(s);
+		//ss_if_optimal(s);
 		if (s->a_head->cc < pivot)
 		{
 			pb(s, PB);
