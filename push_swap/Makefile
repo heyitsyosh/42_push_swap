@@ -13,7 +13,7 @@ GNL = ./lib/gnl/get_next_line.a
 FILES = main\
 		atoi\
 		make_stacks\
-		coordinate_compression\
+		make_stacks_ii\
 		actions/push\
 		actions/swap\
 		actions/rotate\
@@ -23,7 +23,8 @@ FILES = main\
 		reduce_commands\
 		sort_few\
 		sort_many\
-		find_combo
+		find_combo\
+		combine
 BONUS_FILES = main\
 			get_inputs\
 			atoi\
@@ -36,7 +37,7 @@ OBJS = $(SRCS:.c=.o)
 BONUS_SRCS = $(foreach bonus_src,$(BONUS_FILES),./bonus/$(bonus_src)_bonus.c)
 BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
-CFLAGS = -Wall -Wextra -Werror -g3 -I ./includes
+CFLAGS = -Wall -Wextra -Werror -I ./includes
 CC = gcc
 
 #--------------------------------------------------------------------------

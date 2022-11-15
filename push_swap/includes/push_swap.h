@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:12:15 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/13 12:39:03 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/15 16:30:01 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,9 @@ typedef struct s_stack
 	struct s_stack	*prev;
 	int				input;
 	int				cc;
+	int				i_s_len;
+	bool			part_of_lis;
+	int				cycle;
 	struct s_stack	*next;
 }	t_stack;
 
@@ -53,19 +56,21 @@ typedef struct s_save
 	t_stack		*b_tail;
 	int			a_size;
 	int			b_size;
+	t_stack		*lis;
+	t_stack		*lis_end;
 	t_command	*commands;
 	t_command	*last_command;
-	int			smallest_of_sorted;
-	int			smallest_pivot;
 	bool		sorted;
 	bool		has_duplicate;
 }	t_save;
 
-void tmp_print(t_save *s);
+//-----------------------------------------------------------------------//
+
+void tmp_print(t_save *s, char *command);
 
 bool	make_stack_a_and_b(t_save *s, int argc, char **argv);
 int		atoi_with_overflow_check(const char *str, bool *overflow);
-void	get_compressed_coordinates(t_save *s);
+void	get_lis_and_compressed_coordinates(t_save *s);
 
 t_stack	*stack_min(t_stack *head);
 void	stack_add_back(t_stack *node, t_stack **tail);
@@ -75,12 +80,17 @@ void	free_nodes(t_save *s);
 void	sort_few(int stack_size, t_save *s);
 void	sort_many(t_save *s);
 
+void	combine(t_save *s);
 void	find_combo(t_save *s);
 int		find_distance_to_cc(int cc, t_stack *next);
+bool	ss_if_optimal(t_save *s);
+bool	rr_if_optimal(int original_command, int x, t_save *s);
 
 void	append_command(t_save *s, int command);
 bool	reduce_commands(t_save *s);
 void	print_commands(t_save *s);
+
+//-----------------------------------------------------------------------//
 
 void	pa(t_save *s, int command);
 void	pb(t_save *s, int command);

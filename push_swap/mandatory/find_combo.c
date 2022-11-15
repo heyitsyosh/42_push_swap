@@ -6,21 +6,36 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 18:27:03 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/13 15:23:13 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/15 05:01:50 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	find_combo(t_save *s)
+bool	ss_if_optimal(t_save *s)
 {
-	int	distance;
+	if (s->a_size < 2 || s->b_size < 2)
+		return (false);
+	if (s->a_head->cc < (s->a_head->next)->cc)
+		return (false);
+	if (s->b_head->cc > (s->b_head->next)->cc)
+		return (false);
+	ss(s, SS);
+	return (true);
+}
 
-	distance = find_distance_to_cc(s->smallest_of_sorted - 1, s->b_head);
-	if (distance > s->b_size / 2)
-		while (s->b_head->cc != s->smallest_of_sorted - 1)
-			rrb(s, RRB);
+bool	rr_if_optimal(int original_command, int x, t_save *s)
+{
+	if (s->a_size < 2 || s->b_size < 2)
+		return (false);
+	if (original_command == RA)
+	{
+		if (s->b_head->cc > x)
+			return (false);
+	}
 	else
-		while (s->b_head->cc != s->smallest_of_sorted - 1)
-			rb(s, RB);
+		if (s->a_head->cc < x)
+			return (false);
+	rr(s, RR);
+	return (true);
 }
