@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 17:50:25 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/15 16:15:21 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/15 22:18:18 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static t_stack	*make_node(char *arg)
 	return (ret);
 }
 
-static bool	malloc_head(t_save *s, int argc, char **argv)
+static void	malloc_head(t_save *s, int argc, char **argv)
 {
 	if (argc > 1)
 	{
@@ -53,9 +53,8 @@ static bool	malloc_head(t_save *s, int argc, char **argv)
 		s->a_tail = s->a_head;
 		s->a_size++;
 		if (!s->a_head)
-			return (false);
+			exit (1);
 	}
-	return (true);
 }
 
 static void	init_struct(t_save	*s)
@@ -70,14 +69,13 @@ static void	init_struct(t_save	*s)
 	s->has_duplicate = false;
 }
 
-bool	make_stack_a_and_b(t_save *s, int argc, char **argv)
+void	make_stack_a_and_b(t_save *s, int argc, char **argv)
 {
 	int		i;
 	t_stack	*new;
 
 	init_struct(s);
-	if (!malloc_head(s, argc, argv))
-		return (false);
+	malloc_head(s, argc, argv);
 	s->argc = argc;
 	i = 2;
 	while (i < argc)
@@ -86,11 +84,10 @@ bool	make_stack_a_and_b(t_save *s, int argc, char **argv)
 		if (!new)
 		{
 			free_nodes(s);
-			return (false);
+			exit (1);
 		}
 		stack_add_back(new, &(s->a_tail));
 		s->a_size++;
 		i++;
 	}
-	return (true);
 }

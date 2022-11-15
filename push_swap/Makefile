@@ -23,6 +23,7 @@ FILES = main\
 		reduce_commands\
 		sort_few\
 		sort_many\
+		divide\
 		find_combo\
 		tmp_print
 BONUS_FILES = main\

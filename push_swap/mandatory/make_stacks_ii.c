@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 14:20:51 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/15 20:35:33 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/15 22:58:16 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static int	count_subsequence(t_stack *start)
 	return (i_s_len);
 }
 
-static int	coordinate_compression(int *prev_cc, t_stack *node, t_save *s)
+static int	coordinate_compression(int *sorted_streak, t_stack *node, t_save *s)
 {
 	t_stack	*next;
 	int		smaller_inputs;
@@ -75,29 +75,30 @@ static int	coordinate_compression(int *prev_cc, t_stack *node, t_save *s)
 				s->has_duplicate = true;
 		next = next->next;
 	}
-	if (*prev_cc < smaller_inputs)
-		(*prev_cc)++;
+	if (*sorted_streak < smaller_inputs)
+		(*sorted_streak)++;
 	else
 		s->sorted = false;
 	return (smaller_inputs);
 }
 
+//			lis-->(longest increasing subsequence)
 void	get_lis_and_compressed_coordinates(t_save *s)
 {
 	t_stack	*next;
-	int		prev_cc;
+	int		sorted_streak;
 
-	prev_cc = -1;
+	sorted_streak = -1;
 	if (!s->a_head)
 		return ;
 	next = s->a_head;
 	s->lis = s->a_head;
 	while (next)
 	{
-		next->part_of_lis = false;
-		next->cc = coordinate_compression(&prev_cc, next, s);
+		next->cc = coordinate_compression(&sorted_streak, next, s);
 		if (s->has_duplicate)
-			break ;
+			return ;
+		next->part_of_lis = false;
 		next->i_s_len = count_subsequence(next);
 		update_lis(next, s);
 		next = next->next;

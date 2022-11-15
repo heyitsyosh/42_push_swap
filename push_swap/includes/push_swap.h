@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:12:15 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/15 20:38:22 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/15 23:55:04 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_stack
 	struct s_stack	*prev;
 	int				input;
 	int				cc;
+	int				no_lis_cc;
 	int				i_s_len;
 	bool			part_of_lis;
 	struct s_stack	*next;
@@ -59,6 +60,7 @@ typedef struct s_save
 	int			second_pivot;
 	t_stack		*lis;
 	t_stack		*lis_end;
+	int			lis_count;
 	t_command	*commands;
 	t_command	*last_command;
 	bool		sorted;
@@ -71,7 +73,7 @@ void tmp_print(t_save *s, char *command);
 void	tmp_print_bool(t_save *s);
 void	tmp_print_lis(t_save *s);
 
-bool	make_stack_a_and_b(t_save *s, int argc, char **argv);
+void	make_stack_a_and_b(t_save *s, int argc, char **argv);
 int		atoi_with_overflow_check(const char *str, bool *overflow);
 void	get_lis_and_compressed_coordinates(t_save *s);
 
@@ -83,7 +85,9 @@ void	free_nodes(t_save *s);
 void	sort_few(int stack_size, t_save *s);
 void	sort_many(t_save *s);
 
+void	divide(int pivot, int pushed, t_save *s);
 void	combine(t_save *s);
+int		find_median(t_stack *head, int stack_size, t_save *s);
 void	find_combo(t_save *s);
 int		find_distance_to_cc(int cc, t_stack *next);
 bool	ss_if_optimal(t_save *s);
