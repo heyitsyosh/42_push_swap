@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:12:15 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/15 16:30:01 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/15 17:30:46 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ typedef struct s_save
 //-----------------------------------------------------------------------//
 
 void tmp_print(t_save *s, char *command);
+void	tmp_print_bool(t_save *s);
+void	tmp_print_lis(t_save *s)
 
 bool	make_stack_a_and_b(t_save *s, int argc, char **argv);
 int		atoi_with_overflow_check(const char *str, bool *overflow);

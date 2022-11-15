@@ -6,44 +6,11 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:09:58 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/15 17:17:52 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/15 17:29:46 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-
-void	tmp_print(t_save *s, char *command)
-{
-	t_stack *next;
-	next = s->a_head;
-	if (command)
-		printf("%s\n", command);
-	printf("a:");
-	while (next)
-	{
-		printf("[%d]", next->cc);
-		fflush(stdout);
-		next = next->next;
-	}
-	printf("\n");
-	next = s->b_head;
-	printf("b:");
-	while (next)
-	{
-		printf("[%d]", next->cc);
-		fflush(stdout);
-		next = next->next;
-	}
-	printf("\n------------------------------\n");
-	fflush(stdout);
-}
-
-// void	tmp_print(t_save *s, char *command)
-// {
-// 	(void)s;
-// 	(void)command;
-// }
 
 static void	start_sort(t_save *s)
 {
