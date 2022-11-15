@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:09:58 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/15 17:29:46 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/15 22:18:46 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,11 @@ int	main(int argc, char **argv)
 {
 	t_save	s;
 
-	if (argc < 1 || !make_stack_a_and_b(&s, argc, argv))
+	if (argc > 1)
 	{
-		ft_printf("Errror\n");
-		return (0);
+		make_stack_a_and_b(&s, argc, argv);
+		get_lis_and_compressed_coordinates(&s);
 	}
-	get_lis_and_compressed_coordinates(&s);
 	if (s.has_duplicate)
 		ft_printf("Error\n");
 	else
