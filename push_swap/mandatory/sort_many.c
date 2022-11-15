@@ -6,64 +6,35 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 23:46:18 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/15 20:41:58 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/15 20:47:51 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-bool	pb_if_not_part_of_lis(t_save *s)
-{
-	if (!s->a_head->part_of_lis)
-	{
-		pb(s, PB);
-		if (s->b_head->cc <= b_pivot)
-			rb(s, RB);
-		return (true);
-	}
-	return (false);
-}
-
-void	leave_lis_pb_others(t_save *s)
-{
-	while (s->a_head != s->lis)
-	{
-		if (!pb_if_not_part_of_lis(s))
-			ra(s, RA);
-	}
-	ra(s, RA);
-	while (s->a_head != s->lis_end)
-	{
-		if (s->a_head->cc > s->lis->cc)
-		{
-			ra(s, RA);
-			s->lis = s->a_tail;
-		}
-		else
-			pb_if_not_part_of_lis(s);
-	}
-}
-
 static bool	should_rr(int pivot, t_save *s)
 {
 	if (s->b_size <= 1)
 		return (false);
-	if (pivot != )
+	if (pivot != s->argc / 2)
 		return (false);
+	if ()
 	return (true);
 }
 
-static void	divide(int pivot, int pushed, t_save *s)
+static void	divide(int pivot, int sorted, t_save *s)
 {
-	while (s->a_head && pushed < pivot)
+	while (s->a_head && sorted < pivot)
 	{
 		if (s->a_head->cc < pivot && !s->a_head->part_of_lis)
 		{
 			pb(s, PB);
-			pushed++;
+			sorted++;
 		}
 		else
 		{
+			if (s->a_head->part_of_lis)
+				sorted++;
 			if (should_rr(pivot, s))
 				rr(s, RR);
 			else
@@ -71,14 +42,9 @@ static void	divide(int pivot, int pushed, t_save *s)
 			exit_if_sorted(s);
 		}
 	}
-	if (s->a_size > 5)
-		divide(pushed + (s->argc - pushed) / 2, pushed, s);
+	if (s->a_size > s->lis->i_s_len + 1)
+		divide(sorted + (s->argc - sorted) / 2, sorted, s);
 }
-
-// void	sort_b_into_a(t_save *s)
-// {
-// 	if (s->b_head->cc > s->lis->cc)
-// }
 
 void	sort_many(t_save *s)
 {
@@ -90,7 +56,4 @@ void	sort_many(t_save *s)
 	// printf("[lds:%d]\n", s->lis_end->cc);
 	// fflush(stdout);
 	divide(s->argc / 2, 0, s);
-	leave_lis_pb_others(s);
-	find_b_median(s);
-	sort_b_into_a(s);
 }
