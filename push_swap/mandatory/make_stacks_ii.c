@@ -6,37 +6,11 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 14:20:51 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/15 17:16:51 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/15 20:35:33 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-// void	tmp_print(t_save *s, char *command)
-// {
-// 	t_stack *next;
-// 	next = s->a_head;
-// 	if (command)
-// 		printf("%s\n", command);
-// 	printf("a:");
-// 	while (next)
-// 	{
-// 		printf("[%d]", next->cc);
-// 		fflush(stdout);
-// 		next = next->next;
-// 	}
-// 	printf("\n");
-// 	next = s->b_head;
-// 	printf("b:");
-// 	while (next)
-// 	{
-// 		printf("[%d]", next->cc);
-// 		fflush(stdout);
-// 		next = next->next;
-// 	}
-// 	printf("\n------------------------------\n");
-// 	fflush(stdout);
-// }
 
 static void	get_lis_end(t_stack *start, t_save *s)
 {
@@ -120,11 +94,11 @@ void	get_lis_and_compressed_coordinates(t_save *s)
 	s->lis = s->a_head;
 	while (next)
 	{
+		next->part_of_lis = false;
 		next->cc = coordinate_compression(&prev_cc, next, s);
 		if (s->has_duplicate)
 			break ;
 		next->i_s_len = count_subsequence(next);
-		next->part_of_lis = false;
 		update_lis(next, s);
 		next = next->next;
 	}

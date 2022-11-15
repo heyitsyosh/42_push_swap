@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:12:15 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/15 17:30:46 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/15 20:38:22 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ typedef struct s_stack
 	int				cc;
 	int				i_s_len;
 	bool			part_of_lis;
-	int				cycle;
 	struct s_stack	*next;
 }	t_stack;
 
@@ -56,6 +55,8 @@ typedef struct s_save
 	t_stack		*b_tail;
 	int			a_size;
 	int			b_size;
+	int			first_pivot;
+	int			second_pivot;
 	t_stack		*lis;
 	t_stack		*lis_end;
 	t_command	*commands;
@@ -68,7 +69,7 @@ typedef struct s_save
 
 void tmp_print(t_save *s, char *command);
 void	tmp_print_bool(t_save *s);
-void	tmp_print_lis(t_save *s)
+void	tmp_print_lis(t_save *s);
 
 bool	make_stack_a_and_b(t_save *s, int argc, char **argv);
 int		atoi_with_overflow_check(const char *str, bool *overflow);
