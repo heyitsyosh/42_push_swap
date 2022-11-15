@@ -24,7 +24,7 @@ FILES = main\
 		sort_few\
 		sort_many\
 		find_combo\
-		combine
+		tmp_print
 BONUS_FILES = main\
 			get_inputs\
 			atoi\
