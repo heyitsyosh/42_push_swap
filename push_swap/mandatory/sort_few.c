@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 03:19:04 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/13 12:38:27 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/15 17:06:08 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,4 @@ void	sort_few(int stack_size, t_save *s)
 		if (stack_size == 5)
 			pa(s, PA);
 	}
-	s->smallest_of_sorted = s->argc - 1 - stack_size;
 }

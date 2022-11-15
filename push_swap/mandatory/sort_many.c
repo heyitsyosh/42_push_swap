@@ -6,84 +6,53 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 23:46:18 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/13 15:24:51 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/15 16:55:25 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	exit_if_sorted(t_save *s)
+bool	pb_if_not_part_of_lis(int b_pivot, t_save *s)
 {
-	t_stack	*next;
-
-	if (s->a_size != (s->argc - 1) && s->b_size > 0)
-		return ;
-	next = NULL;
-	if (s->a_head)
-		next = s->a_head->next;
-	while (next)
+	if (s->a_head->part_of_lis)
 	{
-		if ((next->prev)->cc > next->cc)
-			return ;
-		next = next->next;
+		pb(s, PB);
+		if (s->b_head->cc <= b_pivot)
+			rb(s, RB);
+		return (true);
 	}
-	free_nodes(s);
-	exit(EXIT_SUCCESS);
+	return (false);
 }
 
-static bool	should_rr(t_save *s)
+void	leave_lis_push_others(t_save *s)
 {
-	if (s->b_size <= 1)
-		return (false);
-	if (s->b_head->cc > s->b_size / 2)
-		return (false);
-	return (true);
-}
+	int	b_pivot;
 
-static void	divide(int pivot, int pushed, t_save *s)
-{
-	while (s->a_head && pushed < pivot)
+	b_pivot = (s->argc - s->lis->i_s_len) / 2;
+	while (s->a_head != s->lis)
 	{
-		//ss_if_optimal(s);
-		if (s->a_head->cc < pivot)
+		if (!pb_if_not_part_of_lis(b_pivot, s))
+			ra(s, RA); //add rr optimization?
+	}
+	ra(s, RA);
+	while (s->a_head != s->lis_end)
+	{
+		if (s->a_head > s->lis)
 		{
-			pb(s, PB);
-			pushed++;
+			ra(s, RA);
+			s->lis = s->a_tail;
 		}
 		else
-		{
-			if (should_rr(s))
-				rr(s, RR);
-			else
-				ra(s, RA);
-			exit_if_sorted(s);
-		}
-	}
-	if (s->a_size > 5)
-		divide(pushed + (s->argc - pushed) / 2, pushed, s);
-	else
-		s->smallest_pivot = pivot;
-}
-
-void	combine(t_save *s)
-{
-	while (s->b_size != 0)
-	{
-		if (s->smallest_of_sorted - 1 == s->b_head->cc)
-		{
-			pa(s, PA);
-			s->smallest_of_sorted--;
-		}
-		else
-			find_combo(s);
+			pb_if_not_part_of_lis(b_pivot, s);
 	}
 }
 
 void	sort_many(t_save *s)
 {
-	divide(s->argc / 2, 0, s);
-	sort_few(s->a_size, s);
-	// printf("!!!\n");
+	// printf("[b pivot:%d]\n", (s->argc - 1 - s->lis->i_s_len) / 2);
+	// printf("[lds:%d | len:%d]\n", s->lis->cc, s->lis->i_s_len);
+	// printf("[lds:%d]\n", s->lis_end->cc);
+	// printf("asdf");
 	// fflush(stdout);
-	combine(s);
+	leave_lis_push_others(s);
 }
