@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 14:20:51 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/15 22:58:16 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/16 21:25:59 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static void	get_lis_end(t_stack *start, t_save *s)
 
 	i = 0;
 	prev = start;
+	start->part_of_lis = true;
 	while (prev)
 	{
 		if (start->cc > prev->cc)
@@ -88,11 +89,11 @@ void	get_lis_and_compressed_coordinates(t_save *s)
 	t_stack	*next;
 	int		sorted_streak;
 
-	sorted_streak = -1;
 	if (!s->a_head)
 		return ;
 	next = s->a_head;
 	s->lis = s->a_head;
+	sorted_streak = -1;
 	while (next)
 	{
 		next->cc = coordinate_compression(&sorted_streak, next, s);
@@ -104,4 +105,5 @@ void	get_lis_and_compressed_coordinates(t_save *s)
 		next = next->next;
 	}
 	get_lis_end(s->lis, s);
+	s->lis_count = s->lis->i_s_len + 1;
 }
