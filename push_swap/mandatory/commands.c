@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 09:20:55 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/15 17:28:42 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/16 21:19:05 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	append_command(t_save *s, int command)
 {
 	t_command	*c;
 
-	//printf("%s\n", command_to_add);
 	c = (t_command *)malloc(sizeof(t_command));
 	if (!c)
 	{
