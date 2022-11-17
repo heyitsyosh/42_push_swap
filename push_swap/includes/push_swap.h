@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:12:15 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/17 12:22:28 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/17 18:14:35 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ typedef struct s_save
 	int			first_pivot;
 	int			second_pivot;
 	t_stack		*lis;
-	t_stack		*lis_end;
 	t_command	*commands;
 	t_command	*last_command;
 	int			b_pivot;
