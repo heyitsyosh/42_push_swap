@@ -6,6 +6,7 @@ PRINTFDIR = ./lib/printf
 GNLDIR = ./lib/gnl
 DIR = ./mandatory
 BONUS_DIR = ./bonus
+OBJS_DIR = ./objs
 
 FT_PRINTF = ./lib/printf/libftprintf.a -L$(PRINTFDIR) -lftprintf
 GNL = ./lib/gnl/get_next_line.a
@@ -34,9 +35,9 @@ BONUS_FILES = main\
 			exit
 
 SRCS = $(foreach src,$(FILES),./mandatory/$(src).c)
-OBJS = $(SRCS:.c=.o)
+OBJS = $(foreach src,$(FILES),./objs/$(src).o)
 BONUS_SRCS = $(foreach bonus_src,$(BONUS_FILES),./bonus/$(bonus_src)_bonus.c)
-BONUS_OBJS = $(BONUS_SRCS:.c=.o)
+BONUS_OBJS = $(foreach bonus_src,$(BONUS_FILES),./objs/$(bonsu_src)_bonus.o)
 
 CFLAGS = -Wall -Wextra -Werror -I ./includes
 CC = gcc
@@ -44,6 +45,9 @@ CC = gcc
 #--------------------------------------------------------------------------
 
 all: $(NAME)
+
+test: 
+	echo $(OBJS)
 
 $(NAME): $(OBJS)
 	make -C $(PRINTFDIR)
