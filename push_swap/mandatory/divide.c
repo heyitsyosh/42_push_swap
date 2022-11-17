@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 22:38:38 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/17 09:22:51 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/17 09:49:46 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,33 +45,34 @@ static void	exit_if_sorted(t_save *s)
 	
 // }
 
-void	divide(int pivot, int pushed, t_save *s)
-{	
-	int	action;
+void	divide(int pivot, int pushed, int actions, t_save *s)
+{
 	int	a_size;
-	printf("[pivot:%d, pushed:%d]\n", pivot, action);
-	action = 0;
+
 	a_size = s->a_size;
-	while (action + s->lis_count < a_size)
+	// printf("[pivot:%d, pushed:%d]\n", pivot, actions);
+	while (actions < a_size)
 	{
-		printf("[%d + %d < %d]\n", action, s->lis_count, a_size);
-		if (s->a_head->cc < pivot && !s->a_head->part_of_lis)
+		// printf("[%d < %d]\n", actions, a_size);	
+		// fflush(stdout);
+		if (s->a_head->cc <= pivot && !s->a_head->part_of_lis)
 		{
 			pb(s, PB);
-			action++;
+			actions++;
 			pushed++;
 			if (s->first_divide && s->b_pivot && s->b_head->cc < s->b_pivot)
 				rb(s, RB);
 		}
 		else
 		{
-			action++;
+			actions++;
 			ra(s, RA); //oprimize with how many lis elements are on each end?
 			exit_if_sorted(s);
 		}
 	}
 	s->first_divide = false;
-	printf("[%d > %d + 1] (%d)\n", s->a_size, s->lis->i_s_len, s->lis->i_s_len + 1);
-	if (pushed < s->argc - s->lis->i_s_len) //adjust numbers
-		divide(get_median(s->a_head, s->a_size, s), pushed, s);
+	// printf("[%d < %d - %d - 1] (%d)\n", pushed, s->argc, s->lis->i_s_len, s->argc - s->lis->i_s_len - 1);
+	// fflush(stdout);
+	if (pushed < s->argc - s->lis->i_s_len - 1)
+		divide(get_median(s->a_head), pushed, 0, s);
 }
