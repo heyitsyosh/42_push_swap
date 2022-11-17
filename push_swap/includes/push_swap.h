@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:12:15 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/17 09:23:53 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/17 09:33:37 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,9 @@ void	free_nodes(t_save *s);
 void	sort_few(int stack_size, t_save *s);
 void	sort_many(t_save *s);
 
-void	divide(int pivot, int pushed, t_save *s);
+void	divide(int pivot, int pushed, int actions, t_save *s);
 void	combine(t_save *s);
-int		get_median(t_stack *head, int stack_size, t_save *s);
+int		get_median(t_stack *head);
 int		get_first_quartile(t_stack *head);
 int		find_distance_to_cc(int cc, t_stack *next);
 

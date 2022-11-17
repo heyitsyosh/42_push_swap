@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 21:18:48 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/17 09:23:13 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/17 09:27:14 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static int	no_lis_coordinate_compression(t_stack *head)
 	return (no_lis_stack_size);
 }
 
-int	get_median(t_stack *head, int stack_size, t_save *s)
+int	get_median(t_stack *head)
 {
 	t_stack	*next;
 	int		no_lis_stack_size;
