@@ -6,13 +6,13 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 14:20:51 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/17 12:48:13 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/17 18:14:21 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static void	get_lis_end(t_stack *start, t_save *s)
+static void	indicate_lis_nodes(t_stack *start, t_save *s)
 {
 	int		i;
 	t_stack	*prev;
@@ -32,7 +32,6 @@ static void	get_lis_end(t_stack *start, t_save *s)
 		}
 		prev = prev->prev;
 	}
-	s->lis_end = prev;
 }
 
 static void	update_lis(t_stack *node, t_save *s)
@@ -49,7 +48,7 @@ static int	count_subsequence(t_stack *start)
 	int		i_s_len;
 	t_stack	*prev;
 
-	i_s_len = 0;
+	i_s_len = 1;
 	prev = start->prev;
 	while (prev)
 	{
@@ -104,5 +103,5 @@ void	get_lis_and_compressed_coordinates(t_save *s)
 		update_lis(next, s);
 		next = next->next;
 	}
-	get_lis_end(s->lis, s);
+	indicate_lis_nodes(s->lis, s);
 }
