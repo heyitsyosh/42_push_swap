@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 22:38:38 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/17 18:49:46 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/17 23:20:36 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,17 +70,19 @@ static int	count_times_to_push(int pivot, t_stack *head)
 	return (times_to_push);
 }
 
-void	divide(int pivot, int total_pushed, t_save *s)
+void	divide(int pivot, int total_pushed, int cycle, t_save *s)
 {
 	int	pushed;
 	int	times_to_push;
 
 	pushed = 0;
 	times_to_push = count_times_to_push(pivot, s->a_head);
+	printf("%d\n", cycle);
 	while (pushed < times_to_push)
 	{
 		if (s->a_head->to_push)
 		{
+			s->a_head->cycle = cycle;
 			pb(s, PB);
 			pushed++;
 			if (s->first_divide && s->b_head->cc <= s->b_pivot)
@@ -91,5 +93,5 @@ void	divide(int pivot, int total_pushed, t_save *s)
 	}
 	s->first_divide = false;
 	if (pushed + total_pushed < (s->argc - 1) - s->lis->i_s_len)
-		divide(get_median(s->a_head), pushed + total_pushed, s);
+		divide(get_median(s->a_head), pushed + total_pushed, ++cycle, s);
 }

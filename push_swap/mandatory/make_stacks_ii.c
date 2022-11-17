@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 14:20:51 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/17 18:14:21 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/17 22:59:00 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,13 @@ static void	indicate_lis_nodes(t_stack *start, t_save *s)
 	i = 0;
 	prev = start;
 	start->part_of_lis = true;
+	start->sorted = true;
 	while (prev)
 	{
 		if (prev->cc < start->cc)
 		{
 			prev->part_of_lis = true;
+			prev->sorted = true;
 			start = prev;
 			i++;
 			if (i >= s->lis->i_s_len)
@@ -98,6 +100,7 @@ void	get_lis_and_compressed_coordinates(t_save *s)
 		next->cc = coordinate_compression(&sorted_streak, next, s);
 		if (s->has_duplicate)
 			return ;
+		next->sorted = false;
 		next->part_of_lis = false;
 		next->i_s_len = count_subsequence(next);
 		update_lis(next, s);
