@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 22:38:38 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/17 18:10:30 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/17 18:27:06 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ void	divide(int pivot, int total_pushed, t_save *s)
 	times_to_push = count_times_to_push(pivot, s->a_head);
 	while (pushed < times_to_push)
 	{
+		printf("asdf");
+		fflush(stdout);
 		if (s->a_head->to_push)
 		{
 			pb(s, PB);
