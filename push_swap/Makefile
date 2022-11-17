@@ -24,6 +24,7 @@ FILES = main\
 		sort_few\
 		sort_many\
 		divide\
+		divide_utils\
 		tmp_print
 BONUS_FILES = main\
 			get_inputs\

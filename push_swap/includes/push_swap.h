@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:12:15 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/16 22:03:50 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/17 09:23:53 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ typedef struct s_save
 	int			second_pivot;
 	t_stack		*lis;
 	t_stack		*lis_end;
-	int			lis_count;
 	t_command	*commands;
 	t_command	*last_command;
 	int			b_pivot;
@@ -90,10 +89,8 @@ void	sort_many(t_save *s);
 void	divide(int pivot, int pushed, t_save *s);
 void	combine(t_save *s);
 int		get_median(t_stack *head, int stack_size, t_save *s);
-void	find_combo(t_save *s);
+int		get_first_quartile(t_stack *head);
 int		find_distance_to_cc(int cc, t_stack *next);
-bool	ss_if_optimal(t_save *s);
-bool	rr_if_optimal(int original_command, int x, t_save *s);
 
 void	append_command(t_save *s, int command);
 bool	reduce_commands(t_save *s);

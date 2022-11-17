@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 14:20:51 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/16 21:25:59 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/17 08:18:57 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	get_lis_end(t_stack *start, t_save *s)
 			start = prev;
 			prev->part_of_lis = true;
 			i++;
-			if (i >= s->lis->i_s_len)
+			if (i >= s->lis->i_s_len - 1)
 				break ;
 		}
 		prev = prev->prev;
@@ -49,7 +49,7 @@ static int	count_subsequence(t_stack *start)
 	int		i_s_len;
 	t_stack	*prev;
 
-	i_s_len = 0;
+	i_s_len = 1;
 	prev = start->prev;
 	while (prev)
 	{
@@ -105,5 +105,4 @@ void	get_lis_and_compressed_coordinates(t_save *s)
 		next = next->next;
 	}
 	get_lis_end(s->lis, s);
-	s->lis_count = s->lis->i_s_len + 1;
 }
