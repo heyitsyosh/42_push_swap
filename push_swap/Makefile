@@ -35,9 +35,9 @@ BONUS_FILES = main\
 			exit
 
 SRCS = $(foreach src,$(FILES),./mandatory/$(src).c)
-OBJS = $(foreach src,$(FILES),./objs/$(src).o)
+OBJS = $(SRCS:.c=.o)
 BONUS_SRCS = $(foreach bonus_src,$(BONUS_FILES),./bonus/$(bonus_src)_bonus.c)
-BONUS_OBJS = $(foreach bonus_src,$(BONUS_FILES),./objs/$(bonsu_src)_bonus.o)
+BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
 CFLAGS = -Wall -Wextra -Werror -I ./includes
 CC = gcc
@@ -45,9 +45,6 @@ CC = gcc
 #--------------------------------------------------------------------------
 
 all: $(NAME)
-
-test: 
-	echo $(OBJS)
 
 $(NAME): $(OBJS)
 	make -C $(PRINTFDIR)
@@ -67,8 +64,6 @@ clean:
 	$(RM) $(OBJS) $(BONUS_OBJS)
 
 fclean: clean
-	make fclean -C $(PRINTFDIR)
-	make fclean -C $(GNLDIR)
 	$(RM) $(NAME) $(BONUS_NAME)
 
 re: fclean all
