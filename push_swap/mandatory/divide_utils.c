@@ -6,26 +6,24 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 21:18:48 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/17 09:27:14 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/17 10:39:53 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static int	get_coordinate(t_stack *node, t_stack *head)
+static int	get_coordinate(t_stack *node, t_stack *tmp)
 {
-	t_stack	*next;
 	int		smaller_inputs;
 
 	if (node->part_of_lis)
 		return (-1);
-	next = head;
 	smaller_inputs = 0;
-	while (next)
+	while (tmp)
 	{
-		if (next->input < node->input && !next->part_of_lis)
+		if (tmp->input < node->input && !tmp->part_of_lis)
 			smaller_inputs++;
-		next = next->next;
+		tmp = tmp->next;
 	}
 	return (smaller_inputs);
 }
@@ -49,35 +47,31 @@ static int	no_lis_coordinate_compression(t_stack *head)
 
 int	get_median(t_stack *head)
 {
-	t_stack	*next;
 	int		no_lis_stack_size;
 
-	next = head;
 	no_lis_stack_size = no_lis_coordinate_compression(head);
-	while (next)
+	while (head)
 	{
-		if (next->no_lis_cc == no_lis_stack_size / 2)
+		if (head->no_lis_cc == no_lis_stack_size / 2)
 			break ;
-		next = next->next;
+		head = head->next;
 	}
-	return (next->cc);
+	return (head->cc);
 }
 
 int	get_first_quartile(t_stack *head)
 {
-	t_stack	*next;
 	int		no_lis_stack_size;
 	float	first_quartile;
 
-	next = head;
 	no_lis_stack_size = no_lis_coordinate_compression(head);
 	first_quartile = (float)no_lis_stack_size * 0.25;
 	first_quartile = (int)first_quartile;
-	while (next)
+	while (head)
 	{
-		if (next->no_lis_cc == first_quartile)
+		if (head->no_lis_cc == first_quartile)
 			break ;
-		next = next->next;
+		head = head->next;
 	}
-	return (next->cc);
+	return (head->cc);
 }

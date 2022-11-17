@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:12:15 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/17 09:33:37 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/17 12:22:28 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_stack
 	int				no_lis_cc;
 	int				i_s_len;
 	bool			part_of_lis;
+	bool			to_push;
 	struct s_stack	*next;
 }	t_stack;
 
@@ -73,6 +74,7 @@ typedef struct s_save
 void tmp_print(t_save *s, char *command);
 void	tmp_print_bool(t_save *s);
 void	tmp_print_lis(t_save *s);
+void	tmp_print_booll(t_save *s);
 
 void	make_stack_a_and_b(t_save *s, int argc, char **argv);
 int		atoi_with_overflow_check(const char *str, bool *overflow);
@@ -86,7 +88,7 @@ void	free_nodes(t_save *s);
 void	sort_few(int stack_size, t_save *s);
 void	sort_many(t_save *s);
 
-void	divide(int pivot, int pushed, int actions, t_save *s);
+void	divide(int pivot, int total_pushed, t_save *s);
 void	combine(t_save *s);
 int		get_median(t_stack *head);
 int		get_first_quartile(t_stack *head);

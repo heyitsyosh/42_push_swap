@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 14:20:51 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/17 08:18:57 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/17 12:48:13 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ static void	get_lis_end(t_stack *start, t_save *s)
 	start->part_of_lis = true;
 	while (prev)
 	{
-		if (start->cc > prev->cc)
+		if (prev->cc < start->cc)
 		{
-			start = prev;
 			prev->part_of_lis = true;
+			start = prev;
 			i++;
-			if (i >= s->lis->i_s_len - 1)
+			if (i >= s->lis->i_s_len)
 				break ;
 		}
 		prev = prev->prev;
@@ -49,7 +49,7 @@ static int	count_subsequence(t_stack *start)
 	int		i_s_len;
 	t_stack	*prev;
 
-	i_s_len = 1;
+	i_s_len = 0;
 	prev = start->prev;
 	while (prev)
 	{
