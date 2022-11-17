@@ -39,7 +39,7 @@ void	tmp_print_lis(t_save *s)
 	printf("a:");
 	while (next)
 	{
-		printf("[%d]", next->i_s_len);
+		printf("[%d]", next->cycle);
 		fflush(stdout);
 		next = next->next;
 	}
@@ -48,7 +48,7 @@ void	tmp_print_lis(t_save *s)
 	printf("b:");
 	while (next)
 	{
-		printf("[%d]", next->i_s_len);
+		printf("[%d]", next->cycle);
 		fflush(stdout);
 		next = next->next;
 	}
@@ -88,19 +88,23 @@ void	tmp_print_bool(t_save *s)
 	printf("a:");
 	while (next)
 	{
-		printf("[%d]", next->to_push != 0);
-		fflush(stdout);
+		printf("[%d]", next->no_lis_cc);
 		next = next->next;
 	}
 	printf("\n");
 	next = s->b_head;
+	printf("cycle:%d\n", next->cycle);
+	int first_cycle = next->cycle;
 	printf("b:");
 	while (next)
 	{
-		printf("[%d]", next->to_push != 0);
-		fflush(stdout);
+		if (next->cycle < first_cycle)
+		{
+			first_cycle = next->cycle;
+			printf(" | ");
+		}
+		printf("[%d]", next->no_lis_cc);
 		next = next->next;
 	}
 	printf("\n------------------------------\n");
-	fflush(stdout);
 }
