@@ -6,13 +6,13 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 09:20:55 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/17 09:45:57 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/19 07:53:01 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	append_command(t_save *s, int command)
+void	append_command(t_info *i, int command)
 {
 	t_command	*c;
 
@@ -20,14 +20,14 @@ void	append_command(t_save *s, int command)
 	if (!c)
 	{
 		printf("Error\n");
-		free_nodes(s);
+		free_nodes(i);
 		exit (1);
 	}
-	if (s->commands == NULL)
-		s->commands = c;
-	if (s->last_command)
-		s->last_command->next = c;
-	s->last_command = c;
+	if (i->commands == NULL)
+		i->commands = c;
+	if (i->last_command)
+		i->last_command->next = c;
+	i->last_command = c;
 	c->command = command;
 	c->next = NULL;
 }
@@ -59,14 +59,14 @@ static char	*get_string(int command)
 	return (NULL);
 }
 
-void	print_commands(t_save *s)
+void	print_commands(t_info *i)
 {
 	t_command	*next;
 
-	next = s->commands;
+	next = i->commands;
 	while (1)
 	{
-		if (!reduce_commands(s))
+		if (!reduce_commands(i))
 			break ;
 	}
 	while (next)

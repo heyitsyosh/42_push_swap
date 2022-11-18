@@ -1,9 +1,9 @@
 #include "../includes/push_swap.h"
 
-// void	tmp_print(t_save *s, char *command)
+// void	tmp_print(t_info *i, char *command)
 // {
 // 	t_stack *next;
-// 	next = s->a_head;
+// 	next = i->a_head;
 // 	if (command)
 // 		printf("%s\n", command);
 // 	printf("a:");
@@ -14,7 +14,7 @@
 // 		next = next->next;
 // 	}
 // 	printf("\n");
-// 	next = s->b_head;
+// 	next = i->b_head;
 // 	printf("b:");
 // 	while (next)
 // 	{
@@ -26,16 +26,16 @@
 // 	fflush(stdout);
 // }
 
-void	tmp_print(t_save *s, char *command)
+void	tmp_print(t_info *i, char *command)
 {
-	(void)s;
+	(void)i;
 	(void)command;
 }
 
-void	tmp_print_lis(t_save *s)
+void	tmp_print_lis(t_info *i)
 {
 	t_stack *next;
-	next = s->a_head;
+	next = i->a_head;
 	printf("a:");
 	while (next)
 	{
@@ -44,7 +44,7 @@ void	tmp_print_lis(t_save *s)
 		next = next->next;
 	}
 	printf("\n");
-	next = s->b_head;
+	next = i->b_head;
 	printf("b:");
 	while (next)
 	{
@@ -56,10 +56,10 @@ void	tmp_print_lis(t_save *s)
 	fflush(stdout);
 }
 
-void	tmp_print_booll(t_save *s)
+void	tmp_print_booll(t_info *i)
 {
 	t_stack *next;
-	next = s->a_head;
+	next = i->a_head;
 	printf("a:");
 	while (next)
 	{
@@ -68,7 +68,7 @@ void	tmp_print_booll(t_save *s)
 		next = next->next;
 	}
 	printf("\n");
-	next = s->b_head;
+	next = i->b_head;
 	printf("b:");
 	while (next)
 	{
@@ -81,10 +81,10 @@ void	tmp_print_booll(t_save *s)
 }
 
 
-void	tmp_print_bool(t_save *s)
+void	tmp_print_cycles(t_info *i)
 {
 	t_stack *next;
-	next = s->a_head;
+	next = i->a_head;
 	printf("a:");
 	while (next)
 	{
@@ -92,7 +92,7 @@ void	tmp_print_bool(t_save *s)
 		next = next->next;
 	}
 	printf("\n");
-	next = s->b_head;
+	next = i->b_head;
 	printf("cycle:%d\n", next->cycle);
 	int first_cycle = next->cycle;
 	printf("b:");

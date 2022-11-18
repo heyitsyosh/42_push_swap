@@ -6,30 +6,30 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 21:09:42 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/13 21:35:00 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/19 07:51:53 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void	sa(t_save *s, int command)
+void	sa(t_info *i, int command)
 {
 	t_stack	*second;
 	t_stack	*third;
 
-	if (!s->a_head || !s->a_head->next)
+	if (!i->a_head || !i->a_head->next)
 		return ;
-	second = s->a_head->next;
+	second = i->a_head->next;
 	third = second->next;
 	if (third)
-		third->prev = s->a_head;
+		third->prev = i->a_head;
 	else
-		s->a_tail = s->a_head;
-	second->next = s->a_head;
+		i->a_tail = i->a_head;
+	second->next = i->a_head;
 	second->prev = NULL;
-	(s->a_head)->prev = second;
-	(s->a_head)->next = third;
-	s->a_head = second;
+	(i->a_head)->prev = second;
+	(i->a_head)->next = third;
+	i->a_head = second;
 	if (command)
 	{
 		append_command(s, command);
@@ -37,24 +37,24 @@ void	sa(t_save *s, int command)
 	}
 }
 
-void	sb(t_save *s, int command)
+void	sb(t_info *i, int command)
 {
 	t_stack	*second;
 	t_stack	*third;
 
-	if (!s->b_head || !s->b_head->next)
+	if (!i->b_head || !i->b_head->next)
 		return ;
-	second = s->b_head->next;
+	second = i->b_head->next;
 	third = second->next;
 	if (third)
-		third->prev = s->b_head;
+		third->prev = i->b_head;
 	else
-		s->b_tail = s->b_head;
-	second->next = s->b_head;
+		i->b_tail = i->b_head;
+	second->next = i->b_head;
 	second->prev = NULL;
-	(s->b_head)->prev = second;
-	(s->b_head)->next = third;
-	s->b_head = second;
+	(i->b_head)->prev = second;
+	(i->b_head)->next = third;
+	i->b_head = second;
 	if (command)
 	{
 		append_command(s, command);
@@ -62,7 +62,7 @@ void	sb(t_save *s, int command)
 	}
 }
 
-void	ss(t_save *s, int command)
+void	ss(t_info *i, int command)
 {
 	sa(s, NO_COMMAND);
 	sb(s, NO_COMMAND);
