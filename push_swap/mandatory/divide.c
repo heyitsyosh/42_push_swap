@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 22:38:38 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/17 23:20:36 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/19 07:53:39 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,17 @@ static int	distance_to_closest_non_lis(t_stack *head, t_stack *tail)
 	return (len_from_head);
 }
 
-void	ra_till_non_lis(t_save *s)
+void	ra_till_non_lis(t_info *i)
 {
 	int	distance;
 
-	distance = distance_to_closest_non_lis(s->a_head, s->a_tail);
+	distance = distance_to_closest_non_lis(i->a_head, i->a_tail);
 	if (distance > 0)
 		while (distance-- > 0)
-			ra(s, RA);
+			ra(i, RA);
 	else if (distance < 0)
 		while (distance++ < 0)
-			rra(s, RRA);
+			rra(i, RRA);
 }
 
 static int	count_times_to_push(int pivot, t_stack *head)
@@ -70,28 +70,28 @@ static int	count_times_to_push(int pivot, t_stack *head)
 	return (times_to_push);
 }
 
-void	divide(int pivot, int total_pushed, int cycle, t_save *s)
+void	divide(int pivot, int total_pushed, int cycle, t_info *i)
 {
 	int	pushed;
 	int	times_to_push;
 
 	pushed = 0;
-	times_to_push = count_times_to_push(pivot, s->a_head);
-	printf("%d\n", cycle);
+	times_to_push = count_times_to_push(pivot, i->a_head);
+	// printf("%d\n", cycle);
 	while (pushed < times_to_push)
 	{
-		if (s->a_head->to_push)
+		if (i->a_head->to_push)
 		{
-			s->a_head->cycle = cycle;
-			pb(s, PB);
+			i->a_head->cycle = cycle;
+			pb(i, PB);
 			pushed++;
-			if (s->first_divide && s->b_head->cc <= s->b_pivot)
-				rb(s, RB);
+			if (i->first_divide && i->b_head->cc <= i->b_pivot)
+				rb(i, RB);
 		}
 		else
-			ra_till_non_lis(s);
+			ra_till_non_lis(i);
 	}
-	s->first_divide = false;
-	if (pushed + total_pushed < (s->argc - 1) - s->lis->i_s_len)
-		divide(get_median(s->a_head), pushed + total_pushed, ++cycle, s);
+	i->first_divide = false;
+	if (pushed + total_pushed < (i->argc - 1) - i->lis->i_s_len)
+		divide(get_median(i->a_head), pushed + total_pushed, ++cycle, i);
 }

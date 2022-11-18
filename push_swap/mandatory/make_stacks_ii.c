@@ -6,18 +6,18 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 14:20:51 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/17 22:59:00 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/19 08:02:20 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static void	indicate_lis_nodes(t_stack *start, t_save *s)
+static void	indicate_lis_nodes(t_stack *start, t_info *i)
 {
-	int		i;
+	int		j;
 	t_stack	*prev;
 
-	i = 0;
+	j = 0;
 	prev = start;
 	start->part_of_lis = true;
 	start->sorted = true;
@@ -28,21 +28,21 @@ static void	indicate_lis_nodes(t_stack *start, t_save *s)
 			prev->part_of_lis = true;
 			prev->sorted = true;
 			start = prev;
-			i++;
-			if (i >= s->lis->i_s_len)
+			j++;
+			if (j >= i->lis->i_s_len)
 				break ;
 		}
 		prev = prev->prev;
 	}
 }
 
-static void	update_lis(t_stack *node, t_save *s)
+static void	update_lis(t_stack *node, t_info *i)
 {
-	if (node->i_s_len > s->lis->i_s_len)
-		s->lis = node;
-	else if (node->i_s_len == s->lis->i_s_len)
-		if (node->cc > s->lis->cc)
-			s->lis = node;
+	if (node->i_s_len > i->lis->i_s_len)
+		i->lis = node;
+	else if (node->i_s_len == i->lis->i_s_len)
+		if (node->cc > i->lis->cc)
+			i->lis = node;
 }
 
 static int	count_subsequence(t_stack *start)
@@ -61,12 +61,12 @@ static int	count_subsequence(t_stack *start)
 	return (i_s_len);
 }
 
-static int	coordinate_compression(int *sorted_streak, t_stack *node, t_save *s)
+static int	coordinate_compression(int *sorted_streak, t_stack *node, t_info *i)
 {
 	t_stack	*next;
 	int		smaller_inputs;
 
-	next = s->a_head;
+	next = i->a_head;
 	smaller_inputs = 0;
 	while (next)
 	{
@@ -74,37 +74,37 @@ static int	coordinate_compression(int *sorted_streak, t_stack *node, t_save *s)
 			smaller_inputs++;
 		else if (next->input == node->input)
 			if (next != node)
-				s->has_duplicate = true;
+				i->has_duplicate = true;
 		next = next->next;
 	}
 	if (*sorted_streak < smaller_inputs)
 		(*sorted_streak)++;
 	else
-		s->sorted = false;
+		i->sorted = false;
 	return (smaller_inputs);
 }
 
 //			lis-->(longest increasing subsequence)
-void	get_lis_and_compressed_coordinates(t_save *s)
+void	get_lis_and_compressed_coordinates(t_info *i)
 {
 	t_stack	*next;
 	int		sorted_streak;
 
-	if (!s->a_head)
+	if (!i->a_head)
 		return ;
-	next = s->a_head;
-	s->lis = s->a_head;
+	next = i->a_head;
+	i->lis = i->a_head;
 	sorted_streak = -1;
 	while (next)
 	{
-		next->cc = coordinate_compression(&sorted_streak, next, s);
-		if (s->has_duplicate)
+		next->cc = coordinate_compression(&sorted_streak, next, i);
+		if (i->has_duplicate)
 			return ;
 		next->sorted = false;
 		next->part_of_lis = false;
 		next->i_s_len = count_subsequence(next);
-		update_lis(next, s);
+		update_lis(next, i);
 		next = next->next;
 	}
-	indicate_lis_nodes(s->lis, s);
+	indicate_lis_nodes(i->lis, i);
 }

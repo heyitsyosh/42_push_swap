@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 17:50:25 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/16 21:22:15 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/19 07:55:20 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,49 +45,49 @@ static t_stack	*make_node(char *arg)
 	return (ret);
 }
 
-static void	malloc_head(t_save *s, int argc, char **argv)
+static void	malloc_head(t_info *i, int argc, char **argv)
 {
 	if (argc > 1)
 	{
-		s->a_head = make_node(argv[1]);
-		s->a_tail = s->a_head;
-		s->a_size++;
-		if (!s->a_head)
+		i->a_head = make_node(argv[1]);
+		i->a_tail = i->a_head;
+		i->a_size++;
+		if (!i->a_head)
 			exit (1);
 	}
 }
 
-static void	init_struct(t_save	*s)
+static void	init_struct(t_info	*i)
 {
-	s->a_head = NULL;
-	s->b_head = NULL;
-	s->a_size = 0;
-	s->b_size = 0;
-	s->commands = NULL;
-	s->last_command = NULL;
-	s->sorted = true;
-	s->has_duplicate = false;
+	i->a_head = NULL;
+	i->b_head = NULL;
+	i->a_size = 0;
+	i->b_size = 0;
+	i->commands = NULL;
+	i->last_command = NULL;
+	i->sorted = true;
+	i->has_duplicate = false;
 }
 
-void	make_stack_a_and_b(t_save *s, int argc, char **argv)
+void	make_stack_a_and_b(t_info *i, int argc, char **argv)
 {
-	int		i;
+	int		j;
 	t_stack	*new;
 
-	init_struct(s);
-	malloc_head(s, argc, argv);
-	s->argc = argc;
-	i = 2;
+	init_struct(i);
+	malloc_head(i, argc, argv);
+	i->argc = argc;
+	j = 2;
 	while (i < argc)
 	{
-		new = make_node(argv[i]);
+		new = make_node(argv[j]);
 		if (!new)
 		{
-			free_nodes(s);
+			free_nodes(i);
 			exit (1);
 		}
-		stack_add_back(new, &(s->a_tail));
-		s->a_size++;
-		i++;
+		stack_add_back(new, &(i->a_tail));
+		i->a_size++;
+		j++;
 	}
 }
