@@ -6,46 +6,46 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 11:09:09 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/19 08:17:08 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/21 15:07:11 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static void	swap_if_optimal(t_info *i)
+// static void	swap_if_optimal(t_info *i)
+// {
+// 	if (i->a_size < 2 || i->b_size < 2)
+// 		return ;
+// 	if (i->b_head->cc + 1 == (i->b_head->next)->cc)
+// }
+
+static void	find_closest_sortable()
 {
-	if (i->a_size < 2 || i->b_size < 2)
-		return ;
-	if (i->b_head->cc + 1 == (i->b_head->next)->cc)
-		pa_if_optimal;
+	
 }
 
-static int	get_cycle_info(t_combine *c, t_info *i)
+static void	sort_cycle_into_a(t_combine *c, t_info *i)
 {
-	t_stack	*next;
-
-	next = i->b_head;
-	c->largest_of_cycle = i->b_head->no_lis_cc;
-	while (next->cycle == c->cycle)
+	while (1)
 	{
-		if (next->no_lis_cc > c->largest_of_cycle)
-			c->largest_of_cycle = next->no_lis_cc;
-		next = next->next;
+		find_closest_sortable();
+		//swap_if_optimal();
 	}
-	c->median = (c->largest_of_cycle + 1) / 2;
 }
-
-static void	sort_cycle_loop;
 
 void	combine(t_info *i)
 {
 	t_combine	c;
 
 	c.cycle = i->b_head->cycle;
-	while (c.cycle-- >= 0)
+	while (c.cycle >= 0)
 	{
 		get_cycle_info(&c, i);
-		sort_cycle_loop();
+		adjust_a(&c, i);
+		c.upper_limit = i->a_tail;
+		c.lower_limit = i->a_head;
+		sort_cycle_into_a(&c, i);
+		c.cycle--;
 	}
 }
 

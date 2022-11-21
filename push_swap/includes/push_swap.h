@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:12:15 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/19 08:10:19 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/21 14:54:27 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,9 @@ typedef struct s_combine
 {
 	int			cycle;
 	int			median;
-	int			largest_of_cycle;
+	t_stack		*largest_of_cycle;
+	t_stack		*upper_limit;
+	t_stack		*lower_limit;
 }	t_combine;
 
 //-----------------------------------------------------------------------//
@@ -92,13 +94,16 @@ void	stack_add_front(t_stack *node, t_stack **head, t_stack **tail);
 void	free_nodes(t_info *i);
 
 void	sort_few(int stack_size, t_info *i);
-void	sort_many(t_info *i);
 
+void	sort_many(t_info *i);
 void	divide(int pivot, int total_pushed, int cycle, t_info *i);
 void	combine(t_info *i);
+
 int		get_median(t_stack *head);
 int		get_first_quartile(t_stack *head);
 int		find_distance_to_cc(int cc, t_stack *next);
+int		get_cycle_info(t_combine *c, t_info *i);
+void	adjust_a(t_combine *c, t_info *i);
 
 void	append_command(t_info *i, int command);
 bool	reduce_commands(t_info *i);
