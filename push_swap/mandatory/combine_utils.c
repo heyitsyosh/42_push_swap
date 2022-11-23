@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:32:37 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/23 18:42:25 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/23 21:06:55 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,12 @@ static int	get_first_adjust_distance(t_combine *c, t_info *i)
 	while (1)
 	{
 		distance++;
-		if (next->cc > c->largest_of_cycle->cc
+		if (next->cc > c->largest_of_cycle->cc)
+		{
 			if (c->largest_of_cycle->cc + 1 == i->a_size + i->b_size)
 				break ;
 			&& next->cc < c->largest_of_cycle->cc)
-
+		}
 		next = next->next;
 	}
 	return (distance);
