@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 11:09:09 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/23 20:15:26 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/23 20:28:26 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ static void	swap_if_optimal(t_info *i)
 	if (i->a_size < 2 || i->b_size < 2)
 		return ;
 	if (i->b_head->cc + 1 == (i->b_head->next)->cc)
+		sb(i, SB);
 }
 
 static void	move_to_closest_sortable(t_combine *c, t_info *i)
@@ -56,7 +57,7 @@ static void	move_to_closest_sortable(t_combine *c, t_info *i)
 	{
 		while (j++ < c->distance_from_tail)
 		{
-			swap_if_optimal();
+			swap_if_optimal(i);
 			rrb(i, RRB);
 		}
 	}
@@ -64,7 +65,7 @@ static void	move_to_closest_sortable(t_combine *c, t_info *i)
 	{
 		while (j++ < c->distance_from_head)
 		{
-			swap_if_optimal();
+			swap_if_optimal(i);
 			rb(i, RB);
 		}
 	}
@@ -78,7 +79,7 @@ static void	sort_cycle_into_a(t_combine *c, t_info *i)
 			return ;
 		move_to_closest_sortable(c, i);
 		pa(i, PA);
-		if (c->)
+		if (i->a_head->cc == (i->a_tail)->cc + 1)
 			ra(i, RA);
 	}
 }
