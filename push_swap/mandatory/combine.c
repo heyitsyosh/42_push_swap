@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 11:09:09 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/23 20:28:26 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/23 20:59:26 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,4 +97,3 @@ void	combine(t_info *i)
 		c.cycle--;
 	}
 }
-//if smaller than median of division chunk, sort on top of stack with bigger on top
