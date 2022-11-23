@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: myoshika <myoshika@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:12:15 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/21 14:54:27 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/23 18:42:54 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,10 @@ typedef struct s_info
 typedef struct s_combine
 {
 	int			cycle;
-	int			median;
+	int			smallest;
 	t_stack		*largest_of_cycle;
-	t_stack		*upper_limit;
-	t_stack		*lower_limit;
+	int			distance_from_head;
+	int			distance_from_tail;
 }	t_combine;
 
 //-----------------------------------------------------------------------//

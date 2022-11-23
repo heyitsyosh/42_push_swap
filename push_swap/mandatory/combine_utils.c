@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   combine_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: myoshika <myoshika@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:32:37 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/21 15:26:35 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/23 18:42:25 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ static int	get_first_adjust_distance(t_combine *c, t_info *i)
 
 	next = i->a_head;
 	distance = 0;
-	if (c->largest_of_cycle->cc + 1 == i->a_size + i->b_size)
-		
 	while (1)
 	{
 		distance++;
 		if (next->cc > c->largest_of_cycle->cc
+			if (c->largest_of_cycle->cc + 1 == i->a_size + i->b_size)
+				break ;
 			&& next->cc < c->largest_of_cycle->cc)
-			break ;
+
 		next = next->next;
 	}
 	return (distance);
@@ -73,5 +73,4 @@ int	get_cycle_info(t_combine *c, t_info *i)
 			(c->largest_of_cycle) = next;
 		next = next->next;
 	}
-	c->median = ((c->largest_of_cycle)->no_lis_cc + 1) / 2;
 }
