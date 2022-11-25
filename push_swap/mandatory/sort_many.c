@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 23:46:18 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/25 07:25:58 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/25 11:52:16 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,7 @@ void	sort_many(t_info *i)
 	i->first_divide = true;
 	i->b_pivot = get_first_quartile(i->a_head);
 	divide(get_median(i->a_head), 0, 1, i);
+	tmp_print(i, NULL);
+	tmp_print_cycles(i);
 	combine(i);
 }

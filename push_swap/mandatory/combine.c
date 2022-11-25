@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   combine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: myoshika <myoshika@student.42.fr>          +#+  +:+       +#+        */
+/*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 11:09:09 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/23 20:59:26 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/25 17:40:43 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ void	combine(t_info *i)
 	{
 		get_cycle_info(&c, i);
 		adjust_a(&c, i);
+		printf("<adjusted a>\n");
 		sort_cycle_into_a(&c, i);
 		c.cycle--;
 	}

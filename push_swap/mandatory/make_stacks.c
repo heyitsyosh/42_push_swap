@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 17:50:25 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/25 10:46:36 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/25 11:34:09 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,10 @@ static void	malloc_head(t_info *i, int argc, char **argv)
 		i->a_tail = i->a_head;
 		i->a_size++;
 		if (!i->a_head)
+		{
+			ft_printf("Error\n");
 			exit (1);
+		}
 	}
 }
 
@@ -84,6 +87,7 @@ void	make_stack_a_and_b(t_info *i, int argc, char **argv)
 		if (!new)
 		{
 			free_nodes(i);
+			ft_printf("Error\n");
 			exit (1);
 		}
 		stack_add_back(new, &(i->a_tail));
