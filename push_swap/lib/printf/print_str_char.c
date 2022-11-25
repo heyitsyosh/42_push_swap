@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 17:21:29 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/01 07:37:24 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/25 10:45:30 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	print_str(const char *input, size_t len)
 	return (len);
 }
 
-int	no_conversion(const char *input, t_info *info)
+int	no_conversion(const char *input, t_printf *info)
 {
 	char	*ptr_to_next_percent;
 	size_t	len;
@@ -37,7 +37,7 @@ int	no_conversion(const char *input, t_info *info)
 	return (print_len);
 }
 
-int	put_str(t_info *info, const char *str, bool need_to_free_str)
+int	put_str(t_printf *info, const char *str, bool need_to_free_str)
 {
 	size_t	s_len;
 	int		printed;
@@ -65,7 +65,7 @@ int	put_str(t_info *info, const char *str, bool need_to_free_str)
 	return (printed);
 }
 
-int	put_char(t_info *info, int chr)
+int	put_char(t_printf *info, int chr)
 {
 	int		printed;
 

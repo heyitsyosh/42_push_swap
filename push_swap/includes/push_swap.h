@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: myoshika <myoshika@student.42.fr>          +#+  +:+       +#+        */
+/*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:12:15 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/23 18:42:54 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/25 10:53:55 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ int		atoi_with_overflow_check(const char *str, bool *overflow);
 void	get_lis_and_compressed_coordinates(t_info *i);
 
 t_stack	*stack_min(t_stack *head);
+t_stack	*stack_max(t_stack *head);
 void	stack_add_back(t_stack *node, t_stack **tail);
 void	stack_add_front(t_stack *node, t_stack **head, t_stack **tail);
 void	free_nodes(t_info *i);
@@ -102,7 +103,7 @@ void	combine(t_info *i);
 int		get_median(t_stack *head);
 int		get_first_quartile(t_stack *head);
 int		find_distance_to_cc(int cc, t_stack *next);
-int		get_cycle_info(t_combine *c, t_info *i);
+void	get_cycle_info(t_combine *c, t_info *i);
 void	adjust_a(t_combine *c, t_info *i);
 
 void	append_command(t_info *i, int command);

@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 13:34:42 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/19 07:52:06 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/25 10:12:48 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,20 @@ t_stack	*stack_min(t_stack *head)
 		head = head->next;
 	}
 	return (min);
+}
+
+t_stack	*stack_max(t_stack *head)
+{
+	t_stack	*max;
+
+	max = head;
+	while (head)
+	{
+		if (head->cc > max->cc)
+			max = head;
+		head = head->next;
+	}
+	return (max);
 }
 
 void	stack_add_back(t_stack *node, t_stack **tail)

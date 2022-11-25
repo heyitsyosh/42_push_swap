@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 07:01:55 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/01 07:37:48 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/25 10:44:12 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	basic_atoi(const char *str, size_t *i, int num)
 	return (num);
 }
 
-static int	get_width_precision(const char *str, size_t i, t_info *info)
+static int	get_width_precision(const char *str, size_t i, t_printf *info)
 {
 	if (ft_isdigit(str[i]))
 		info->width = basic_atoi(str + i, &i, 0);
@@ -38,7 +38,7 @@ static int	get_width_precision(const char *str, size_t i, t_info *info)
 	return (i);
 }
 
-static size_t	get_flags(const char *after_pct, size_t i, t_info *info)
+static size_t	get_flags(const char *after_pct, size_t i, t_printf *info)
 {
 	while (after_pct[i] && ft_strchr("- +#0", after_pct[i]))
 	{
@@ -57,7 +57,7 @@ static size_t	get_flags(const char *after_pct, size_t i, t_info *info)
 	return (i);
 }
 
-size_t	get_info(const char *after_pct, t_info *info)
+size_t	get_info(const char *after_pct, t_printf *info)
 {
 	size_t	i;
 

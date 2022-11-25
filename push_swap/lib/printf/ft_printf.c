@@ -6,13 +6,13 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 07:21:17 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/01 07:37:45 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/25 10:44:30 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/ft_printf.h"
 
-size_t	conversion(const char *specifiers, t_info *info, va_list args)
+size_t	conversion(const char *specifiers, t_printf *info, va_list args)
 {
 	int		printed;
 
@@ -38,7 +38,7 @@ size_t	conversion(const char *specifiers, t_info *info, va_list args)
 	return (printed);
 }
 
-static void	init(t_info *info)
+static void	init(t_printf *info)
 {
 	info->fmt = ' ';
 	info->precision = -1;
@@ -52,10 +52,10 @@ static void	init(t_info *info)
 int	ft_printf(const char *input, ...)
 {
 	va_list		args;
-	t_info		*info;
+	t_printf	*info;
 	size_t		printed;
 
-	info = malloc(sizeof(t_info));
+	info = malloc(sizeof(t_printf));
 	if (!info)
 		return (-1);
 	info->i = 0;
