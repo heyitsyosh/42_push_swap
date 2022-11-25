@@ -61,8 +61,8 @@ $(BONUS_NAME): $(BONUS_OBJS)
 	$(CC) $(CFLAGS) -o $@ $(BONUS_OBJS) $(FT_PRINTF) $(GNL)
 
 clean:
-	make clean -C $(PRINTFDIR)
-	make clean -C $(GNLDIR)
+	make fclean -C $(PRINTFDIR)
+	make fclean -C $(GNLDIR)
 	$(RM) $(OBJS) $(BONUS_OBJS)
 
 fclean: clean
