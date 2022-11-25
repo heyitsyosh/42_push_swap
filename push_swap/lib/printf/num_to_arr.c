@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 10:30:10 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/01 07:37:36 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/25 10:45:08 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	get_ull_len(unsigned long long ull, int base)
 	return (digits);
 }
 
-static void	make_arr(char *arr, unsigned long long ull, int base, t_info *info)
+static void	make_arr(char *arr, unsigned long long ull, int base, t_printf *i)
 {
 	const char			*lower = "0123456789abcdef";
 	const char			*upper = "0123456789ABCDEF";
@@ -38,7 +38,7 @@ static void	make_arr(char *arr, unsigned long long ull, int base, t_info *info)
 		div *= base;
 	while (div != 0)
 	{
-		if (info->fmt == 'X')
+		if (i->fmt == 'X')
 			*arr = upper[ull / div];
 		else
 			*arr = lower[ull / div];
@@ -49,7 +49,7 @@ static void	make_arr(char *arr, unsigned long long ull, int base, t_info *info)
 	*arr = '\0';
 }
 
-char	*ft_ulltoa(unsigned long long ull, int base, t_info *info)
+char	*ft_ulltoa(unsigned long long ull, int base, t_printf *info)
 {
 	char		*arr;
 	int			digits;
@@ -62,7 +62,7 @@ char	*ft_ulltoa(unsigned long long ull, int base, t_info *info)
 	return (arr);
 }
 
-int	put_unsigned(t_info *info, unsigned long long ull)
+int	put_unsigned(t_printf *info, unsigned long long ull)
 {
 	int		printed;
 	char	*num;
@@ -83,7 +83,7 @@ int	put_unsigned(t_info *info, unsigned long long ull)
 	return (printed);
 }
 
-int	put_signed(t_info *info, char *num)
+int	put_signed(t_printf *info, char *num)
 {
 	int		printed;
 

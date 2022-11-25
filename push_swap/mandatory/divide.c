@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 22:38:38 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/19 07:53:39 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/25 07:25:41 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,16 +77,18 @@ void	divide(int pivot, int total_pushed, int cycle, t_info *i)
 
 	pushed = 0;
 	times_to_push = count_times_to_push(pivot, i->a_head);
-	// printf("%d\n", cycle);
 	while (pushed < times_to_push)
 	{
 		if (i->a_head->to_push)
 		{
-			i->a_head->cycle = cycle;
 			pb(i, PB);
+			i->b_head->cycle = cycle;
 			pushed++;
 			if (i->first_divide && i->b_head->cc <= i->b_pivot)
+			{
+				i->b_head->cycle--;
 				rb(i, RB);
+			}
 		}
 		else
 			ra_till_non_lis(i);

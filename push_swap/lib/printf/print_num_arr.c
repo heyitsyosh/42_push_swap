@@ -6,13 +6,13 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 00:37:03 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/16 04:40:58 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/25 10:45:21 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/ft_printf.h"
 
-static int	put_space_padding(int call, int flags, int not_space, t_info *info)
+static int	put_space_padding(int call, int flags, int not_space, t_printf *info)
 {
 	int	pad_count;
 
@@ -29,7 +29,7 @@ static int	put_space_padding(int call, int flags, int not_space, t_info *info)
 	return (pad_count);
 }
 
-static int	put_zero_padding(int flags, int num_len, t_info *info)
+static int	put_zero_padding(int flags, int num_len, t_printf *info)
 {
 	int	pad_count;
 
@@ -43,7 +43,7 @@ static int	put_zero_padding(int flags, int num_len, t_info *info)
 	return (pad_count);
 }
 
-static int	put_flag(char flag, int call, t_info *info)
+static int	put_flag(char flag, int call, t_printf *info)
 {
 	int	flag_count;
 
@@ -69,7 +69,7 @@ static int	put_flag(char flag, int call, t_info *info)
 	return (flag_count);
 }
 
-static void	set_up(char *num, int *num_len, t_info *info)
+static void	set_up(char *num, int *num_len, t_printf *info)
 {
 	if (info->precision == 0 && num[0] == '0')
 	{
@@ -84,7 +84,7 @@ static void	set_up(char *num, int *num_len, t_info *info)
 		info->precision -= *num_len;
 }
 
-int	put_num(char *num, int num_len, int printed, t_info *info)
+int	put_num(char *num, int num_len, int printed, t_printf *info)
 {
 	int	printed_flags;
 

@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 15:43:53 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/19 07:51:53 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/25 10:48:47 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	ra(t_info *i, int command)
 	(i->a_head)->prev = NULL;
 	if (command)
 	{
-		append_command(s, command);
-		tmp_print(s, "ra");
+		append_command(i, command);
+		tmp_print(i, "ra");
 	}
 }
 
@@ -41,15 +41,15 @@ void	rb(t_info *i, int command)
 	(i->b_head)->prev = NULL;
 	if (command)
 	{
-		append_command(s, command);
-		tmp_print(s, "rb");
+		append_command(i, command);
+		tmp_print(i, "rb");
 	}
 }
 
 void	rr(t_info *i, int command)
 {
-	ra(s, NO_COMMAND);
-	rb(s, NO_COMMAND);
-	append_command(s, command);
-	tmp_print(s, "rr");
+	ra(i, NO_COMMAND);
+	rb(i, NO_COMMAND);
+	append_command(i, command);
+	tmp_print(i, "rr");
 }

@@ -3,41 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   combine_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: myoshika <myoshika@student.42.fr>          +#+  +:+       +#+        */
+/*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:32:37 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/23 21:06:55 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/25 10:53:44 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static int	get_first_adjust_distance(t_combine *c, t_info *i)
+static int	get_first_adjust_distance(t_info *i)
 {
-	t_stack	*next;
 	int		distance;
+	t_stack	*tmp;
+	t_stack	*node_to_move_to_top;
 
-	next = i->a_head;
 	distance = 0;
+	tmp = i->a_head;
+	node_to_move_to_top = i->lis;
+	if (i->lis->cc + 1 == i->a_size + i->b_size)
+	{
+		while (node_to_move_to_top->prev)
+			if (node_to_move_to_top->prev->cc + 1 == node_to_move_to_top->cc)
+				node_to_move_to_top = node_to_move_to_top->prev;
+	}
 	while (1)
 	{
+		if (tmp == node_to_move_to_top)
+			break ;
 		distance++;
-		if (next->cc > c->largest_of_cycle->cc)
-		{
-			if (c->largest_of_cycle->cc + 1 == i->a_size + i->b_size)
-				break ;
-			&& next->cc < c->largest_of_cycle->cc)
-		}
-		next = next->next;
+		tmp = tmp->next;
 	}
 	return (distance);
 }
 
-static void	first_adjust(t_combine *c, t_info *i)
+static void	first_adjust(t_info *i)
 {
 	int		distance;
 
-	distance = get_first_adjust_distance(c, i);
+	distance = get_first_adjust_distance(i);
 	if (distance <= i->a_size / 2)
 		while (distance--)
 			ra(i, RA);
@@ -52,7 +56,7 @@ static void	first_adjust(t_combine *c, t_info *i)
 void	adjust_a(t_combine *c, t_info *i)
 {
 	if (c->cycle == i->b_head->cycle)
-		first_adjust(c, i);
+		first_adjust(i);
 	else
 	{
 		while (!i->a_head->part_of_lis)
@@ -62,7 +66,7 @@ void	adjust_a(t_combine *c, t_info *i)
 	}
 }
 
-int	get_cycle_info(t_combine *c, t_info *i)
+void	get_cycle_info(t_combine *c, t_info *i)
 {
 	t_stack	*next;
 

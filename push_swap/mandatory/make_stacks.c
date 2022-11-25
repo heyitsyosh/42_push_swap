@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 17:50:25 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/19 07:55:20 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/25 10:46:36 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	make_stack_a_and_b(t_info *i, int argc, char **argv)
 	malloc_head(i, argc, argv);
 	i->argc = argc;
 	j = 2;
-	while (i < argc)
+	while (j < argc)
 	{
 		new = make_node(argv[j]);
 		if (!new)
