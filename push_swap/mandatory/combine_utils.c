@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:32:37 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/25 10:53:44 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/25 17:42:56 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,28 @@ static int	get_first_adjust_distance(t_info *i)
 	t_stack	*tmp;
 	t_stack	*node_to_move_to_top;
 
-	distance = 0;
+	distance = 1;
 	tmp = i->a_head;
 	node_to_move_to_top = i->lis;
 	if (i->lis->cc + 1 == i->a_size + i->b_size)
 	{
 		while (node_to_move_to_top->prev)
+		{
 			if (node_to_move_to_top->prev->cc + 1 == node_to_move_to_top->cc)
 				node_to_move_to_top = node_to_move_to_top->prev;
+			else
+				break ;
+		}
 	}
-	while (1)
+	while (tmp)
 	{
 		if (tmp == node_to_move_to_top)
 			break ;
 		distance++;
 		tmp = tmp->next;
 	}
+	printf("[%d]\n", distance);
+	fflush(stdout);
 	return (distance);
 }
 
