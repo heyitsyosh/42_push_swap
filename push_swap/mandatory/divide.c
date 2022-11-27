@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 22:38:38 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/28 03:15:38 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/28 04:09:28 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static int	count_times_to_push(int pivot, t_stack *head)
 	return (times_to_push);
 }
 
-void	divide(int pivot, int total_pushed, int cycle, t_info *i)
+void	divide(int pivot, int total_pushed, t_info *i)
 {
 	int	pushed;
 	int	times_to_push;
@@ -82,18 +82,14 @@ void	divide(int pivot, int total_pushed, int cycle, t_info *i)
 		if (i->a_head->to_push)
 		{
 			pb(i, PB);
-			i->b_head->cycle = cycle;
 			pushed++;
 			if (i->first_divide && i->b_head->cc >= i->b_pivot)
-			{
-				i->b_head->cycle--;
 				rb(i, RB);
-			}
 		}
 		else
 			ra_till_non_lis(i);
 	}
 	i->first_divide = false;
 	if (pushed + total_pushed < (i->argc - 1) - i->lis->i_s_len)
-		divide(get_median(i->a_head), pushed + total_pushed, ++cycle, i);
+		divide(get_median(i->a_head), pushed + total_pushed, i);
 }
