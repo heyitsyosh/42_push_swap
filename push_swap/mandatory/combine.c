@@ -6,21 +6,23 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 11:09:09 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/28 05:48:44 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/28 05:59:51 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static bool	find_closest_sortable(t_combine *c, t_info *i)
+//finds the closest sortable node
+bool	find_sortable(t_stack *next, t_stack *prev, t_combine *c, t_info *i)
 {
-	t_stack	*next;
-	t_stack	*prev;
+	int		bottom;
 
-	next = i->b_head;
-	prev = i->b_tail;
 	c->distance_from_head = 0;
 	c->distance_from_tail = 1;
+	if (i->a_tail->cc + 1 == i->a_size + i->b_size)
+		bottom = 0;
+	else
+		bottom = i->a_tail->cc + 1;
 	while (next && next->cycle == c->cycle)
 	{
 		if (next->cc == c->median || next->cc == i->a_tail->cc + 1)
@@ -48,7 +50,7 @@ static void	swap_if_optimal(int distance, t_info *i)
 		sb(i, SB);
 }
 
-static void	move_to_closest_sortable(t_combine *c, t_info *i)
+static void	move_to_sortable(t_combine *c, t_info *i)
 {
 	int	j;
 
@@ -75,23 +77,24 @@ static void	sort_into_a(t_combine *c, t_info *i)
 {
 	while (1)
 	{
-		if (!find_closest_sortable(c, i))
+		if (!find_sortable(i->b_head, i->b_tail, c, i))
 			return ;
-		move_to_closest_sortable(c, i);
+		move_to_sortable(c, i);
 		pa(i, PA);
 		if (i->a_head->cc != c->median)
 			ra(i, RA);
 		else
-			c->median
+			c->median++;
 	}
 }
 
 void	combine(t_info *i)
 {
 	t_combine	c;
+	int			biggest_cycle;
 
 	first_adjust(&c, i);
-	mark_cycles(i);
+	biggest_cycle = mark_cycles(i);
 	c.cycle = 0;
 	while (i->b_size > 0)
 	{
