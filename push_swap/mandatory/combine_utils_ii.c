@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 05:08:08 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/28 05:08:39 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/28 06:00:51 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	mark_cycles(t_info *i)
 	cc = 0;
 	cycle = 0;
 	next_a = i->a_head;
-	while (1)
+	while (next_a)
 	{
 		next_a = mark_a(&cc, cycle, next_a);
 		mark_b(&cc, cycle, next_a, i);
