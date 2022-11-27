@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:12:15 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/25 10:53:55 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/27 17:51:20 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,9 @@ typedef struct s_info
 typedef struct s_combine
 {
 	int			cycle;
-	int			smallest;
-	t_stack		*largest_of_cycle;
+	int			median;
+	t_stack		*a_min;
+	t_stack		*b_min;
 	int			distance_from_head;
 	int			distance_from_tail;
 }	t_combine;

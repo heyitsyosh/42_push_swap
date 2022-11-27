@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 22:38:38 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/25 07:25:41 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/27 17:39:09 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static int	count_times_to_push(int pivot, t_stack *head)
 	times_to_push = 0;
 	while (head)
 	{
-		if (head->cc <= pivot && !head->part_of_lis)
+		if (head->cc >= pivot && !head->part_of_lis)
 		{
 			head->to_push = true;
 			times_to_push++;
@@ -84,7 +84,7 @@ void	divide(int pivot, int total_pushed, int cycle, t_info *i)
 			pb(i, PB);
 			i->b_head->cycle = cycle;
 			pushed++;
-			if (i->first_divide && i->b_head->cc <= i->b_pivot)
+			if (i->first_divide && i->b_head->cc >= i->b_pivot)
 			{
 				i->b_head->cycle--;
 				rb(i, RB);
