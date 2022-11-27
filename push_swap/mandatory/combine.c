@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 11:09:09 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/27 17:51:37 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/28 03:50:20 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,18 +87,23 @@ static void	sort_cycle_into_a(t_combine *c, t_info *i)
 	}
 }
 
+void 	mark_cycles(t_info *i)
+{
+	
+}
+
 void	combine(t_info *i)
 {
 	t_combine	c;
 
-	c.cycle = i->b_head->cycle;
-	c.a_min = stack_min(i->a_head);
-	while (c.cycle >= 0)
+	first_adjust(&c, i);
+	mark_cycles(i);
+	c.cycle = 0;
+	while (i->b_size > 0)
 	{
-		c.b_min = stack_min(i->b_head);
-		adjust_a(&c, i);
-		set_info(&c, i);
+//		c.b_min = stack_min(i->b_head);
+		get_median_of_to_push(to_push_size, i->b_head, &c);
 		sort_into_a(&c, i);
-		c.cycle--;
+		c.cycle++;
 	}
 }
