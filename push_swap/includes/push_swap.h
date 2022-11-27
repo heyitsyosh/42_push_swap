@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:12:15 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/27 17:51:20 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/28 03:05:59 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,13 @@ typedef struct s_stack
 	int				input;
 	int				cc;
 	int				no_lis_cc;
+	int				to_push_cc;
 	int				i_s_len;
 	int				cycle;
 	bool			sorted;
 	bool			part_of_lis;
 	bool			to_push;
+	int				combine_cycle;
 	struct s_stack	*next;
 }	t_stack;
 
@@ -74,6 +76,8 @@ typedef struct s_combine
 	int			median;
 	t_stack		*a_min;
 	t_stack		*b_min;
+	t_stack		*smaller_bound;
+	t_stack		*larger_bound;
 	int			distance_from_head;
 	int			distance_from_tail;
 }	t_combine;

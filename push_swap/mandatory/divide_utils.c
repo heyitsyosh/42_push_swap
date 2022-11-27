@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 21:18:48 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/25 03:35:25 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/28 03:16:11 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	get_first_quartile(t_stack *head)
 	float	first_quartile;
 
 	no_lis_stack_size = no_lis_coordinate_compression(head);
-	first_quartile = (float)no_lis_stack_size * 0.25;
+	first_quartile = (float)no_lis_stack_size * 0.75;
 	first_quartile = (int)first_quartile;
 	while (head)
 	{
