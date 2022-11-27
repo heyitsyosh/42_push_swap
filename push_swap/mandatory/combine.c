@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 11:09:09 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/28 03:50:20 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/28 05:48:44 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static void	move_to_closest_sortable(t_combine *c, t_info *i)
 	}
 }
 
-static void	sort_cycle_into_a(t_combine *c, t_info *i)
+static void	sort_into_a(t_combine *c, t_info *i)
 {
 	while (1)
 	{
@@ -79,17 +79,11 @@ static void	sort_cycle_into_a(t_combine *c, t_info *i)
 			return ;
 		move_to_closest_sortable(c, i);
 		pa(i, PA);
-		if (i->a_head->cc == c->median)
-		{
+		if (i->a_head->cc != c->median)
 			ra(i, RA);
-			c->median--;
-		}
+		else
+			c->median
 	}
-}
-
-void 	mark_cycles(t_info *i)
-{
-	
 }
 
 void	combine(t_info *i)
@@ -101,9 +95,13 @@ void	combine(t_info *i)
 	c.cycle = 0;
 	while (i->b_size > 0)
 	{
-//		c.b_min = stack_min(i->b_head);
-		get_median_of_to_push(to_push_size, i->b_head, &c);
-		sort_into_a(&c, i);
+		if (c.cycle % 2 == 0)
+			adjust_a(&c, i);
+		else
+		{
+			get_median_of_to_push(i->b_head, &c);
+			sort_into_a(&c, i);
+		}
 		c.cycle++;
 	}
 }

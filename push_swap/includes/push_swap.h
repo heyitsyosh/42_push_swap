@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:12:15 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/28 03:05:59 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/28 05:39:16 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ typedef struct s_stack
 	bool			sorted;
 	bool			part_of_lis;
 	bool			to_push;
-	int				combine_cycle;
 	struct s_stack	*next;
 }	t_stack;
 
@@ -76,8 +75,6 @@ typedef struct s_combine
 	int			median;
 	t_stack		*a_min;
 	t_stack		*b_min;
-	t_stack		*smaller_bound;
-	t_stack		*larger_bound;
 	int			distance_from_head;
 	int			distance_from_tail;
 }	t_combine;
@@ -102,7 +99,7 @@ void	free_nodes(t_info *i);
 void	sort_few(int stack_size, t_info *i);
 
 void	sort_many(t_info *i);
-void	divide(int pivot, int total_pushed, int cycle, t_info *i);
+void	divide(int pivot, int total_pushed, t_info *i);
 void	combine(t_info *i);
 
 int		get_median(t_stack *head);
