@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 14:20:51 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/19 08:02:20 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/26 14:36:00 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	indicate_lis_nodes(t_stack *start, t_info *i)
 	start->sorted = true;
 	while (prev)
 	{
-		if (prev->cc < start->cc)
+		if (prev->cc > start->cc)
 		{
 			prev->part_of_lis = true;
 			prev->sorted = true;
@@ -40,9 +40,6 @@ static void	update_lis(t_stack *node, t_info *i)
 {
 	if (node->i_s_len > i->lis->i_s_len)
 		i->lis = node;
-	else if (node->i_s_len == i->lis->i_s_len)
-		if (node->cc > i->lis->cc)
-			i->lis = node;
 }
 
 static int	count_subsequence(t_stack *start)
@@ -54,7 +51,7 @@ static int	count_subsequence(t_stack *start)
 	prev = start->prev;
 	while (prev)
 	{
-		if (start->cc > prev->cc)
+		if (prev->cc > start->cc)
 			return (prev->i_s_len + 1);
 		prev = prev->prev;
 	}

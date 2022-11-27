@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 11:09:09 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/25 17:40:43 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/27 17:51:37 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@ static bool	find_closest_sortable(t_combine *c, t_info *i)
 	c->distance_from_tail = 1;
 	while (next && next->cycle == c->cycle)
 	{
-		if (prev->cc == i->a_head->cc + 1 || prev->cc + 1 == i->a_tail->cc)
+		if (next->cc == c->median || next->cc == i->a_tail->cc + 1)
 			break ;
 		c->distance_from_head++;
 		next = next->next;
 	}
 	while (prev && prev->cycle == c->cycle)
 	{
-		if (prev->cc == i->a_head->cc + 1 || prev->cc + 1 == i->a_tail->cc)
+		if (prev->cc == c->median || prev->cc == i->a_tail->cc + 1)
 			break ;
 		c->distance_from_tail++;
 		prev = prev->prev;
@@ -40,9 +40,9 @@ static bool	find_closest_sortable(t_combine *c, t_info *i)
 	return (true);
 }
 
-static void	swap_if_optimal(t_info *i)
+static void	swap_if_optimal(int distance, t_info *i)
 {
-	if (i->a_size < 2 || i->b_size < 2)
+	if (i->b_size < 2 || distance < 2)
 		return ;
 	if (i->b_head->cc + 1 == (i->b_head->next)->cc)
 		sb(i, SB);
@@ -53,11 +53,11 @@ static void	move_to_closest_sortable(t_combine *c, t_info *i)
 	int	j;
 
 	j = 0;
-	if (c->distance_from_tail > c->distance_from_head)
+	if (c->distance_from_tail < c->distance_from_head)
 	{
 		while (j++ < c->distance_from_tail)
 		{
-			swap_if_optimal(i);
+			swap_if_optimal(c->distance_from_tail, i);
 			rrb(i, RRB);
 		}
 	}
@@ -65,7 +65,7 @@ static void	move_to_closest_sortable(t_combine *c, t_info *i)
 	{
 		while (j++ < c->distance_from_head)
 		{
-			swap_if_optimal(i);
+			swap_if_optimal(c->distance_from_head, i);
 			rb(i, RB);
 		}
 	}
@@ -79,8 +79,11 @@ static void	sort_cycle_into_a(t_combine *c, t_info *i)
 			return ;
 		move_to_closest_sortable(c, i);
 		pa(i, PA);
-		if (i->a_head->cc == (i->a_tail)->cc + 1)
+		if (i->a_head->cc == c->median)
+		{
 			ra(i, RA);
+			c->median--;
+		}
 	}
 }
 
@@ -89,12 +92,13 @@ void	combine(t_info *i)
 	t_combine	c;
 
 	c.cycle = i->b_head->cycle;
+	c.a_min = stack_min(i->a_head);
 	while (c.cycle >= 0)
 	{
-		get_cycle_info(&c, i);
+		c.b_min = stack_min(i->b_head);
 		adjust_a(&c, i);
-		printf("<adjusted a>\n");
-		sort_cycle_into_a(&c, i);
+		set_info(&c, i);
+		sort_into_a(&c, i);
 		c.cycle--;
 	}
 }

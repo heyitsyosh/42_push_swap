@@ -6,82 +6,29 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:32:37 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/25 17:42:56 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/27 17:50:09 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static int	get_first_adjust_distance(t_info *i)
-{
-	int		distance;
-	t_stack	*tmp;
-	t_stack	*node_to_move_to_top;
-
-	distance = 1;
-	tmp = i->a_head;
-	node_to_move_to_top = i->lis;
-	if (i->lis->cc + 1 == i->a_size + i->b_size)
-	{
-		while (node_to_move_to_top->prev)
-		{
-			if (node_to_move_to_top->prev->cc + 1 == node_to_move_to_top->cc)
-				node_to_move_to_top = node_to_move_to_top->prev;
-			else
-				break ;
-		}
-	}
-	while (tmp)
-	{
-		if (tmp == node_to_move_to_top)
-			break ;
-		distance++;
-		tmp = tmp->next;
-	}
-	printf("[%d]\n", distance);
-	fflush(stdout);
-	return (distance);
-}
-
-static void	first_adjust(t_info *i)
-{
-	int		distance;
-
-	distance = get_first_adjust_distance(i);
-	if (distance <= i->a_size / 2)
-		while (distance--)
-			ra(i, RA);
-	else
-	{
-		distance = i->a_size - distance;
-		while (distance--)
-			rra(i, RRA);
-	}
-}
-
 void	adjust_a(t_combine *c, t_info *i)
 {
-	if (c->cycle == i->b_head->cycle)
-		first_adjust(i);
-	else
-	{
-		while (!i->a_head->part_of_lis)
-			ra(i, RA);
-		while (i->a_head->cc > (c->largest_of_cycle)->cc)
-			ra(i, RA);
-	}
+	t_stack	*a_max;
+
+	while (!i->a_head->part_of_lis)
+		ra(i, RA);
+	a_max = min(i->a_head);
+	if (!c->smallest_of_cycle || a_max->cc )
+	while (i->a_head->cc == (c->b_min)->cc + 1)
+		ra(i, RA);
 }
 
-void	get_cycle_info(t_combine *c, t_info *i)
+//mark nodes to push
+void	set_info(t_combine *c, t_info *i)
 {
-	t_stack	*next;
 
-	next = i->b_head;
-	c->largest_of_cycle = i->b_head;
-	while (next->cycle == c->cycle)
-	{
-		if (next->no_lis_cc > (c->largest_of_cycle)->no_lis_cc)
-			(c->largest_of_cycle) = next;
-		next = next->next;
-	}
+	
 }
+//fix so last 2 cycles have quadrant split
+// coorinate compress for cycle 0 and 1
