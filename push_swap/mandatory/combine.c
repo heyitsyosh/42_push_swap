@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 11:09:09 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/28 05:59:51 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/28 17:53:32 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,25 +19,22 @@ bool	find_sortable(t_stack *next, t_stack *prev, t_combine *c, t_info *i)
 
 	c->distance_from_head = 0;
 	c->distance_from_tail = 1;
-	if (i->a_tail->cc + 1 == i->a_size + i->b_size)
-		bottom = 0;
-	else
-		bottom = i->a_tail->cc + 1;
-	while (next && next->cycle == c->cycle)
+	bottom = (stack_min(i->b_head))->cc;
+	while (next)
 	{
-		if (next->cc == c->median || next->cc == i->a_tail->cc + 1)
+		if ((next->cc == c->median || next->cc == bottom))
 			break ;
 		c->distance_from_head++;
 		next = next->next;
 	}
-	while (prev && prev->cycle == c->cycle)
+	while (prev)
 	{
-		if (prev->cc == c->median || prev->cc == i->a_tail->cc + 1)
+		if (prev->cc == c->median || prev->cc == bottom)
 			break ;
 		c->distance_from_tail++;
 		prev = prev->prev;
 	}
-	if (c->distance_from_head == 0 && c->distance_from_tail == 1)
+	if (!next && !prev)
 		return (false);
 	return (true);
 }
@@ -77,7 +74,7 @@ static void	sort_into_a(t_combine *c, t_info *i)
 {
 	while (1)
 	{
-		if (!find_sortable(i->b_head, i->b_tail, c, i))
+		if (i->b_size == 0 || !find_sortable(i->b_head, i->b_tail, c, i))
 			return ;
 		move_to_sortable(c, i);
 		pa(i, PA);
@@ -91,20 +88,21 @@ static void	sort_into_a(t_combine *c, t_info *i)
 void	combine(t_info *i)
 {
 	t_combine	c;
-	int			biggest_cycle;
 
-	first_adjust(&c, i);
-	biggest_cycle = mark_cycles(i);
-	c.cycle = 0;
-	while (i->b_size > 0)
+	first_adjust(i);
+	mark_chunks(i);
+	//tmp_print_chunk(i);
+	c.chunk = 0;
+	while (i->b_size != 0)
 	{
-		if (c.cycle % 2 == 0)
+		if (c.chunk % 2 == 0)
 			adjust_a(&c, i);
 		else
 		{
 			get_median_of_to_push(i->b_head, &c);
 			sort_into_a(&c, i);
 		}
-		c.cycle++;
+		c.chunk++;
 	}
+	first_adjust(i);
 }

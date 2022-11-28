@@ -26,7 +26,10 @@ FILES = main\
 		sort_many\
 		divide\
 		divide_utils\
-		tmp_print
+		tmp_print\
+		combine\
+		combine_utils\
+		combine_utils_ii
 BONUS_FILES = main\
 			get_inputs\
 			atoi\

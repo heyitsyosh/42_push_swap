@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 14:20:51 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/28 03:19:10 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/28 13:24:32 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void	get_lis_and_compressed_coordinates(t_info *i)
 			return ;
 		next->sorted = false;
 		next->part_of_lis = false;
-		next->combine_cycle = -1;
+		next->chunk = -1;
 		next->i_s_len = count_subsequence(next);
 		update_lis(next, i);
 		next = next->next;
