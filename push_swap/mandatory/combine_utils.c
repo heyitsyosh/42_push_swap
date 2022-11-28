@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:32:37 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/28 17:08:06 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/28 18:30:34 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ void	get_median_of_to_push(t_stack *head, t_combine *c)
 		next->to_push_cc = get_coordinate(c->chunk, next, head);
 		if (next->to_push_cc == to_push_size / 2)
 			c->median = next->cc;
+		if (next->to_push_cc + 1 == to_push_size)
+			c->largest = next->cc;
 		next = next->next;
 	}
 }
