@@ -32,30 +32,6 @@ void	tmp_print(t_info *i, char *command)
 	(void)command;
 }
 
-void	tmp_print_lis(t_info *i)
-{
-	t_stack *next;
-	next = i->a_head;
-	printf("a:");
-	while (next)
-	{
-		printf("[%d]", next->cycle);
-		fflush(stdout);
-		next = next->next;
-	}
-	printf("\n");
-	next = i->b_head;
-	printf("b:");
-	while (next)
-	{
-		printf("[%d]", next->cycle);
-		fflush(stdout);
-		next = next->next;
-	}
-	printf("\n------------------------------\n");
-	fflush(stdout);
-}
-
 void	tmp_print_booll(t_info *i)
 {
 	t_stack *next;
@@ -80,31 +56,53 @@ void	tmp_print_booll(t_info *i)
 	fflush(stdout);
 }
 
-
-void	tmp_print_cycles(t_info *i)
+void	tmp_print_chunk(t_info *i)
 {
 	t_stack *next;
 	next = i->a_head;
 	printf("a:");
 	while (next)
 	{
-		printf("[%d]", next->no_lis_cc);
+		printf("[%d]", next->chunk);
+		fflush(stdout);
 		next = next->next;
 	}
 	printf("\n");
 	next = i->b_head;
-	printf("cycle:%d\n", next->cycle);
-	int first_cycle = next->cycle;
 	printf("b:");
 	while (next)
 	{
-		if (next->cycle < first_cycle)
-		{
-			first_cycle = next->cycle;
-			printf(" | ");
-		}
-		printf("[%d]", next->no_lis_cc);
+		printf("[%d]", next->chunk);
+		fflush(stdout);
 		next = next->next;
 	}
 	printf("\n------------------------------\n");
+	fflush(stdout);
 }
+// void	tmp_print_cycles(t_info *i)
+// {
+// 	t_stack *next;
+// 	next = i->a_head;
+// 	printf("a:");
+// 	while (next)
+// 	{
+// 		printf("[%d]", next->no_lis_cc);
+// 		next = next->next;
+// 	}
+// 	printf("\n");
+// 	next = i->b_head;
+// 	printf("cycle:%d\n", next->cycle);
+// 	int first_cycle = next->cycle;
+// 	printf("b:");
+// 	while (next)
+// 	{
+// 		if (next->cycle < first_cycle)
+// 		{
+// 			first_cycle = next->cycle;
+// 			printf(" | ");
+// 		}
+// 		printf("[%d]", next->no_lis_cc);
+// 		next = next->next;
+// 	}
+// 	printf("\n------------------------------\n");
+// }
