@@ -106,3 +106,19 @@ void	tmp_print_chunk(t_info *i)
 // 	}
 // 	printf("\n------------------------------\n");
 // }
+
+
+void	tmp_print_new_coords(t_info *i)
+{
+	t_stack *next;
+	next = i->b_head;
+	printf("b:");
+	while (next)
+	{
+		printf("[%d]", next->to_push_cc);
+		fflush(stdout);
+		next = next->next;
+	}
+	printf("\n------------------------------\n");
+	fflush(stdout);
+}

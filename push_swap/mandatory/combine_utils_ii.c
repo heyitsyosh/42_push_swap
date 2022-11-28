@@ -39,7 +39,7 @@ static void	mark_b(int *cc, int chunk, t_stack *a, t_info *i)
 	}
 	while (next)
 	{
-		if (*cc < a->cc && next->chunk == -1)
+		if (next->cc < a->cc && next->chunk == -1)
 		{
 			next->chunk = chunk;
 			(*cc)++;

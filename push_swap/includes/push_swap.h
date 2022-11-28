@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:12:15 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/28 13:53:10 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/28 18:21:29 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ typedef struct s_combine
 {
 	int			chunk;
 	int			median;
+	int			largest;
 	int			distance_from_head;
 	int			distance_from_tail;
 }	t_combine;
@@ -83,6 +84,7 @@ void	tmp_print_chunk(t_info *i);
 void tmp_print(t_info *i, char *command);
 void tmp_print_cycles(t_info *i);
 void tmp_print_booll(t_info *i);
+void	tmp_print_new_coords(t_info *i);
 
 void	make_stack_a_and_b(t_info *i, int argc, char **argv);
 int		atoi_with_overflow_check(const char *str, bool *overflow);
