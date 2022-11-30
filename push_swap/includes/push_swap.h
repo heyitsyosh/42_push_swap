@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:12:15 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/28 18:21:29 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/11/30 01:51:28 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,9 @@ typedef struct s_stack
 	struct s_stack	*prev;
 	int				input;
 	int				cc;
+	int				cycle;
 	int				no_lis_cc;
-	int				to_push_cc;
 	int				i_s_len;
-	int				chunk;
-	bool			sorted;
 	bool			part_of_lis;
 	bool			to_push;
 	struct s_stack	*next;
@@ -67,15 +65,16 @@ typedef struct s_info
 	bool		first_divide;
 	bool		sorted;
 	bool		has_duplicate;
+	int			biggest_cycle;
 }	t_info;
 
 typedef struct s_combine
 {
-	int			chunk;
-	int			median;
-	int			largest;
-	int			distance_from_head;
-	int			distance_from_tail;
+	t_stack	*to_pa;
+	int		cycle;
+	int		distance_from_head;
+	int		distance_from_tail;
+	int		distance;
 }	t_combine;
 
 //-----------------------------------------------------------------------//
@@ -99,17 +98,13 @@ void	free_nodes(t_info *i);
 void	sort_few(int stack_size, t_info *i);
 
 void	sort_many(t_info *i);
-void	divide(int pivot, int total_pushed, t_info *i);
+void	divide(int pivot, int total_pushed, int cycle, t_info *i);
 void	combine(t_info *i);
 
 int		get_median(t_stack *head);
 int		get_first_quartile(t_stack *head);
 int		find_distance_to_cc(int cc, t_stack *next);
-
-int		mark_chunks(t_info *i);
-void	first_adjust(t_info *i);
-void	adjust_a(t_combine *c, t_info *i);
-void	get_median_of_to_push(t_stack *head, t_combine *c);
+void 	adjust_a(t_combine *c, t_info *i);
 
 void	append_command(t_info *i, int command);
 bool	reduce_commands(t_info *i);

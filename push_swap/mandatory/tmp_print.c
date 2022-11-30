@@ -26,11 +26,38 @@
 // 	fflush(stdout);
 // }
 
+
+
 void	tmp_print(t_info *i, char *command)
 {
 	(void)i;
 	(void)command;
 }
+
+void	tmp_print_chunk(t_info *i)
+{
+	t_stack *next;
+	next = i->a_head;
+	printf("a:");
+	while (next)
+	{
+		printf("[%d]", next->cycle);
+		fflush(stdout);
+		next = next->next;
+	}
+	printf("\n");
+	next = i->b_head;
+	printf("b:");
+	while (next)
+	{
+		printf("[%d]", next->cycle);
+		fflush(stdout);
+		next = next->next;
+	}
+	printf("\n------------------------------\n");
+	fflush(stdout);
+}
+
 
 void	tmp_print_booll(t_info *i)
 {
@@ -56,29 +83,6 @@ void	tmp_print_booll(t_info *i)
 	fflush(stdout);
 }
 
-void	tmp_print_chunk(t_info *i)
-{
-	t_stack *next;
-	next = i->a_head;
-	printf("a:");
-	while (next)
-	{
-		printf("[%d]", next->chunk);
-		fflush(stdout);
-		next = next->next;
-	}
-	printf("\n");
-	next = i->b_head;
-	printf("b:");
-	while (next)
-	{
-		printf("[%d]", next->chunk);
-		fflush(stdout);
-		next = next->next;
-	}
-	printf("\n------------------------------\n");
-	fflush(stdout);
-}
 // void	tmp_print_cycles(t_info *i)
 // {
 // 	t_stack *next;
@@ -106,19 +110,3 @@ void	tmp_print_chunk(t_info *i)
 // 	}
 // 	printf("\n------------------------------\n");
 // }
-
-
-void	tmp_print_new_coords(t_info *i)
-{
-	t_stack *next;
-	next = i->b_head;
-	printf("b:");
-	while (next)
-	{
-		printf("[%d]", next->to_push_cc);
-		fflush(stdout);
-		next = next->next;
-	}
-	printf("\n------------------------------\n");
-	fflush(stdout);
-}
