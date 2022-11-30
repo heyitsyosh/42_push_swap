@@ -16,6 +16,6 @@ void	sort_many(t_info *i)
 {
 	i->first_divide = true;
 	i->b_pivot = get_first_quartile(i->a_head);
-	divide(get_median(i->a_head), 0, i);
+	divide(get_median(i->a_head), 0, 1, i);
 	combine(i);
 }
