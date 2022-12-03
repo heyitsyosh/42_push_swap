@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 15:43:55 by myoshika          #+#    #+#             */
-/*   Updated: 2022/12/04 05:03:02 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/12/04 05:08:44 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	pa(t_info *i, int command)
 void	pb(t_info *i, int command)
 {
 	t_stack	*new_a_head;
-
 
 	if (!i->a_head)
 		return ;
