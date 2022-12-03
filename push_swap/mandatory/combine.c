@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 11:09:09 by myoshika          #+#    #+#             */
-/*   Updated: 2022/12/03 19:41:15 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/12/04 04:43:35 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,10 @@ static bool	mark_costs(t_combine *c, t_info *i)
 	t_stack	*next;
 	bool	has_cycle;
 
-	next = i->a_head;
+	next = i->b_head;
 	has_cycle = false;
 	while (next)
 	{
-		printf("next->cycle%d, c->cycle%d\n", next->cycle, c->cycle);
 		if (next->cycle == c->cycle)
 		{
 			next->rb_cost = distance_from_top(next->cc, i->b_head);
@@ -47,7 +46,6 @@ static bool	mark_costs(t_combine *c, t_info *i)
 		}
 		next = next->next;
 	}
-	fflush(stdout);
 	return (has_cycle);
 }
 
@@ -74,8 +72,6 @@ void	combine(t_info *i)
 		{
 			if (!mark_costs(&c, i))
 				break ;
-			printf("asdf");
-			fflush(stdout);
 			adjust_a_and_b(&c, i);
 			pa(i, PA);
 		}
