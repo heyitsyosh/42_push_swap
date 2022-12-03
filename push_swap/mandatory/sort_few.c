@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 03:19:04 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/25 10:49:03 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/12/01 20:36:56 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	sort_three(int first, int second, int third, t_info *i)
 	}
 }
 
-int	find_distance_to_cc(int cc, t_stack *next)
+int	distance_from_top(int cc, t_stack *next)
 {
 	int		distance;
 
@@ -47,11 +47,26 @@ int	find_distance_to_cc(int cc, t_stack *next)
 	return (distance);
 }
 
+int	distance_from_bottom(int cc, t_stack *prev)
+{
+	int		distance;
+
+	distance = 0;
+	while (prev)
+	{
+		if (prev->cc == cc)
+			break ;
+		distance++;
+		prev = prev->prev;
+	}
+	return (distance);
+}
+
 static void	sort_five_or_four(int cc, t_info *i)
 {
 	int	distance;
 
-	distance = find_distance_to_cc(cc, i->a_head);
+	distance = distance_from_top(cc, i->a_head);
 	if (distance < 2)
 		while (distance-- > 0)
 			ra(i, RA);

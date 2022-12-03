@@ -6,64 +6,61 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 11:09:09 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/30 13:52:13 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/12/03 19:41:15 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-bool	find_sortable(t_stack *next, t_stack *prev, t_combine *c)
+static void	calculate_costs(t_stack *t, t_info *i)
 {
-	c->distance_from_head = 0;
-	c->distance_from_tail = 1;
+	t_costs	c;
+	t_stack	*new_a_head;
+
+	new_a_head = find_appropriate_a_head(t, i);
+	t->ra_cost = distance_from_top(new_a_head->cc, i->a_head);
+	t->rra_cost = distance_from_bottom(new_a_head->cc, i->a_tail) + 1;
+	c.ra_rrb = t->ra_cost + t->rrb_cost;
+	c.rra_rb = t->rra_cost + t->rb_cost;
+	c.ra_rb = t->ra_cost + t->rb_cost - ft_min(t->ra_cost, t->rb_cost);
+	c.rra_rrb = t->rra_cost + t->rrb_cost - ft_min(t->rra_cost, t->rrb_cost);
+	pick_optimal(t, &c);
+}
+
+static bool	mark_costs(t_combine *c, t_info *i)
+{
+	t_stack	*next;
+	bool	has_cycle;
+
+	next = i->a_head;
+	has_cycle = false;
 	while (next)
 	{
+		printf("next->cycle%d, c->cycle%d\n", next->cycle, c->cycle);
 		if (next->cycle == c->cycle)
-			break ;
-		c->distance_from_head++;
+		{
+			next->rb_cost = distance_from_top(next->cc, i->b_head);
+			next->rrb_cost = distance_from_bottom(next->cc, i->b_tail) + 1;
+			calculate_costs(next, i);
+			update_optimal_actions(has_cycle, next, c);
+			has_cycle = true;
+		}
 		next = next->next;
 	}
-	while (prev)
-	{
-		if (prev->cycle == c->cycle)
-			break ;
-		c->distance_from_tail++;
-		prev = prev->prev;
-	}
-	if (!next || !prev)
-		return (false);
-	return (true);
+	fflush(stdout);
+	return (has_cycle);
 }
 
-static void	swap_if_optimal(int distance, t_info *i)
+static void	adjust_a_and_b(t_combine *c, t_info *i)
 {
-	if (i->b_size < 2 || distance < 2)
-		return ;
-	if (i->b_head->cc + 1 == (i->b_head->next)->cc)
-		sb(i, SB);
-}
-
-static void	move_to_sortable(t_combine *c, t_info *i)
-{
-	int	j;
-
-	j = 0;
-	if (c->distance_from_tail < c->distance_from_head)
-	{
-		while (j++ < c->distance_from_tail)
-		{
-			swap_if_optimal(c->distance_from_tail, i);
-			rrb(i, RRB);
-		}
-	}
-	else
-	{
-		while (j++ < c->distance_from_head)
-		{
-			swap_if_optimal(c->distance_from_head, i);
-			rb(i, RB);
-		}
-	}
+	while (c->optimal_ra--)
+		ra(i, RA);
+	while (c->optimal_rra--)
+		rra(i, RRA);
+	while (c->optimal_rb--)
+		rb(i, RB);
+	while (c->optimal_rrb--)
+		rrb(i, RRB);
 }
 
 void	combine(t_info *i)
@@ -73,12 +70,13 @@ void	combine(t_info *i)
 	c.cycle = i->biggest_cycle;
 	while (i->b_size != 0)
 	{
-		while (1)
+		while (i->b_size != 0)
 		{
-			if (i->b_size == 0 || !find_sortable(i->b_head, i->b_tail, &c))
+			if (!mark_costs(&c, i))
 				break ;
-			move_to_sortable(&c, i);
-			adjust_a(&c, i);
+			printf("asdf");
+			fflush(stdout);
+			adjust_a_and_b(&c, i);
 			pa(i, PA);
 		}
 		c.cycle--;
