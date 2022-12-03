@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:12:15 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/30 01:51:28 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/12/03 19:04:31 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,18 @@
 
 typedef struct s_stack
 {
-	struct s_stack	*prev;
 	int				input;
 	int				cc;
 	int				cycle;
-	int				no_lis_cc;
 	int				i_s_len;
+	int				no_lis_cc;
 	bool			part_of_lis;
 	bool			to_push;
+	int				rb_cost;
+	int				rrb_cost;
+	int				ra_cost;
+	int				rra_cost;
+	struct s_stack	*prev;
 	struct s_stack	*next;
 }	t_stack;
 
@@ -70,12 +74,22 @@ typedef struct s_info
 
 typedef struct s_combine
 {
-	t_stack	*to_pa;
+	t_stack	*optimal_a_head;
+	int		optimal_ra;
+	int		optimal_rra;
+	int		optimal_rb;
+	int		optimal_rrb;
 	int		cycle;
-	int		distance_from_head;
-	int		distance_from_tail;
 	int		distance;
 }	t_combine;
+
+typedef struct s_costs
+{
+	int		ra_rrb;
+	int		rra_rb;
+	int		ra_rb;
+	int		rra_rrb;
+}	t_costs;
 
 //-----------------------------------------------------------------------//
 
@@ -103,8 +117,11 @@ void	combine(t_info *i);
 
 int		get_median(t_stack *head);
 int		get_first_quartile(t_stack *head);
-int		find_distance_to_cc(int cc, t_stack *next);
-void 	adjust_a(t_combine *c, t_info *i);
+int		distance_from_top(int cc, t_stack *next);
+int		distance_from_bottom(int cc, t_stack *prev);
+t_stack	*find_appropriate_a_head(t_stack *target, t_info *i);
+void	pick_optimal(t_stack *t, t_costs *c);
+void	update_optimal_actions(bool	not_first_call, t_stack *t, t_combine *c);
 
 void	append_command(t_info *i, int command);
 bool	reduce_commands(t_info *i);
