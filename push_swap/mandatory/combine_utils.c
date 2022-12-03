@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 18:51:21 by myoshika          #+#    #+#             */
-/*   Updated: 2022/12/04 04:48:37 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/12/04 05:09:13 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ t_stack	*find_appropriate_a_head(t_stack *target, t_info *i)
 void	update_optimal_actions(bool	not_first_call, t_stack *t, t_combine *c)
 {
 	int	optimal_cost;
-
 
 	optimal_cost = 0;
 	if (not_first_call)
@@ -98,4 +97,3 @@ void	pick_optimal(t_stack *t, t_costs *c)
 		set_stack_b_actions(0, t->rrb_cost, t);
 	}
 }
-
