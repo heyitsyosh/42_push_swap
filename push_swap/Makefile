@@ -26,7 +26,6 @@ FILES = main\
 		sort_many\
 		divide\
 		divide_utils\
-		tmp_print\
 		combine\
 		combine_utils
 BONUS_FILES = main\
