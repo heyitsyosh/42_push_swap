@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 18:51:21 by myoshika          #+#    #+#             */
-/*   Updated: 2022/12/03 19:16:03 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/12/04 04:48:37 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	update_optimal_actions(bool	not_first_call, t_stack *t, t_combine *c)
 {
 	int	optimal_cost;
 
+
 	optimal_cost = 0;
 	if (not_first_call)
 	{
@@ -72,28 +73,29 @@ static void	set_stack_b_actions(int rb, int rrb, t_stack *target)
 
 void	pick_optimal(t_stack *t, t_costs *c)
 {
-	if (c->ra_rrb < c->rra_rb && c->ra_rrb < c->ra_rb && c->ra_rrb < c->rra_rrb)
+	if (c->ra_rrb <= c->rra_rb && c->ra_rrb <= c->ra_rb
+		&& c->ra_rrb <= c->rra_rrb)
 	{
 		set_stack_a_actions(t->ra_cost, 0, t);
 		set_stack_b_actions(0, t->rrb_cost, t);
 	}
-	else if (c->rra_rb < c->ra_rrb && c->rra_rb < c->ra_rb
-		&& c->rra_rb < c->rra_rrb)
+	else if (c->rra_rb <= c->ra_rrb && c->rra_rb <= c->ra_rb
+		&& c->rra_rb <= c->rra_rrb)
 	{
 		set_stack_a_actions(0, t->rra_cost, t);
 		set_stack_b_actions(t->rb_cost, 0, t);
 	}
-	else if (c->ra_rb < c->ra_rrb && c->ra_rb < c->rra_rb
-		&& c->ra_rb < c->rra_rrb)
+	else if (c->ra_rb <= c->ra_rrb && c->ra_rb <= c->rra_rb
+		&& c->ra_rb <= c->rra_rrb)
 	{
-		set_stack_a_actions(0, t->rra_cost, t);
+		set_stack_a_actions(t->ra_cost, 0, t);
 		set_stack_b_actions(t->rb_cost, 0, t);
 	}
-	else if (c->rra_rrb < c->ra_rrb && c->rra_rrb < c->rra_rb
-		&& c->rra_rrb < c->ra_rb)
+	else if (c->rra_rrb <= c->ra_rrb && c->rra_rrb <= c->rra_rb
+		&& c->rra_rrb <= c->ra_rb)
 	{
 		set_stack_a_actions(0, t->rra_cost, t);
-		set_stack_b_actions(t->rb_cost, 0, t);
+		set_stack_b_actions(0, t->rrb_cost, t);
 	}
 }
 
