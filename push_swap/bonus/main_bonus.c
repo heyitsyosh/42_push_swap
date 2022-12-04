@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 17:25:39 by myoshika          #+#    #+#             */
-/*   Updated: 2022/12/05 01:19:28 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/12/05 01:41:39 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int	main(int argc, char **argv)
 	if (argc <= 1)
 		return (0);
 	if (!make_stack_a_and_b(&a, &b, argc, argv) || has_duplicates(a, argc - 2))
-		free_and_exit_error(a, b, NULL);
+		free_and_exit(a, b, NULL);
 	instructions = get_instructions(a, b);
 	i = 0;
 	sizes.a_top = argc - 2;
@@ -103,7 +103,7 @@ int	main(int argc, char **argv)
 	while (instructions[i])
 	{
 		if (!do_action(instructions[i], a, b, &sizes))
-			free_and_exit_error(a, b, instructions);
+			free_and_exit(a, b, instructions);
 		i++;
 	}
 	return (check_if_sorted(a, b, instructions, &sizes));

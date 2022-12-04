@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 17:17:30 by myoshika          #+#    #+#             */
-/*   Updated: 2022/12/05 00:57:11 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/12/05 01:41:14 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	**get_instructions(int *a, int *b);
 int		atoi_with_overflow_check(const char *str, bool *overflow);
 
 void	free_double_ptr(char **to_free);
-void	free_and_exit_error(int *a, int *b, char **instructions);
+void	free_and_exit(int *a, int *b, char **instructions);
 
 void	sa(int *a, t_sizes *s);
 void	sb(int *b, t_sizes *s);
