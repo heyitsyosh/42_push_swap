@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 17:25:39 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/19 07:58:26 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/12/05 01:19:28 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,26 @@ int	check_if_sorted(int *a, int *b, char **instructions, t_sizes *s)
 	return (0);
 }
 
+static bool	has_duplicates(int *a, int a_top)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i <= a_top)
+	{
+		j = i + 1;
+		while (j <= a_top)
+		{
+			if (a[i] == a[j])
+				return (true);
+			j++;
+		}
+		i++;
+	}
+	return (false);
+}
+
 int	main(int argc, char **argv)
 {
 	size_t	i;
@@ -72,20 +92,18 @@ int	main(int argc, char **argv)
 
 	a = NULL;
 	b = NULL;
-	if (argc <= 1 || !make_stack_a_and_b(&a, &b, argc, argv))
-		free_and_exit(NULL);
-	instructions = get_instructions();
+	if (argc <= 1)
+		return (0);
+	if (!make_stack_a_and_b(&a, &b, argc, argv) || has_duplicates(a, argc - 2))
+		free_and_exit_error(a, b, NULL);
+	instructions = get_instructions(a, b);
 	i = 0;
 	sizes.a_top = argc - 2;
 	sizes.b_top = -1;
 	while (instructions[i])
 	{
 		if (!do_action(instructions[i], a, b, &sizes))
-		{
-			free(a);
-			free(b);
-			free_and_exit(instructions);
-		}
+			free_and_exit_error(a, b, instructions);
 		i++;
 	}
 	return (check_if_sorted(a, b, instructions, &sizes));

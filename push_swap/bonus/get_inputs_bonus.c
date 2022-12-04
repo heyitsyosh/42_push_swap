@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 05:46:16 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/23 07:11:11 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/12/05 00:59:12 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,7 @@ static bool	malloc_a_and_b(int **a, int **b, int argc)
 	*a = (int *)malloc(sizeof(int) * (argc - 1));
 	*b = (int *)malloc(sizeof(int) * (argc - 1));
 	if (!*a || !b)
-	{
-		free(a);
-		free(b);
 		return (false);
-	}
 	return (true);
 }
 
@@ -55,17 +51,13 @@ bool	make_stack_a_and_b(int **a, int **b, int argc, char **argv)
 	{
 		(*a)[a_top - i] = atoi_with_overflow_check(argv[i + 1], &overflow);
 		if (overflow || !str_is_num(argv[i + 1]))
-		{
-			free(*a);
-			free(*b);
 			return (false);
-		}
 		i++;
 	}
 	return (true);
 }
 
-char	**get_instructions(void)
+char	**get_instructions(int *a, int *b)
 {
 	char	*line;
 	char	*instructions;
@@ -83,6 +75,6 @@ char	**get_instructions(void)
 	split_instructions = ft_split(instructions, '\n');
 	free(instructions);
 	if (!split_instructions)
-		free_and_exit(NULL);
+		free_and_exit_error(a, b, NULL);
 	return (split_instructions);
 }
