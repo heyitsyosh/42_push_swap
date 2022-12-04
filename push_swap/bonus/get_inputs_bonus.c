@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 05:46:16 by myoshika          #+#    #+#             */
-/*   Updated: 2022/12/05 00:59:12 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/12/05 01:41:46 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,6 @@ char	**get_instructions(int *a, int *b)
 	split_instructions = ft_split(instructions, '\n');
 	free(instructions);
 	if (!split_instructions)
-		free_and_exit_error(a, b, NULL);
+		free_and_exit(a, b, NULL);
 	return (split_instructions);
 }
