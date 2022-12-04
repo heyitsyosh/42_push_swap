@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 05:29:25 by myoshika          #+#    #+#             */
-/*   Updated: 2022/10/13 16:16:15 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/12/04 20:39:56 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ static int	make_l(const char *str, size_t i, int sign, bool *overflow)
 	num = 0;
 	while (str[i] && (str[i] >= '0' && str[i] <= '9'))
 	{
-		if (sign == 1 && ((num > LONG_MAX / 10)
-				|| (num == LONG_MAX / 10 && str[i] - '0' > LONG_MAX % 10)))
+		if (sign == 1 && ((num > INT_MAX / 10)
+				|| (num == INT_MAX / 10 && str[i] - '0' > INT_MAX % 10)))
 			*overflow = true;
-		else if (sign == -1 && ((num < LONG_MIN / 10)
-				|| (num == LONG_MIN / 10 && str[i] - '0' > LONG_MIN % 10 * -1)))
+		else if (sign == -1 && ((num < INT_MIN / 10)
+				|| (num == INT_MIN / 10 && str[i] - '0' > INT_MIN % 10 * -1)))
 			*overflow = true;
 		if (*overflow)
 			break ;

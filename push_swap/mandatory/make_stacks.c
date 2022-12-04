@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 17:50:25 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/25 11:34:09 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/12/04 20:40:46 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ static void	malloc_head(t_info *i, int argc, char **argv)
 			ft_printf("Error\n");
 			exit (1);
 		}
+		i->a_head->prev = NULL;
 	}
 }
 
