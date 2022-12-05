@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:09:58 by myoshika          #+#    #+#             */
-/*   Updated: 2022/12/05 15:33:29 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/12/05 15:37:27 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,7 @@ int	main(int argc, char **argv)
 		get_lis_and_compressed_coordinates(&i);
 	}
 	else
-	{
-		ft_printf("Error\n");
 		return (0);
-	}
 	if (i.has_duplicate)
 		ft_printf("Error\n");
 	else
