@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 03:19:04 by myoshika          #+#    #+#             */
-/*   Updated: 2022/12/01 20:36:56 by myoshika         ###   ########.fr       */
+/*   Updated: 2022/12/06 17:13:22 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	sort_few(int stack_size, t_info *i)
 	else if (stack_size == 3)
 		sort_three((i->a_head)->cc, (i->a_head->next)->cc, (i->a_tail)->cc, i);
 	else if (stack_size == 2)
-		if (i->a_head > i->a_head->next)
+		if ((i->a_head)->cc > (i->a_head->next)->cc)
 			sa(i, SA);
 	if (stack_size >= 4)
 	{
