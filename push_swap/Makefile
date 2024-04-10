@@ -82,7 +82,6 @@ $(CHECKER): $(CHECKER_OBJS)
 	$(CC) $(CFLAGS) $(INCLUDES) -o $@ $(CHECKER_OBJS) $(FT_PRINTF) $(GNL)
 
 clean:
-	@printf "$(GREEN)Entering printf directory...$(NC)\n"
 	@make fclean --no-print-directory -C $(PRINTF_DIR)
 	@printf "$(GREEN)Entering get_next_line directory...$(NC)\n"
 	@make fclean --no-print-directory -C $(GNL_DIR)
