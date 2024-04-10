@@ -24,18 +24,24 @@ $(OBJS_DIR)%.o: %.c
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 $(NAME): $(OBJS_DIR) $(OBJS)
-	make -C $(LIBFT_DIR)
+	@printf "$(GREEN)Entering libft directory...$(NC)\n"
+	@make -C $(LIBFT_DIR)
+	@printf "$(GREEN)Entering ft_printf directory...$(NC)\n"
 	cp ../libft/libft.a $(NAME)
 	ar rcs $(NAME) $(OBJS)
 
 clean:
-	make clean -C $(LIBFT_DIR)
+	@printf "$(GREEN)Entering libft directory...$(NC)\n"
+	@make fclean -C $(LIBFT_DIR)
+	@printf "$(GREEN)Entering ft_printf directory...$(NC)\n"
 	rm -rf $(OBJS_DIR)
 
 fclean: clean
-	make fclean -C $(LIBFT_DIR)
 	$(RM) $(NAME)
 
 re: fclean all
 
 .PHONY: all clean fclean re
+
+GREEN = \033[0;32m
+NC = \033[0m
