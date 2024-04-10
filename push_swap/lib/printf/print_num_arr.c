@@ -6,26 +6,28 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 00:37:03 by myoshika          #+#    #+#             */
-/*   Updated: 2022/12/04 05:08:30 by myoshika         ###   ########.fr       */
+/*   Updated: 2024/04/10 23:34:31 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/ft_printf.h"
+#include <unistd.h> //write
+#include "libft.h"
+#include "ft_printf.h"
 
-int	put_space_padding(int call, int flags, int not_space, t_printf *info)
+static int	put_space_padding(int call, int flags, int not_space, t_printf *i)
 {
 	int	pad_count;
 
 	pad_count = 0;
-	if (info->sign != '\0')
+	if (i->sign != '\0')
 		flags += 1;
-	if (info->sharp == true)
+	if (i->sharp == true)
 		flags += 2;
-	if (info->precision > -1 && call == 1)
-		not_space += info->precision;
-	if ((call == 1 && !info->dash) || call == 2)
-		while (info->width-- > not_space + flags)
-			pad_count += write(1, &info->padding, 1);
+	if (i->precision > -1 && call == 1)
+		not_space += i->precision;
+	if ((call == 1 && !i->dash) || call == 2)
+		while (i->width-- > not_space + flags)
+			pad_count += write(1, &i->padding, 1);
 	return (pad_count);
 }
 

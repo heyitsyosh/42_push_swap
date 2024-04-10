@@ -1,14 +1,16 @@
 NAME = push_swap
-BONUS_NAME = checker
+CHECKER = checker
 
-LIBFTDIR = ./lib/libft
-PRINTFDIR = ./lib/printf
-GNLDIR = ./lib/gnl
-DIR = ./mandatory
-BONUS_DIR = ./bonus
-OBJS_DIR = ./objs
+LIBFT_DIR = ./lib/libft/
+PRINTF_DIR = ./lib/printf/
+GNL_DIR = ./lib/gnl/
+PUSHSWAP_DIR = ./srcs/
+CHECKER_DIR = ./checker_srcs/
+OBJS_DIR = ./objs/
+PUSHSWAP_OBJS_DIR = $(OBJS_DIR)push_swap/
+CHECKER_OBJS_DIR = $(OBJS_DIR)checker/
 
-FT_PRINTF = ./lib/printf/libftprintf.a -L$(PRINTFDIR) -lftprintf
+FT_PRINTF = ./lib/printf/libftprintf.a -L$(PRINTF_DIR) -lftprintf
 GNL = ./lib/gnl/get_next_line.a
 
 FILES = main\
@@ -28,45 +30,71 @@ FILES = main\
 		divide_utils\
 		combine\
 		combine_utils
-BONUS_FILES = main\
+CHECKER_FILES = main\
 			get_inputs\
 			atoi\
 			push_swap\
 			rotations\
 			exit
 
-SRCS = $(foreach src,$(FILES),./mandatory/$(src).c)
-OBJS = $(SRCS:.c=.o)
-BONUS_SRCS = $(foreach bonus_src,$(BONUS_FILES),./bonus/$(bonus_src)_bonus.c)
-BONUS_OBJS = $(BONUS_SRCS:.c=.o)
+OBJS = $(foreach src,$(FILES),$(PUSHSWAP_OBJS_DIR)$(src).o)
+CHECKER_OBJS = $(foreach src,$(CHECKER_FILES),$(CHECKER_OBJS_DIR)$(src).o)
 
-CFLAGS = -Wall -Wextra -Werror -I ./includes
-CC = gcc
+CFLAGS = -Wall -Wextra -Werror
+INCLUDES = -I ./includes
 
 #--------------------------------------------------------------------------
 
 all: $(NAME)
 
+$(PUSHSWAP_OBJS_DIR):
+	@mkdir -p $(OBJS_DIR)
+	mkdir -p $(PUSHSWAP_OBJS_DIR)
+
+$(PUSHSWAP_OBJS_DIR)%.o: $(PUSHSWAP_DIR)%.c | $(PUSHSWAP_OBJS_DIR)
+	@mkdir -p $(@D)
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
 $(NAME): $(OBJS)
-	make -C $(PRINTFDIR)
-	make -C $(GNLDIR)
-	$(CC) $(CFLAGS) -o $@ $(OBJS) $(FT_PRINTF) $(GNL)
+	@printf "$(GREEN)Entering printf directory...$(NC)\n"
+	@make --no-print-directory -C $(PRINTF_DIR)
+	@printf "$(GREEN)Entering get_next_line directory...$(NC)\n"
+	@make --no-print-directory -C $(GNL_DIR)
+	@printf "$(GREEN)Entering root directory...$(NC)\n"
+	$(CC) $(CFLAGS) $(INCLUDES) -o $@ $(OBJS) $(FT_PRINTF) $(GNL)
 
-bonus: $(BONUS_NAME)
+checker: $(CHECKER)
 
-$(BONUS_NAME): $(BONUS_OBJS)
-	make -C $(PRINTFDIR)
-	make -C $(GNLDIR)
-	$(CC) $(CFLAGS) -o $@ $(BONUS_OBJS) $(FT_PRINTF) $(GNL)
+$(CHECKER_OBJS_DIR):
+	@mkdir -p $(OBJS_DIR)
+	mkdir -p $(CHECKER_OBJS_DIR)
+
+$(CHECKER_OBJS_DIR)%.o: $(CHECKER_DIR)%.c | $(CHECKER_OBJS_DIR)
+	@mkdir -p $(@D)
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+$(CHECKER): $(CHECKER_OBJS)
+	@printf "$(GREEN)Entering printf directory...$(NC)\n"
+	@make --no-print-directory -C $(PRINTF_DIR)
+	@printf "$(GREEN)Entering get_next_line directory...$(NC)\n"
+	@make --no-print-directory -C $(GNL_DIR)
+	@printf "$(GREEN)Entering root directory...$(NC)\n"
+	$(CC) $(CFLAGS) $(INCLUDES) -o $@ $(CHECKER_OBJS) $(FT_PRINTF) $(GNL)
 
 clean:
-	make fclean -C $(PRINTFDIR)
-	make fclean -C $(GNLDIR)
-	$(RM) $(OBJS) $(BONUS_OBJS)
+	@printf "$(GREEN)Entering printf directory...$(NC)\n"
+	@make fclean --no-print-directory -C $(PRINTF_DIR)
+	@printf "$(GREEN)Entering get_next_line directory...$(NC)\n"
+	@make fclean --no-print-directory -C $(GNL_DIR)
+	@printf "$(GREEN)Entering root directory...$(NC)\n"
+	rm -rf $(OBJS_DIR)
 
 fclean: clean
-	$(RM) $(NAME) $(BONUS_NAME)
+	$(RM) $(NAME) $(CHECKER)
 
 re: fclean all
 
-.PHONY: all clean fclean re bonus
+.PHONY: all checker clean fclean re
+
+GREEN = \033[0;32m
+NC = \033[0m

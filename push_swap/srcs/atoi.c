@@ -1,16 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   atoi_bonus.c                                       :+:      :+:    :+:   */
+/*   atoi.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 05:29:25 by myoshika          #+#    #+#             */
-/*   Updated: 2022/12/04 20:41:29 by myoshika         ###   ########.fr       */
+/*   Updated: 2024/04/10 07:40:38 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/checker_bonus.h"
+#include <stddef.h> //size_t
+#include <limits.h> //INT_MAX, INT_MIN
+#include "push_swap.h"
 
 static int	is_whitespace(char c)
 {

@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker_bonus.h                                    :+:      :+:    :+:   */
+/*   checker.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 17:17:30 by myoshika          #+#    #+#             */
-/*   Updated: 2022/12/05 01:41:14 by myoshika         ###   ########.fr       */
+/*   Updated: 2024/04/10 07:27:39 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHECKER_BONUS_H
-# define CHECKER_BONUS_H
+#ifndef CHECKER_H
+# define CHECKER_H
 
-# include "./get_next_line.h"
-# include "./ft_printf.h"
+# include <stdbool.h>
 
 typedef struct s_sizes{
 	int		a_top;

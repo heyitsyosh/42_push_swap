@@ -6,11 +6,13 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 05:29:25 by myoshika          #+#    #+#             */
-/*   Updated: 2022/12/04 20:39:56 by myoshika         ###   ########.fr       */
+/*   Updated: 2024/04/10 07:52:32 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include <stddef.h> //size_t
+#include <limits.h> //INT_MAX, INT_MIN
+#include "checker.h"
 
 static int	is_whitespace(char c)
 {

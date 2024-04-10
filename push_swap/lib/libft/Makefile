@@ -1,6 +1,6 @@
 NAME = libft.a
 
-SRCS_ = ft_isalpha\
+SRCS = ft_isalpha\
 		ft_isdigit\
 		ft_isalnum\
 		ft_isascii\
@@ -39,8 +39,7 @@ SRCS_ = ft_isalpha\
 		ft_min\
 		ft_safe_free\
 		ft_strcmp
-
-BONUS_ = ft_lstnew\
+LST_SRCS = ft_lstnew\
 		ft_lstadd_front\
 		ft_lstsize\
 		ft_lstlast\
@@ -49,35 +48,40 @@ BONUS_ = ft_lstnew\
 		ft_lstclear\
 		ft_lstiter\
 		ft_lstmap
-		
-SRCS = $(addsuffix .c, $(SRCS_))
-BONUS = $(addsuffix .c, $(BONUS_))
 
-OBJS = $(SRCS:.c=.o)
-BONUS_OBJS = $(BONUS:.c=.o)
+OBJS_DIR = objs/
 
-ifeq ($(MAKECMDGOALS),bonus)
-OBJS += $(BONUS_OBJS)
+OBJS = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(SRCS)))
+LST_OBJS = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(LST_SRCS)))
+
+ifeq ($(MAKECMDGOALS),list)
+OBJS += $(LST_OBJS)
 endif
 
 CFLAGS = -Wall -Wextra -Werror
-CC = gcc
+INCLUDES = -I ../../includes/
 
 # **************************************************************************** #
 
 all: $(NAME)
 
+$(OBJS_DIR):
+	mkdir -p $(OBJS_DIR)
+
+$(OBJS_DIR)%.o: %.c | $(OBJS_DIR)
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
 $(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 
-bonus: all
+list: all
 	
 clean:
-	$(RM) -f $(OBJS) $(BONUS_OBJS)
+	rm -rf $(OBJS_DIR)
 
 fclean: clean
-	$(RM) -f $(NAME)
+	$(RM) $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re bonus
+.PHONY: all list clean fclean re

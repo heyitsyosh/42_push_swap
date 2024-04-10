@@ -1,16 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_inputs_bonus.c                                 :+:      :+:    :+:   */
+/*   get_inputs.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 05:46:16 by myoshika          #+#    #+#             */
-/*   Updated: 2022/12/05 01:41:46 by myoshika         ###   ########.fr       */
+/*   Updated: 2024/04/10 07:54:40 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/checker_bonus.h"
+#include <unistd.h> //STDIN_FILENO
+#include <stdlib.h> //malloc, free
+#include "get_next_line.h"
+#include "checker.h"
+#include "libft.h"
 
 static bool	str_is_num(char *str)
 {

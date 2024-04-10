@@ -6,11 +6,13 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 09:20:55 by myoshika          #+#    #+#             */
-/*   Updated: 2022/12/04 05:06:33 by myoshika         ###   ########.fr       */
+/*   Updated: 2024/04/10 08:00:24 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include <stdlib.h> //malloc, exit, NULL
+#include "push_swap.h"
+#include "ft_printf.h"
 
 void	append_command(t_info *i, int command)
 {

@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotations_bonus.c                                  :+:      :+:    :+:   */
+/*   rotations.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 06:23:42 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/19 08:00:42 by myoshika         ###   ########.fr       */
+/*   Updated: 2024/04/10 07:56:50 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/checker_bonus.h"
+#include "checker.h"
+#include "libft.h"
 
 static void	rotate(int *stack, int direction, int start, int end)
 {

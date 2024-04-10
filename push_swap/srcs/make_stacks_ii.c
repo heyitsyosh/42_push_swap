@@ -6,11 +6,11 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 14:20:51 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/30 12:06:55 by myoshika         ###   ########.fr       */
+/*   Updated: 2024/04/10 07:44:20 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 static void	indicate_lis_nodes(t_stack *start, t_info *i)
 {
@@ -79,7 +79,7 @@ static int	coordinate_compression(int *sorted_streak, t_stack *node, t_info *i)
 	return (smaller_inputs);
 }
 
-//			lis-->(longest increasing subsequence)
+// lis-->(longest increasing subsequence)
 void	get_lis_and_compressed_coordinates(t_info *i)
 {
 	t_stack	*next;

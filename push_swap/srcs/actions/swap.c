@@ -6,11 +6,12 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 21:09:42 by myoshika          #+#    #+#             */
-/*   Updated: 2022/12/04 05:03:44 by myoshika         ###   ########.fr       */
+/*   Updated: 2024/04/10 07:41:11 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include <stddef.h> //NULL
+#include "push_swap.h"
 
 void	sa(t_info *i, int command)
 {
