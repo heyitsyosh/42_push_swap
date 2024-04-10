@@ -1,16 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit_bonus.c                                       :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 22:25:39 by myoshika          #+#    #+#             */
-/*   Updated: 2022/12/05 00:20:41 by myoshika         ###   ########.fr       */
+/*   Updated: 2024/04/10 07:56:34 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/checker_bonus.h"
+#include <stdlib.h> //free, exit, size_t
+#include "checker.h"
+#include "ft_printf.h"
 
 void	free_double_ptr(char **to_free)
 {

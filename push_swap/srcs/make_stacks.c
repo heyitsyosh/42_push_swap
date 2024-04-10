@@ -6,11 +6,13 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 17:50:25 by myoshika          #+#    #+#             */
-/*   Updated: 2022/12/04 20:40:46 by myoshika         ###   ########.fr       */
+/*   Updated: 2024/04/10 08:00:49 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include <stdlib.h> //malloc, free, exit, NULL
+#include "push_swap.h"
+#include "ft_printf.h"
 
 static bool	str_is_num(char *str)
 {

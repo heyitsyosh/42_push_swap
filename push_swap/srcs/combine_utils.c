@@ -6,11 +6,11 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 18:51:21 by myoshika          #+#    #+#             */
-/*   Updated: 2022/12/04 05:09:13 by myoshika         ###   ########.fr       */
+/*   Updated: 2024/04/10 07:30:23 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 t_stack	*find_appropriate_a_head(t_stack *target, t_info *i)
 {

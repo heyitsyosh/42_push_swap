@@ -6,11 +6,12 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 06:51:43 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/19 07:51:53 by myoshika         ###   ########.fr       */
+/*   Updated: 2024/04/10 07:42:16 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include <stdlib.h> //free
+#include "push_swap.h"
 
 static void	delete_next_node(t_command	*prev)
 {

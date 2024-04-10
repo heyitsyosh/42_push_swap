@@ -6,15 +6,14 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:12:15 by myoshika          #+#    #+#             */
-/*   Updated: 2022/12/04 05:04:30 by myoshika         ###   ########.fr       */
+/*   Updated: 2024/04/10 07:27:46 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "./get_next_line.h"
-# include "./ft_printf.h"
+# include <stdbool.h>
 
 # define NO_COMMAND 0
 # define PA 1

@@ -6,11 +6,14 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 10:30:10 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/25 10:45:08 by myoshika         ###   ########.fr       */
+/*   Updated: 2024/04/10 07:48:55 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/ft_printf.h"
+#include <limits.h> //INT_MAX
+#include <stdlib.h> //malloc, free
+#include "libft.h"
+#include "ft_printf.h"
 
 static int	get_ull_len(unsigned long long ull, int base)
 {
@@ -27,7 +30,7 @@ static int	get_ull_len(unsigned long long ull, int base)
 	return (digits);
 }
 
-static void	make_arr(char *arr, unsigned long long ull, int base, t_printf *i)
+static void	make_arr(char *arr, unsigned long long ull, int base, char fmt)
 {
 	const char			*lower = "0123456789abcdef";
 	const char			*upper = "0123456789ABCDEF";
@@ -38,7 +41,7 @@ static void	make_arr(char *arr, unsigned long long ull, int base, t_printf *i)
 		div *= base;
 	while (div != 0)
 	{
-		if (i->fmt == 'X')
+		if (fmt == 'X')
 			*arr = upper[ull / div];
 		else
 			*arr = lower[ull / div];
@@ -58,7 +61,7 @@ char	*ft_ulltoa(unsigned long long ull, int base, t_printf *info)
 	arr = (char *)malloc(digits + 1);
 	if (!arr)
 		return (NULL);
-	make_arr(arr, ull, base, info);
+	make_arr(arr, ull, base, info->fmt);
 	return (arr);
 }
 
@@ -96,6 +99,6 @@ int	put_signed(t_printf *info, char *num)
 	}
 	else
 		printed = put_num(num, (int)ft_strlen(num), 0, info);
-	free (num);
+	free(num);
 	return (printed);
 }

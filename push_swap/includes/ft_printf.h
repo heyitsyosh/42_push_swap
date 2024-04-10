@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 16:46:50 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/25 10:45:52 by myoshika         ###   ########.fr       */
+/*   Updated: 2024/04/10 07:36:33 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <stdbool.h>
 # include <stdarg.h>
-# include "./libft.h"
+# include <stddef.h> //size_t, NULL
 
 typedef struct s_printf
 {
@@ -43,4 +43,5 @@ int		no_conversion(const char *input, t_printf *info);
 
 char	*ft_ulltoa(unsigned long long ull, int base, t_printf *info);
 int		print_str(const char *input, size_t len);
+
 #endif

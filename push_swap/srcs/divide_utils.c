@@ -6,11 +6,11 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 21:18:48 by myoshika          #+#    #+#             */
-/*   Updated: 2022/11/28 03:16:11 by myoshika         ###   ########.fr       */
+/*   Updated: 2024/04/10 07:30:05 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 static int	get_coordinate(t_stack *node, t_stack *tmp)
 {
