@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:12:15 by myoshika          #+#    #+#             */
-/*   Updated: 2024/04/11 09:01:40 by myoshika         ###   ########.fr       */
+/*   Updated: 2024/04/11 11:13:08 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,8 +118,7 @@ void	pick_optimal(t_stack *t, t_costs *c);
 void	update_optimal_actions(bool	not_first_call, t_stack *t, t_combine *c);
 
 void	append_command(t_info *i, t_type command);
-void	reduce_commands(t_info *i);
-char	*get_string(t_type command);
+bool	reduce_commands(t_info *i);
 void	print_commands(t_info *i);
 
 //-----------------------------------------------------------------------//

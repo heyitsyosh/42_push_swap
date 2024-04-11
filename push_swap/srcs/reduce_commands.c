@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 06:51:43 by myoshika          #+#    #+#             */
-/*   Updated: 2024/04/11 11:01:59 by myoshika         ###   ########.fr       */
+/*   Updated: 2024/04/11 11:13:29 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "push_swap.h"
 #include "libft.h"
 
-static void	delete_next_node(t_command *node)
+static void	delete_next_node(t_command	*node)
 {
 	t_command	*to_delete;
 
@@ -25,7 +25,7 @@ static void	delete_next_node(t_command *node)
 	free(to_delete);
 }
 
-static bool	delete_redundant(t_command *prev, t_command *a, t_command *b)
+static bool	delete_unecessary(t_command	*prev, t_command *a, t_command *b)
 {
 	if ((a->type == PA && b->type == PB)
 		|| (a->type == PB && b->type == PA)
@@ -34,8 +34,7 @@ static bool	delete_redundant(t_command *prev, t_command *a, t_command *b)
 		|| (a->type == RRA && b->type == RA)
 		|| (a->type == RB && b->type == RRB)
 		|| (a->type == RRB && b->type == RB)
-		|| (a->type == RR && b->type == RRR)
-		|| (a->type == RRR && b->type == RR))
+		|| (a->type == RRR && b->type == RRR))
 	{
 		delete_next_node(prev);
 		delete_next_node(prev);
@@ -44,92 +43,41 @@ static bool	delete_redundant(t_command *prev, t_command *a, t_command *b)
 	return (false);
 }
 
-
-static t_type get_abbreviation_type(t_command *a, t_command *b) {
-	if ((a->type == SA && b->type == SB)
+static bool	replace_unecessary(t_command *a, t_command *b)
+{
+	if (!b)
+		return (false);
+	else if ((a->type == SA && b->type == SB)
 		|| (a->type == SB && b->type == SA))
-		return (SS);
+		a->type = SS;
 	else if ((a->type == RA && b->type == RB)
 		|| (a->type == RB && b->type == RA))
-		return (RR);
+		a->type = RR;
 	else if ((a->type == RRA && b->type == RRB)
 		|| (a->type == RRB && b->type == RRA))
-		return (RRR);
-	return (NO_COMMAND);
-}
-
-static t_command *perform_abbreviation(t_command *a, t_command *b, int a_count, int b_count) {
-	const t_type a_type = a->type;
-	const t_type b_type = b->type;
-	t_type abbreviation_type;
-
-	abbreviation_type = get_abbreviation_type(a, b);
-	if (abbreviation_type != NO_COMMAND) {
-		while (a_count && b_count) {
-			a->type = abbreviation_type;
-			delete_next_node(a);
-			a = a->next;
-			a_count--;
-			b_count--;
-		}
-		while (a_count > 0 && b->type == b_type) {
-			b->type = a_type;
-			b = b->next;
-			a_count--;
-		}
-	}
+		a->type = RRR;
 	else
-		while (a_count--)
-			a = a->next;
-	return (a);
+		return (false);
+	delete_next_node(a);
+	return (true);
 }
 
-int count_consecutive_commands(t_command **command_ptr) {
-	int count;
-	t_type type;
-	t_command *command;
-
-	command = *command_ptr;
-	if (command)
-		type = command->type;
-	count = 0;
-	while (command && command->type == type) {
-		count++;
-		command = command->next;
-	}
-	*command_ptr = command;
-	return (count);
-}
-
-static void	replace_redundant(t_command *current)
-{
-	int			a_count;
-	int			b_count;
-	t_command	*a;
-	t_command	*b;
-
-	while (current) {
-		a = current;
-		a_count = count_consecutive_commands(&current);
-		b = current;
-		b_count = count_consecutive_commands(&current);
-		if (!a || !b)
-			return ;
-		current = perform_abbreviation(a, b, a_count, b_count);
-	}
-}
-
-void	reduce_commands(t_info *i)
+bool	reduce_commands(t_info *i)
 {
 	t_command	*next;
+	bool		reduced;
 
+	reduced = false;
 	if (!i->commands)
-		return ;
+		return (reduced);
 	next = i->commands;
 	while (next && next->next && (next->next)->next)
 	{
-		delete_redundant(next, next->next, (next->next)->next);
+		if (delete_unecessary(next, next->next, (next->next)->next))
+			reduced = true;
+		if (replace_unecessary(next, next->next))
+			reduced = true;
 		next = next->next;
 	}
-	replace_redundant(i->commands);
+	return (reduced);
 }
