@@ -6,7 +6,7 @@
 To make this happen, you will have to manipulate various sorting algorithms and choose the most appropriate solution(s) for optimized data sorting.</p>*
 
 ## Description:
-#### Sorter (push_swap):
+#### Sorter:
 The Sorter (push_swap) program sorts a list of integers using two stacks, A and B, and a set of commands.  
 Initially, all numbers are placed in stack A.  
 The goal is to sort stack A in ascending order with the least number of operations.  
