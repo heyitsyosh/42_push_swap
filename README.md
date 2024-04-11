@@ -29,8 +29,10 @@ This is achieved by strategically applying the following commands to manipulate 
 **Output**: A series of commands that sorts the input numbers in ascending order.
 
 #### Checker:
-After taking integers as arguments, the checker reads instructions from the standard input till `ctrl+d` is pressed.  
-If stack A is sorted and stack B is empty after instructions are applied, `OK` is displayed.  
+A list of integers given as input arguments is placed in stack A.
+The checker reads instructions (listed in table above) from the standard input until `ctrl+d` is pressed.  
+After all instructions have been applied, the Checker evaluates the state of the stacks.  
+If stack A is sorted and stack B is empty, `OK` is displayed.  
 Otherwise, `KO` is displayed.
 
 ## Sorting algorithm overview:
@@ -51,8 +53,8 @@ cd 42_push_swap/push_swap
 make         //compile executable (./push_swap)
 make checker //compile executable (./checker)
 make clean   //delete .o
-make fclean  //delete .o and executable
-make re      //delete .o and executable, recompile push_swap executable
+make fclean  //delete .o and executables
+make re      //delete .o and executables, recompile executable (./push_swap)
 ```
 
 ## Usage:  
