@@ -6,14 +6,14 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 21:09:42 by myoshika          #+#    #+#             */
-/*   Updated: 2024/04/10 07:41:11 by myoshika         ###   ########.fr       */
+/*   Updated: 2024/04/11 09:04:58 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h> //NULL
 #include "push_swap.h"
 
-void	sa(t_info *i, int command)
+void	sa(t_info *i, t_type type)
 {
 	t_stack	*second;
 	t_stack	*third;
@@ -31,11 +31,11 @@ void	sa(t_info *i, int command)
 	(i->a_head)->prev = second;
 	(i->a_head)->next = third;
 	i->a_head = second;
-	if (command)
-		append_command(i, command);
+	if (type)
+		append_command(i, type);
 }
 
-void	sb(t_info *i, int command)
+void	sb(t_info *i, t_type type)
 {
 	t_stack	*second;
 	t_stack	*third;
@@ -53,13 +53,13 @@ void	sb(t_info *i, int command)
 	(i->b_head)->prev = second;
 	(i->b_head)->next = third;
 	i->b_head = second;
-	if (command)
-		append_command(i, command);
+	if (type)
+		append_command(i, type);
 }
 
-void	ss(t_info *i, int command)
+void	ss(t_info *i, t_type type)
 {
 	sa(i, NO_COMMAND);
 	sb(i, NO_COMMAND);
-	append_command(i, command);
+	append_command(i, type);
 }

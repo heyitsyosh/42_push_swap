@@ -6,14 +6,14 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 20:48:02 by myoshika          #+#    #+#             */
-/*   Updated: 2024/04/10 07:41:33 by myoshika         ###   ########.fr       */
+/*   Updated: 2024/04/11 09:04:37 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h> //NULL
 #include "push_swap.h"
 
-void	rra(t_info *i, int command)
+void	rra(t_info *i, t_type type)
 {
 	t_stack	*new_a_tail;
 
@@ -23,11 +23,11 @@ void	rra(t_info *i, int command)
 	stack_add_front(i->a_tail, &(i->a_head), &(i->a_tail));
 	new_a_tail->next = NULL;
 	i->a_tail = new_a_tail;
-	if (command)
-		append_command(i, command);
+	if (type != NO_COMMAND)
+		append_command(i, type);
 }
 
-void	rrb(t_info *i, int command)
+void	rrb(t_info *i, t_type type)
 {
 	t_stack	*new_b_tail;
 
@@ -37,13 +37,13 @@ void	rrb(t_info *i, int command)
 	stack_add_front(i->b_tail, &(i->b_head), &(i->b_tail));
 	new_b_tail->next = NULL;
 	i->b_tail = new_b_tail;
-	if (command)
-		append_command(i, command);
+	if (type != NO_COMMAND)
+		append_command(i, type);
 }
 
-void	rrr(t_info *i, int command)
+void	rrr(t_info *i, t_type type)
 {
 	rra(i, NO_COMMAND);
 	rrb(i, NO_COMMAND);
-	append_command(i, command);
+	append_command(i, type);
 }

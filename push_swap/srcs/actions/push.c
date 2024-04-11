@@ -6,13 +6,13 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 15:43:55 by myoshika          #+#    #+#             */
-/*   Updated: 2024/04/10 07:41:43 by myoshika         ###   ########.fr       */
+/*   Updated: 2024/04/11 09:04:22 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	pa(t_info *i, int command)
+void	pa(t_info *i, t_type type)
 {
 	t_stack	*new_b_head;
 
@@ -23,10 +23,10 @@ void	pa(t_info *i, int command)
 	i->b_head = new_b_head;
 	i->a_size++;
 	i->b_size--;
-	append_command(i, command);
+	append_command(i, type);
 }
 
-void	pb(t_info *i, int command)
+void	pb(t_info *i, t_type type)
 {
 	t_stack	*new_a_head;
 
@@ -37,5 +37,5 @@ void	pb(t_info *i, int command)
 	i->a_head = new_a_head;
 	i->b_size++;
 	i->a_size--;
-	append_command(i, command);
+	append_command(i, type);
 }

@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:12:15 by myoshika          #+#    #+#             */
-/*   Updated: 2024/04/10 07:27:46 by myoshika         ###   ########.fr       */
+/*   Updated: 2024/04/11 09:01:40 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,6 @@
 # define PUSH_SWAP_H
 
 # include <stdbool.h>
-
-# define NO_COMMAND 0
-# define PA 1
-# define PB 2
-# define SA 3
-# define SB 4
-# define SS 5
-# define RA 6
-# define RB 7
-# define RR 8
-# define RRA 9
-# define RRB 10
-# define RRR 11
 
 typedef struct s_stack
 {
@@ -45,9 +32,24 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
+typedef enum e_type {
+	NO_COMMAND,
+	PA,
+	PB,
+	SA,
+	SB,
+	SS,
+	RA,
+	RB,
+	RR,
+	RRA,
+	RRB,
+	RRR
+}	t_type;
+
 typedef struct s_command
 {
-	int					command;
+	t_type				type;
 	struct s_command	*next;
 }	t_command;
 
@@ -115,25 +117,26 @@ t_stack	*find_appropriate_a_head(t_stack *target, t_info *i);
 void	pick_optimal(t_stack *t, t_costs *c);
 void	update_optimal_actions(bool	not_first_call, t_stack *t, t_combine *c);
 
-void	append_command(t_info *i, int command);
-bool	reduce_commands(t_info *i);
+void	append_command(t_info *i, t_type command);
+void	reduce_commands(t_info *i);
+char	*get_string(t_type command);
 void	print_commands(t_info *i);
 
 //-----------------------------------------------------------------------//
 
-void	pa(t_info *i, int command);
-void	pb(t_info *i, int command);
+void	pa(t_info *i, t_type command);
+void	pb(t_info *i, t_type command);
 
-void	sa(t_info *i, int command);
-void	sb(t_info *i, int command);
-void	ss(t_info *i, int command);
+void	sa(t_info *i, t_type command);
+void	sb(t_info *i, t_type command);
+void	ss(t_info *i, t_type command);
 
-void	ra(t_info *i, int command);
-void	rb(t_info *i, int command);
-void	rr(t_info *i, int command);
+void	ra(t_info *i, t_type command);
+void	rb(t_info *i, t_type command);
+void	rr(t_info *i, t_type command);
 
-void	rra(t_info *i, int command);
-void	rrb(t_info *i, int command);
-void	rrr(t_info *i, int command);
+void	rra(t_info *i, t_type command);
+void	rrb(t_info *i, t_type command);
+void	rrr(t_info *i, t_type command);
 
 #endif
