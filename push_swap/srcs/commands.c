@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 09:20:55 by myoshika          #+#    #+#             */
-/*   Updated: 2024/04/11 09:02:57 by myoshika         ###   ########.fr       */
+/*   Updated: 2024/04/11 11:13:10 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,12 @@ void	print_commands(t_info *i)
 {
 	t_command	*next;
 
-	reduce_commands(i);
 	next = i->commands;
+	while (1)
+	{
+		if (!reduce_commands(i))
+			break ;
+	}
 	while (next)
 	{
 		ft_printf("%s\n", get_string(next->type));
