@@ -43,6 +43,9 @@ CHECKER_OBJS = $(foreach src,$(CHECKER_FILES),$(CHECKER_OBJS_DIR)$(src).o)
 CFLAGS = -Wall -Wextra -Werror
 INCLUDES = -I ./includes
 
+GREEN = \033[0;32m
+NC = \033[0m
+
 #--------------------------------------------------------------------------
 
 all: $(NAME)
@@ -94,6 +97,3 @@ fclean: clean
 re: fclean all
 
 .PHONY: all checker clean fclean re
-
-GREEN = \033[0;32m
-NC = \033[0m

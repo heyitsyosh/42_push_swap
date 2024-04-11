@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 11:09:09 by myoshika          #+#    #+#             */
-/*   Updated: 2024/04/11 01:13:58 by myoshika         ###   ########.fr       */
+/*   Updated: 2024/04/11 03:26:06 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,18 +52,14 @@ static bool	mark_costs(t_combine *c, t_info *i)
 
 static void	adjust_a_and_b(t_combine *c, t_info *i)
 {
-	if (c->optimal_ra > 0)
-		while (c->optimal_ra--)
-			ra(i, RA);
-	if (c->optimal_rra > 0)
-		while (c->optimal_rra--)
-			rra(i, RRA);
-	if (c->optimal_rb > 0)
-		while (c->optimal_rb--)
-			rb(i, RB);
-	if (c->optimal_rrb > 0)
-		while (c->optimal_rrb--)
-			rrb(i, RRB);
+	while (c->optimal_ra--)
+		ra(i, RA);
+	while (c->optimal_rb--)
+		rb(i, RB);
+	while (c->optimal_rra--)
+		rra(i, RRA);
+	while (c->optimal_rrb--)
+		rrb(i, RRB);
 }
 
 void	combine(t_info *i)

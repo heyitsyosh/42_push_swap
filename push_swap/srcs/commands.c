@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 09:20:55 by myoshika          #+#    #+#             */
-/*   Updated: 2024/04/10 08:00:24 by myoshika         ###   ########.fr       */
+/*   Updated: 2024/04/11 09:02:57 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "push_swap.h"
 #include "ft_printf.h"
 
-void	append_command(t_info *i, int command)
+void	append_command(t_info *i, t_type type)
 {
 	t_command	*c;
 
@@ -30,33 +30,33 @@ void	append_command(t_info *i, int command)
 	if (i->last_command)
 		i->last_command->next = c;
 	i->last_command = c;
-	c->command = command;
+	c->type = type;
 	c->next = NULL;
 }
 
-static char	*get_string(int command)
+char	*get_string(t_type type)
 {
-	if (command == PA)
+	if (type == PA)
 		return ("pa");
-	else if (command == PB)
+	else if (type == PB)
 		return ("pb");
-	else if (command == SA)
+	else if (type == SA)
 		return ("sa");
-	else if (command == SB)
+	else if (type == SB)
 		return ("sb");
-	else if (command == SS)
+	else if (type == SS)
 		return ("ss");
-	else if (command == RA)
+	else if (type == RA)
 		return ("ra");
-	else if (command == RB)
+	else if (type == RB)
 		return ("rb");
-	else if (command == RR)
+	else if (type == RR)
 		return ("rr");
-	else if (command == RRA)
+	else if (type == RRA)
 		return ("rra");
-	else if (command == RRB)
+	else if (type == RRB)
 		return ("rrb");
-	else if (command == RRR)
+	else if (type == RRR)
 		return ("rrr");
 	return (NULL);
 }
@@ -65,15 +65,11 @@ void	print_commands(t_info *i)
 {
 	t_command	*next;
 
+	reduce_commands(i);
 	next = i->commands;
-	while (1)
-	{
-		if (!reduce_commands(i))
-			break ;
-	}
 	while (next)
 	{
-		ft_printf("%s\n", get_string(next->command));
+		ft_printf("%s\n", get_string(next->type));
 		next = next->next;
 	}
 }
