@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reduce_commands.c                                  :+:      :+:    :+:   */
+/*   delete_commands.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 06:51:43 by myoshika          #+#    #+#             */
-/*   Updated: 2024/04/11 11:13:29 by myoshika         ###   ########.fr       */
+/*   Updated: 2024/11/18 06:51:57 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "push_swap.h"
 #include "libft.h"
 
-static void	delete_next_node(t_command	*node)
+void	delete_next_node(t_command *node)
 {
 	t_command	*to_delete;
 
@@ -25,15 +25,17 @@ static void	delete_next_node(t_command	*node)
 	free(to_delete);
 }
 
-static bool	delete_unecessary(t_command	*prev, t_command *a, t_command *b)
+static bool	cancel_out_commands(t_command *prev, t_command *a, t_command *b)
 {
 	if ((a->type == PA && b->type == PB)
 		|| (a->type == PB && b->type == PA)
 		|| (a->type == SA && b->type == SA)
+		|| (a->type == SB && b->type == SB)
 		|| (a->type == RA && b->type == RRA)
 		|| (a->type == RRA && b->type == RA)
 		|| (a->type == RB && b->type == RRB)
 		|| (a->type == RRB && b->type == RB)
+		|| (a->type == RR && b->type == RR)
 		|| (a->type == RRR && b->type == RRR))
 	{
 		delete_next_node(prev);
@@ -43,26 +45,7 @@ static bool	delete_unecessary(t_command	*prev, t_command *a, t_command *b)
 	return (false);
 }
 
-static bool	replace_unecessary(t_command *a, t_command *b)
-{
-	if (!b)
-		return (false);
-	else if ((a->type == SA && b->type == SB)
-		|| (a->type == SB && b->type == SA))
-		a->type = SS;
-	else if ((a->type == RA && b->type == RB)
-		|| (a->type == RB && b->type == RA))
-		a->type = RR;
-	else if ((a->type == RRA && b->type == RRB)
-		|| (a->type == RRB && b->type == RRA))
-		a->type = RRR;
-	else
-		return (false);
-	delete_next_node(a);
-	return (true);
-}
-
-bool	reduce_commands(t_info *i)
+bool	delete_commands(t_info *i)
 {
 	t_command	*next;
 	bool		reduced;
@@ -73,9 +56,7 @@ bool	reduce_commands(t_info *i)
 	next = i->commands;
 	while (next && next->next && (next->next)->next)
 	{
-		if (delete_unecessary(next, next->next, (next->next)->next))
-			reduced = true;
-		if (replace_unecessary(next, next->next))
+		if (cancel_out_commands(next, next->next, (next->next)->next))
 			reduced = true;
 		next = next->next;
 	}

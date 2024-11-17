@@ -6,11 +6,11 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 17:50:25 by myoshika          #+#    #+#             */
-/*   Updated: 2024/04/11 05:37:20 by myoshika         ###   ########.fr       */
+/*   Updated: 2024/11/18 06:17:39 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h> //malloc, free, exit, NULL
+#include <stdlib.h> //malloc, free, exit
 #include "push_swap.h"
 #include "ft_printf.h"
 

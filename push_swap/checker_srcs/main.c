@@ -6,12 +6,12 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 17:25:39 by myoshika          #+#    #+#             */
-/*   Updated: 2024/04/10 07:59:40 by myoshika         ###   ########.fr       */
+/*   Updated: 2024/11/17 08:51:57 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h> //STDIN_FILENO
-#include <stdlib.h> //free, size_t, NULL
+#include <stdlib.h> //free
 #include "ft_printf.h"
 #include "checker.h"
 #include "libft.h"
