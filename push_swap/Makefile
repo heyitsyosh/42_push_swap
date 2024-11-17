@@ -38,8 +38,8 @@ CHECKER_SRCS = main\
 			rotations\
 			exit
 
-OBJS = $(foreach src,$(SRCS), $(PUSHSWAP_OBJS_DIR)/$(src).o)
-CHECKER_OBJS = $(foreach src, $(CHECKER_SRCS),$(CHECKER_OBJS_DIR)/$(src).o)
+OBJS = $(foreach src, $(SRCS), $(PUSHSWAP_OBJS_DIR)/$(src).o)
+CHECKER_OBJS = $(foreach src, $(CHECKER_SRCS), $(CHECKER_OBJS_DIR)/$(src).o)
 
 CFLAGS = -Wall -Wextra -Werror
 INCLUDES = -I ./includes/
