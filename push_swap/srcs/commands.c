@@ -6,11 +6,11 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 09:20:55 by myoshika          #+#    #+#             */
-/*   Updated: 2024/04/11 17:18:19 by myoshika         ###   ########.fr       */
+/*   Updated: 2024/11/18 07:18:45 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h> //malloc, exit, NULL
+#include <stdlib.h> //malloc, exit
 #include "push_swap.h"
 #include "ft_printf.h"
 
@@ -34,7 +34,7 @@ void	append_command(t_info *i, t_type type)
 	c->next = NULL;
 }
 
-char	*get_string(t_type type)
+static char	*get_string(t_type type)
 {
 	if (type == PA)
 		return ("pa");
@@ -65,12 +65,11 @@ void	print_commands(t_info *i)
 {
 	t_command	*next;
 
+	while (delete_commands(i))
+		;
+	while (merge_commands(i))
+		;
 	next = i->commands;
-	while (1)
-	{
-		if (!reduce_commands(i))
-			break ;
-	}
 	while (next)
 	{
 		ft_printf("%s\n", get_string(next->type));

@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 23:12:15 by myoshika          #+#    #+#             */
-/*   Updated: 2024/04/11 11:13:08 by myoshika         ###   ########.fr       */
+/*   Updated: 2024/11/18 07:18:24 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ typedef struct s_costs
 
 //-----------------------------------------------------------------------//
 
-void	make_stack_a_and_b(t_info *i, int argc, char **argv);
+void	make_stack_a_and_b(t_info *i, int argc, char **argv);//
 int		atoi_with_overflow_check(const char *str, bool *overflow);
 void	get_lis_and_compressed_coordinates(t_info *i);
 
@@ -118,7 +118,10 @@ void	pick_optimal(t_stack *t, t_costs *c);
 void	update_optimal_actions(bool	not_first_call, t_stack *t, t_combine *c);
 
 void	append_command(t_info *i, t_type command);
-bool	reduce_commands(t_info *i);
+bool	delete_commands(t_info *i);
+bool	merge_commands(t_info *i);
+void	delete_next_node(t_command *node);
+
 void	print_commands(t_info *i);
 
 //-----------------------------------------------------------------------//

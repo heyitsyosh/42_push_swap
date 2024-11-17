@@ -1,17 +1,20 @@
 NAME = libftprintf.a
 
-OBJS_DIR = objs/
-LIBFT_DIR = ../libft/
+OBJS_DIR = objs
+LIBFT_DIR = ../libft
 
 SRCS = ft_printf\
 		print_str_char\
 		num_to_arr\
 		print_num_arr\
 		flags
-OBJS = $(addprefix $(OBJS_DIR),  $(addsuffix .o, $(SRCS)))
+OBJS = $(addprefix $(OBJS_DIR)/, $(addsuffix .o, $(SRCS)))
 
 CFLAGS = -Wall -Wextra -Werror
 INCLUDES = -I ../../includes/
+
+GREEN = \033[0;32m
+NC = \033[0m
 
 # **************************************************************************** #
 
@@ -20,7 +23,7 @@ all: $(NAME)
 $(OBJS_DIR):
 	mkdir -p $(OBJS_DIR)
 
-$(OBJS_DIR)%.o: %.c
+$(OBJS_DIR)/%.o: %.c
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 $(NAME): $(OBJS_DIR) $(OBJS)
@@ -43,5 +46,3 @@ re: fclean all
 
 .PHONY: all clean fclean re
 
-GREEN = \033[0;32m
-NC = \033[0m

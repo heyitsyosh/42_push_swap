@@ -6,7 +6,7 @@
 /*   By: myoshika <myoshika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 22:38:38 by myoshika          #+#    #+#             */
-/*   Updated: 2024/04/10 07:35:19 by myoshika         ###   ########.fr       */
+/*   Updated: 2024/11/18 07:15:31 by myoshika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int	distance_to_closest_non_lis(t_stack *head, t_stack *tail)
 	return (len_from_head);
 }
 
-void	ra_till_non_lis(t_info *i)
+static void	ra_till_non_lis(t_info *i)
 {
 	int	distance;
 
